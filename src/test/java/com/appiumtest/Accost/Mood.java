@@ -56,7 +56,7 @@ public class Mood  {
         Assertion.verifyEquals("只看男",moodPage.getScreenText());
         moodPage.changeScreen("只看女");
         Assertion.verifyEquals("只看女",moodPage.getScreenText());
-
+        Assertion.verifyEquals(1,2);
     }
 
     @Test
