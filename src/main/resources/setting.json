@@ -1,0 +1,48 @@
+{
+  "appPath":"C:\\Users\\admin\\.jenkins\\jobs\\android_xaa\\builds\\125\\archive\\GuimiCloud\\build\\outputs\\apk\\GuimiCloud-major-app_test.apk",
+  "xiaomi":{
+    "CapabilityType.BROWSER_NAME":"",
+    "platformName":"Android",
+    "deviceName":"Android Emulator",
+    "platformVersion":"4.4.2",
+    "appPackage":"com.zkj.guimi",
+    "newCommandTimeout":240,
+    "unicodeKeyboard":"true",
+    "appActivity":".ui.SplashScreen",
+    "autoAcceptAlerts":"true"
+  },
+  "cuizi":{
+    "CapabilityType.BROWSER_NAME":"",
+    "platformName":"Android",
+    "deviceName":"Android Emulator",
+    "platformVersion":"5.1.1",
+    "appPackage":"com.zkj.guimi",
+    "newCommandTimeout":240,
+    "unicodeKeyboard":"true",
+    "appActivity":".ui.SplashScreen",
+    "autoAcceptAlerts":"true"
+  },
+  "sanxing":{
+    "CapabilityType.BROWSER_NAME":"",
+    "platformName":"Android",
+    "deviceName":"Android Emulator",
+    "platformVersion":"5.0",
+    "appPackage":"com.zkj.guimi",
+    "newCommandTimeout":240,
+    "unicodeKeyboard":"true",
+    "appActivity":".ui.SplashScreen",
+    "autoAcceptAlerts":"true"
+  },
+  "redmi":{
+    "CapabilityType.BROWSER_NAME":"",
+    "platformName":"Android",
+    "deviceName":"Android Emulator",
+    "platformVersion":"6.0.1",
+    "appPackage":"com.zkj.guimi",
+    "newCommandTimeout":240,
+    "unicodeKeyboard":"true",
+    "appActivity":".ui.SplashScreen",
+    "autoAcceptAlerts":"true"
+  }
+}
+
