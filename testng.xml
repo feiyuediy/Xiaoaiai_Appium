@@ -9,7 +9,7 @@
     <test name="Regression 1" preserve-order="true" thread-count="1" parallel="none">
         <parameter name="driverName1" value="xiaomi" />
         <parameter name="remoteAddress1" value="http://0.0.0.0:4723/wd/hub" />
-        <parameter name="driverName2" value="xiaomi" />
+        <parameter name="driverName2" value="redmi" />
         <parameter name="remoteAddress2" value="http://0.0.0.0:4724/wd/hub" />
         <classes>
             <!--&lt;!&ndash;测试&ndash;&gt;-->
@@ -20,17 +20,17 @@
             <!--</class>-->
 
 
-            <!--&lt;!&ndash;登录&ndash;&gt;-->
-            <!--<class name="com.appiumtest.Login.LoginTest">-->
-                <!--<methods>-->
-                    <!--<include name="test_login_wrong_pwd"/>-->
+            <!--登录-->
+            <class name="com.appiumtest.Login.LoginTest">
+                <methods>
+                    <include name="test_login_wrong_pwd"/>
                     <!--<include name="test_login_aiaiNum"/>-->
-                    <!--&lt;!&ndash;<include name="test_login_qq"/>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<include name="test_login_weixin"/>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<include name="test_login_weibo"/>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<include name="test_login_mobile"/>&ndash;&gt;-->
-                <!--</methods>-->
-            <!--</class>-->
+                    <!--<include name="test_login_qq"/>-->
+                    <include name="test_login_weixin"/>
+                    <!--<include name="test_login_weibo"/>-->
+                    <!--<include name="test_login_mobile"/>-->
+                </methods>
+            </class>
 
             <!--&lt;!&ndash;搭讪&ndash;&gt;-->
             <!--<class name="com.appiumtest.Accost.AccostTest">-->
@@ -140,18 +140,18 @@
             <!--</class>-->
 
             <!--我-->
-            <class name="com.appiumtest.Mine.MineTest">
-                <methods>
-                    <include name="test_click_head"/>
-                    <include name="test_click_rechange"/>
-                    <include name="test_click_vip"/>
-                    <include name="test_click_growup"/>
-                    <include name="test_Edit_nickName"/>
-                    <include name="test_edite_head"/>
-                    <include name="test_edite_idPhoto"/>
-                    <include name="test_edite_city"/>
-                </methods>
-            </class>
+            <!--<class name="com.appiumtest.Mine.MineTest">-->
+                <!--<methods>-->
+                    <!--<include name="test_click_head"/>-->
+                    <!--<include name="test_click_rechange"/>-->
+                    <!--<include name="test_click_vip"/>-->
+                    <!--<include name="test_click_growup"/>-->
+                    <!--<include name="test_Edit_nickName"/>-->
+                    <!--<include name="test_edite_head"/>-->
+                    <!--<include name="test_edite_idPhoto"/>-->
+                    <!--<include name="test_edite_city"/>-->
+                <!--</methods>-->
+            <!--</class>-->
 
             <!--<class name="com.appiumtest.NewsTest.GroupInfoTest">-->
                 <!--<methods>-->
