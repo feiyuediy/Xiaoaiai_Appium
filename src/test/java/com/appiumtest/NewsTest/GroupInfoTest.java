@@ -33,10 +33,10 @@ public class GroupInfoTest   {
     private AndroidDriver driver;
 
     @BeforeClass
-    @Parameters({"driverName2", "remoteAddress2"})
-    public void setup(String driverName2, String remoteAddress2) throws MalformedURLException {
-        System.out.println("AccostTest setup");
-        driver = DriverCommon.getAndroidDriver(driverName2, remoteAddress2);
+    @Parameters({"driverName2", "remoteAddress2","apkPath"})
+    public void setup(String driverName1, String remoteAddress1,String apkPath) throws MalformedURLException {
+        System.out.println("login setup");
+        driver = DriverCommon.getAndroidDriver(driverName1, remoteAddress1,apkPath);
     }
 
     @Stories("群资料")

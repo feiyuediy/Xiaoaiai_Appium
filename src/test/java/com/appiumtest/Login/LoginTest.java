@@ -21,10 +21,10 @@ public class LoginTest extends TestcaseBase{
     private LoginPage loginPage ;
     private AndroidDriver androidDriver;
     @BeforeClass
-    @Parameters({"driverName2", "remoteAddress2"})
-    public void setup(String driverName1, String remoteAddress1) throws MalformedURLException {
-        System.out.println("login setup");
-        driver = DriverCommon.getAndroidDriver(driverName1, remoteAddress1);
+    @Parameters({"driverName1", "remoteAddress1","apkPath"})
+    public void setup(String driverName1, String remoteAddress1,String apkPath) throws MalformedURLException {
+        System.out.println(driverName1);
+        driver = DriverCommon.getAndroidDriver(driverName1, remoteAddress1,apkPath);
         androidDriver = (AndroidDriver) driver;
     }
 

@@ -7,10 +7,11 @@
 
     </listeners>
     <test name="Regression 1" preserve-order="true" thread-count="1" parallel="none">
-        <parameter name="driverName1" value="xiaomi" />
-        <parameter name="remoteAddress1" value="http://0.0.0.0:4723/wd/hub" />
-        <parameter name="driverName2" value="redmi" />
-        <parameter name="remoteAddress2" value="http://0.0.0.0:4724/wd/hub" />
+        <!--<parameter name="driverName1" value="${driverName1}" />-->
+        <!--<parameter name="remoteAddress1" value="{remoteAddress1}" />-->
+        <!--<parameter name="driverName2" value="{driverName2}" />-->
+        <!--<parameter name="remoteAddress2" value="{remoteAddress2}" />-->
+        <!--<parameter name="apkPath" value="{apkPath}" />-->
         <classes>
             <!--&lt;!&ndash;测试&ndash;&gt;-->
             <!--<class name="com.appiumtest.testPack.Demo">-->

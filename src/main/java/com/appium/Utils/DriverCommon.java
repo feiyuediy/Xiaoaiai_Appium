@@ -38,11 +38,10 @@ public class DriverCommon {
         }
 
     }
-    public static AndroidDriver getAndroidDriver(String driveName,String remoteAddress)  {
+    public static AndroidDriver getAndroidDriver(String driveName,String remoteAddress,String apkPath)  {
         DesiredCapabilities capabilities;
-        File app = new File(ReadSetting.getApkPath());
         capabilities = ReadSetting.getDesiredCapabilities(driveName);
-        capabilities.setCapability("app", app.getAbsolutePath());
+        capabilities.setCapability("app", apkPath);
         try {
             return new AndroidDriver(new URL(remoteAddress), capabilities);
         } catch (MalformedURLException e) {

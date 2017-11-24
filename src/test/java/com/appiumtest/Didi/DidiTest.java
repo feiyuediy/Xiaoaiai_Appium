@@ -34,11 +34,11 @@ public class DidiTest extends TestcaseBase {
     private int remanent_aiai;
 
     @BeforeClass
-    @Parameters({"driverName1", "driverName2"})
-    public void setup(String driverName1, String driverName2) throws MalformedURLException {
+    @Parameters({"driverName1", "driverName2","apkPath"})
+    public void setup(String driverName1, String driverName2, String apkPath) throws MalformedURLException {
 
-        passge = DriverCommon.getAndroidDriver(driverName1, "http://0.0.0.0:4723/wd/hub");
-        driver = DriverCommon.getAndroidDriver(driverName2, "http://0.0.0.0:4724/wd/hub");
+        passge = DriverCommon.getAndroidDriver(driverName1, "http://0.0.0.0:4723/wd/hub",apkPath);
+        driver = DriverCommon.getAndroidDriver(driverName2, "http://0.0.0.0:4724/wd/hub",apkPath);
         driver2 = passge;
     }
     @Test

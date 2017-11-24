@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import com.jayway.jsonpath.JsonPath;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.Parameters;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,14 +17,11 @@ public class ReadSetting {
 
 
     //读取apk的位置
-    public static String getApkPath(){
-        try {
-            return JsonPath.read(file,"$.appPath");
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
+    @Parameters("apkPath")
+    public static String getApkPath(String apkPath){
+        return apkPath;
     }
+
     //读取配置文件中的设备信息
     public static DesiredCapabilities getDesiredCapabilities(String driveName){
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();

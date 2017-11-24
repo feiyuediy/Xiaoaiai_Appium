@@ -34,10 +34,10 @@ public class NewTest extends TestcaseBase {
     private static String nick = "0001";
 
     @BeforeClass
-    @Parameters({"driverName2", "remoteAddress2"})
-    public void setup(String driverName2, String remoteAddress2) throws MalformedURLException {
-        System.out.println("AccostTest setup");
-        driver = DriverCommon.getAndroidDriver(driverName2, remoteAddress2);
+    @Parameters({"driverName2", "remoteAddress2","apkPath"})
+    public void setup(String driverName1, String remoteAddress1,String apkPath) throws MalformedURLException {
+        System.out.println("login setup");
+        driver = DriverCommon.getAndroidDriver(driverName1, remoteAddress1,apkPath);
         launch = driver;
     }
 
@@ -257,8 +257,8 @@ public class NewTest extends TestcaseBase {
     @Stories("联系人")
     @Title("我的粉丝列表--视频")
     @Test
-    @Parameters({"driverName1"})
-    public void myFollow_test(String driverName1){
+    @Parameters({"driverName1","apkPath"})
+    public void myFollow_test(String driverName1,String apkPath){
         //点击我的粉丝到粉丝列表
         contactsPage.click_myFans();
         FansListPage fansListPage = new FansListPage(launch);
@@ -268,7 +268,7 @@ public class NewTest extends TestcaseBase {
         OtherUserInfoPage otherUserInfoPage = new OtherUserInfoPage(launch);
 
         //连接接收端的设备
-        accpect = DriverCommon.getAndroidDriver(driverName1, "http://0.0.0.0:4724/wd/hub");
+        accpect = DriverCommon.getAndroidDriver(driverName1, "http://0.0.0.0:4724/wd/hub",apkPath);
         //接收端登录
         LoginPage loginPage = new LoginPage(accpect);
         loginPage.login("18676390007","123456");

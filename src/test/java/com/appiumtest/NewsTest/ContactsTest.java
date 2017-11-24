@@ -27,9 +27,10 @@ public class ContactsTest {
     private static String nick = "0001";
 
     @BeforeTest
-    @Parameters({"driverName1"})
-    public void setup(String driverName1) {
-        launch = DriverCommon.getAndroidDriver(driverName1, "http://0.0.0.0:4723/wd/hub");
+    @Parameters({"driverName2", "remoteAddress2","apkPath"})
+    public void setup(String driverName1, String remoteAddress1,String apkPath) throws MalformedURLException {
+        System.out.println("login setup");
+        launch = DriverCommon.getAndroidDriver(driverName1, remoteAddress1,apkPath);
 
     }
     @Stories("搜索并关注爱爱号")
@@ -97,8 +98,8 @@ public class ContactsTest {
 
     @Stories("我的粉丝列表--视频--语音--约跳")
     @Test
-    @Parameters({"driverName2"})
-    public void myFollow_test(String driverName2){
+    @Parameters({"driverName2","apkPath"})
+    public void myFollow_test(String driverName2, String apkPath){
         //点击我的粉丝到粉丝列表
         contactsPage.click_myFans();
         FansListPage fansListPage = new FansListPage(launch);
@@ -108,7 +109,7 @@ public class ContactsTest {
         OtherUserInfoPage otherUserInfoPage = new OtherUserInfoPage(launch);
 
         //连接接收端的设备
-        accpect = DriverCommon.getAndroidDriver(driverName2, "http://0.0.0.0:4724/wd/hub");
+        accpect = DriverCommon.getAndroidDriver(driverName2, "http://0.0.0.0:4724/wd/hub",apkPath);
 
         //接收端登录
         LoginPage loginPage = new LoginPage(accpect);

@@ -28,10 +28,10 @@ import java.net.MalformedURLException;
 public class Demo extends TestcaseBase{
 
     @BeforeClass
-    @Parameters({"driverName1", "driverName2"})
-    public void setup(String driverName1, String driverName2) throws MalformedURLException {
-        driver = DriverCommon.getAndroidDriver(driverName1, "http://0.0.0.0:4723/wd/hub");
-        driver2 = DriverCommon.getAndroidDriver(driverName2, "http://0.0.0.0:4724/wd/hub");
+    @Parameters({"driverName1", "driverName2","apkPath"})
+    public void setup(String driverName1, String driverName2,String apkPath) throws MalformedURLException {
+        driver = DriverCommon.getAndroidDriver(driverName1, "http://0.0.0.0:4723/wd/hub",apkPath);
+        driver2 = DriverCommon.getAndroidDriver(driverName2, "http://0.0.0.0:4724/wd/hub",apkPath);
 
     }
     @Test
