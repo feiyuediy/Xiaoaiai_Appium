@@ -29,45 +29,13 @@ public class LoginPage {
     //QQ登录
     public void qqlogin() {
         loginBean.QQlogin.click();
-
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        int screen_height_execute_phone = appiumDriver.manage().window().getSize().height; //screen height
-
-        int y = (new   Double((1403.0/1920.0) * screen_height_execute_phone)).intValue(); ;
-        System.out.println("y:"+y);
-        appiumDriver.tap(1,30,y,0);
-
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        appiumDriver.findElementByXPath("//android.widget.Button[@resource-id='com.tencent.mobileqq:id/name']").click();
     }
 
     //微信登录
     public void weixinLogin(){
         loginBean.weixinlogin.click();
-
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        int screen_height_execute_phone = appiumDriver.manage().window().getSize().height; //screen height
-
-        int y = (new   Double((538.0/876.0) * screen_height_execute_phone)).intValue(); ;
-        System.out.println("y:"+y);
-        appiumDriver.tap(1,200,y,0);
-
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        appiumDriver.findElementByXPath("//android.widget.Button[@resource-id='com.tencent.mm:id/boy']").click();
     }
 
     //微博登录
