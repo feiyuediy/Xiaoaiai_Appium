@@ -24,6 +24,8 @@ public class LoginTest extends TestcaseBase{
     @Parameters({"driverName1", "remoteAddress1","apkPath"})
     public void setup(String driverName1, String remoteAddress1,String apkPath) throws MalformedURLException {
         System.out.println(driverName1);
+        System.out.println(remoteAddress1);
+        System.out.println(apkPath);
         driver = DriverCommon.getAndroidDriver(driverName1, remoteAddress1,apkPath);
         androidDriver = (AndroidDriver) driver;
     }
