@@ -18,7 +18,6 @@ import java.net.MalformedURLException;
  */
 @Features("登录")
 public class LoginTest extends TestcaseBase{
-    private AppiumDriver driver;
     private LoginPage loginPage ;
     private AndroidDriver androidDriver;
     @BeforeClass
@@ -54,12 +53,19 @@ public class LoginTest extends TestcaseBase{
         }
         System.out.println(androidDriver.currentActivity());
         Assertion.verifyEquals(".ui.MainActivity", androidDriver.currentActivity());
+        loginPage.quitLogin();
+
     }
     @Test
     @Stories("登录")
     @Title("QQ登录")
     public void test_login_qq(){
         loginPage.qqlogin();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         Assertion.verifyEquals(".ui.MainActivity", androidDriver.currentActivity());
         loginPage.quitLogin();
     }
