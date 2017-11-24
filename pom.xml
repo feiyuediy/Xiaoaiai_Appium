@@ -121,11 +121,11 @@
                     </systemProperties>
 
                     <systemPropertyVariables>
-                        <driveName1>${driveName1}</driveName1>
-                        <driveName2>${driveName2}</driveName2>
-                        <apkPath>${apkPath}</apkPath>
-                        <remoteAddress1>${remoteAddress1}</remoteAddress1>
-                        <remoteAddress2>${remoteAddress2}</remoteAddress2>
+                        <testEnvironment>${driverName1}</testEnvironment>
+                        <testEnvironment>${driverName2}</testEnvironment>
+                        <testEnvironment>${remoteAddress1}</testEnvironment>
+                        <testEnvironment>${remoteAddress2}</testEnvironment>
+                        <testEnvironment>${apkPath}</testEnvironment>
                     </systemPropertyVariables>
 
                     <testFailureIgnore>true</testFailureIgnore>
