@@ -6,11 +6,11 @@
         <listener class-name="com.appium.Listener.AssertionListener" />
     </listeners>
     <test name="Regression 1" preserve-order="true" thread-count="1" parallel="none">
-        <parameter name="testEnv" value="${driverName1}"/>
-        <parameter name="testEnv" value="${driverName2}"/>
-        <parameter name="testEnv" value="${remoteAddress1}"/>
-        <parameter name="testEnv" value="${remoteAddress2}"/>
-        <parameter name="testEnv" value="${apkPath}"/>
+        <parameter name="testEnv1" value="${driverName1}"/>
+        <parameter name="testEnv2" value="${driverName2}"/>
+        <parameter name="testEnv3" value="${remoteAddress1}"/>
+        <parameter name="testEnv4" value="${remoteAddress2}"/>
+        <parameter name="testEnv5" value="${apkPath}"/>
         <classes>
             <!--&lt;!&ndash;测试&ndash;&gt;-->
             <!--<class name="com.appiumtest.testPack.Demo">-->
