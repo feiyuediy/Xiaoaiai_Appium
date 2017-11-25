@@ -11,6 +11,8 @@ import com.appium.Utils.Screenshot;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.Point;
 
+import javax.swing.plaf.TableHeaderUI;
+
 /**
  * Created by admin on 2017/8/29.
  */
@@ -29,22 +31,59 @@ public class LoginPage {
     //QQ登录
     public void qqlogin() {
         loginBean.QQlogin.click();
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         appiumDriver.findElementByXPath("//android.widget.Button[@resource-id='com.tencent.mobileqq:id/name']").click();
     }
 
     //微信登录
     public void weixinLogin(){
         loginBean.weixinlogin.click();
-        appiumDriver.findElementByXPath("//android.widget.Button[@resource-id='com.tencent.mm:id/boy']").click();
+        try {
+            Thread.sleep(1000);
+            appiumDriver.findElementByXPath("//android.widget.EditText[@resource-id='com.tencent.mm:id/hb' and @text='请填写微信号/QQ号/邮箱']").sendKeys("13242009460");
+            appiumDriver.findElementByXPath("//android.widget.LinearLayout[@resource-id='com.tencent.mm:id/bow']/android.widget.EditText[1]").sendKeys("test@123");
+            appiumDriver.findElementByXPath("//android.widget.Button[@resource-id='com.tencent.mm:id/boy']").click();
+        } catch (Exception e) {
+        }
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
     }
 
     //微博登录
     public void weiboLogin(){
         loginBean.weiboLogin.click();
-        try {
+        try{
             Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            appiumDriver.findElementById("com.sina.weibo:id/etLoginUsername").sendKeys("13242009460");
+            appiumDriver.findElementById("com.sina.weibo:id/etPwd").sendKeys("test@123");
+            appiumDriver.findElementByXPath("//android.widget.Button[@resource-id='com.sina.weibo:id/bnLogin']").click();
+
+            try {
+                Thread.sleep(2000);
+                appiumDriver.findElementByXPath("//android.widget.Button[@resource-id='com.sina.weibo:id/bnLogin']").click();
+                Thread.sleep(5000);
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }catch (Exception e){
+            try {
+
+                Thread.sleep(1000);
+                appiumDriver.findElementByXPath("//android.widget.Button[@resource-id='com.sina.weibo:id/bnLogin']").click();
+                Thread.sleep(5000);
+
+            } catch (InterruptedException e1) {
+                e1.printStackTrace();
+            }
+
         }
     }
     //退出登录

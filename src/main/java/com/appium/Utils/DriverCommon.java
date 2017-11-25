@@ -66,7 +66,12 @@ public class DriverCommon {
         int width = driver.manage().window().getSize().width;
         int height = driver.manage().window().getSize().height;
         for (int i = 0; i < num; i++) {
-            driver.swipe(width / 2, height * 3 / 4, width / 2, height / 4, during);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            driver.swipe(width / 2, height *3 / 4, width / 2, height  / 4, during);
             goSleep(3);
         }
     }

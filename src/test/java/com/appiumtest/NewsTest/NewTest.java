@@ -34,9 +34,8 @@ public class NewTest extends TestcaseBase {
     private static String nick = "0001";
 
     @BeforeClass
-    @Parameters({"driverName2", "remoteAddress2","apkPath"})
+    @Parameters({"driverName1", "remoteAddress1","apkPath"})
     public void setup(String driverName1, String remoteAddress1,String apkPath) throws MalformedURLException {
-        System.out.println("login setup");
         driver = DriverCommon.getAndroidDriver(driverName1, remoteAddress1,apkPath);
         launch = driver;
     }
@@ -257,7 +256,7 @@ public class NewTest extends TestcaseBase {
     @Stories("联系人")
     @Title("我的粉丝列表--视频")
     @Test
-    @Parameters({"driverName1","apkPath"})
+    @Parameters({"driverName2","apkPath"})
     public void myFollow_test(String driverName1,String apkPath){
         //点击我的粉丝到粉丝列表
         contactsPage.click_myFans();
