@@ -10,10 +10,7 @@ import com.appium.Utils.Assertion;
 import com.appium.Utils.DriverCommon;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Stories;
 import ru.yandex.qatools.allure.annotations.Title;
@@ -26,11 +23,12 @@ import java.util.Arrays;
  */
 
 @Features("发现")
+@Listeners({com.appium.Listener.AssertionListener.class })
+
 public class UploadFeedTest extends TestcaseBase {
     private UploadFeedPage uploadFeedPage;
     private HotPage hotPage;
     private AppiumDriver appiumDriver;
-    private AndroidDriver driver;
 
 
     @BeforeClass
@@ -184,8 +182,7 @@ public class UploadFeedTest extends TestcaseBase {
         String name = themeFeedsPage.getFristFeedNick();
         String[] namelist = {"雅致的倪明初_吴彦祖","雅致的迪丽热巴"};
         System.out.println("name:"+name);
-        int a = Arrays.binarySearch(namelist,name);
-        Assertion.verifyEquals(a>0,true,"判断匿名的名称是否符合");
+        Assertion.verifyEquals(Arrays.asList(namelist).contains(name),true,"判断匿名的名称是否符合");
         driver.pressKeyCode(4);//
         Assertion.verifyEquals(".ui.MainActivity",driver.currentActivity(),"由主题话题页面点击返回，返回到主页面");
     }

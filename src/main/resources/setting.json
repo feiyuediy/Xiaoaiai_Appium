@@ -5,7 +5,7 @@
     "deviceName":"Android Emulator",
     "platformVersion":"4.4.2",
     "appPackage":"com.zkj.guimi",
-    "newCommandTimeout":240,
+    "newCommandTimeout":"240",
     "unicodeKeyboard":"true",
     "appActivity":".ui.SplashScreen",
     "autoAcceptAlerts":"true"
@@ -16,7 +16,7 @@
     "deviceName":"Android Emulator",
     "platformVersion":"5.1.1",
     "appPackage":"com.zkj.guimi",
-    "newCommandTimeout":240,
+    "newCommandTimeout":"240",
     "unicodeKeyboard":"true",
     "appActivity":".ui.SplashScreen",
     "autoAcceptAlerts":"true"
@@ -27,7 +27,7 @@
     "deviceName":"Android Emulator",
     "platformVersion":"5.0",
     "appPackage":"com.zkj.guimi",
-    "newCommandTimeout":240,
+    "newCommandTimeout":"240",
     "unicodeKeyboard":"true",
     "appActivity":".ui.SplashScreen",
     "autoAcceptAlerts":"true"
@@ -38,7 +38,7 @@
     "deviceName":"5ab4f80e",
     "platformVersion":"6.0.1",
     "appPackage":"com.zkj.guimi",
-    "newCommandTimeout":240,
+    "newCommandTimeout":"240",
     "unicodeKeyboard":"true",
     "appActivity":".ui.SplashScreen",
     "autoAcceptAlerts":"true"
@@ -49,7 +49,18 @@
     "deviceName":"23663455",
     "platformVersion":"6.0.1",
     "appPackage":"com.zkj.guimi",
-    "newCommandTimeout":240,
+    "newCommandTimeout":"240",
+    "unicodeKeyboard":"true",
+    "appActivity":".ui.SplashScreen",
+    "autoAcceptAlerts":"true"
+  },
+  "rongyao6p":{
+    "CapabilityType.BROWSER_NAME":"",
+    "platformName":"Android",
+    "deviceName":"23663455",
+    "platformVersion":"4.4.2",
+    "appPackage":"com.zkj.guimi",
+    "newCommandTimeout":"240",
     "unicodeKeyboard":"true",
     "appActivity":".ui.SplashScreen",
     "autoAcceptAlerts":"true"

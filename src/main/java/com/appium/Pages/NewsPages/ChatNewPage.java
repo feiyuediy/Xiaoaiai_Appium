@@ -3,6 +3,7 @@ package com.appium.Pages.NewsPages;
 import com.appium.PageBeans.AccostPageBeans.ChartBean;
 import com.appium.PageBeans.NewPageBeans.ChatNewBean;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.TouchAction;
 
 /**
  * Created by admin on 2017/9/15.
@@ -45,7 +46,9 @@ public class ChatNewPage {
     }
     //长按第一个消息联系人的名称
     public void tapFrist(){
-        appiumDriver.tap(1,chatNewBean.fristName.toWebElement(),2000);
+//        TouchAction touchAction = new TouchAction(appiumDriver);
+//        touchAction.longPress(chatNewBean.fristName.toWebElement()).perform();
+            appiumDriver.tap(1,chatNewBean.fristName.toWebElement(),2000);
     }
 
     //删除一个人的聊天记录

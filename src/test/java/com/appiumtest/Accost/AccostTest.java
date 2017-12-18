@@ -7,9 +7,15 @@ import com.appium.Pages.AccostPages.MoodPage;
 import com.appium.Pages.AccostPages.UploadIdphotoPage;
 import com.appium.Pages.FindPages.ThemeFeedsPage;
 import com.appium.Pages.LoginPages.LoginPage;
+import com.appium.Pages.NewsPages.ChatNewPage;
+import com.appium.Pages.NewsPages.ContactsPage;
+import com.appium.Pages.NewsPages.FansListPage;
 import com.appium.Utils.Assertion;
+import com.appium.Utils.Common;
 import com.appium.Utils.DriverCommon;
+import com.appium.Utils.Screenshot;
 import io.appium.java_client.android.AndroidDriver;
+import org.openqa.selenium.By;
 import org.testng.annotations.*;
 import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Stories;
@@ -22,6 +28,8 @@ import java.net.MalformedURLException;
  */
 
 @Features("搭讪")
+@Listeners({com.appium.Listener.AssertionListener.class })
+
 public class AccostTest extends TestcaseBase{
     private IDphotoPage iDphotoPage;
     private  UploadIdphotoPage uploadIdphotoPage;
@@ -30,7 +38,6 @@ public class AccostTest extends TestcaseBase{
     @BeforeClass
     @Parameters({"driverName1", "remoteAddress1","apkPath"})
     public void setup(String driverName1, String remoteAddress1,String apkPath) throws MalformedURLException {
-        System.out.println("login setup");
         driver = DriverCommon.getAndroidDriver(driverName1, remoteAddress1,apkPath);
     }
 
@@ -162,6 +169,42 @@ public class AccostTest extends TestcaseBase{
         Assertion.verifyEquals(true,device,"检查设备标签存在");
         Assertion.verifyEquals(true,chang,"检查魅力值标签存在");
     }
+
+    @Test
+    @Stories("心情")
+    @Title("心情页面关注")
+    public void test_mood_floow(){
+        for (int i = 2;i<=6;i++){
+            String xpth = "//android.support.v7.widget.RecyclerView[@resource-id='com.zkj.guimi:id/scroll']/android.widget.RelativeLayout["+Integer.valueOf(i)+"]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[2]/android.widget.ImageView[1]";
+            String file = Screenshot.snapshotWithElement(driver,driver.findElement(By.xpath(xpth)));
+            System.out.println(file);
+            boolean isNoFllow = Common.comparePint(file,"D:\\GitProject\\Xiaoaiai_appium\\Xiaoaiai_Appium\\src\\main\\resources\\png\\noFllow.png",90);
+            //判断是否关注了
+            if (isNoFllow){
+                //没有关注就点击关注
+                driver.findElementByXPath(xpth).click();
+                moodPage.click_ok();
+                //获取那个人的昵称
+                String nick = driver.findElementByXPath("//android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.support.v4.view.ViewPager[1]/android.widget.RelativeLayout[1]/android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout["+Integer.valueOf(i)+"]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]").getText();
+                //进入消息页面
+                AccostPage accostPage = new AccostPage(driver);
+                accostPage.gotoNews();
+                //点击联系人进入到联系人页面
+                ChatNewPage chatNewPage = new ChatNewPage(driver);
+                chatNewPage.click_contacts();
+                //点击我的关注进入到关注列表
+                ContactsPage contactsPage = new ContactsPage(driver);
+                contactsPage.click_myAttountion();
+                //取消关注刚才的那个人
+                FansListPage fansListPage = new FansListPage(driver);
+                fansListPage.cancleAttention(nick);
+                break;
+            }
+        }
+
+    }
+
+
     @AfterClass
     public void teardown(){
         driver.quit();

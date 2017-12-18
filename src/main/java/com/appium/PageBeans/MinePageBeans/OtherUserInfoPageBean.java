@@ -208,6 +208,10 @@ public class OtherUserInfoPageBean extends BaseBean{
     @Description(description="")
     public  View  dialog_btn_ok;
 
+    @Xpath(xpath={"//android.widget.Button[@resource-id='com.zkj.guimi:id/dc_dialog_btn_ok']"})
+    @Description(description="")
+    public  View  dc_dialog_btn_ok;
+
     @Xpath(xpath={"//android.widget.TextView[@resource-id='com.zkj.guimi:id/dbp_tv_ban_person']"})
     @Description(description="")
     public  View  ban_person;
@@ -215,6 +219,14 @@ public class OtherUserInfoPageBean extends BaseBean{
     @Xpath(xpath={"//android.widget.Button[@resource-id='com.zkj.guimi:id/dg_btn_confirm']"})
     @Description(description="关注的时候的弹窗中的我知道了")
     public  View  dg_btn_confirm;
+
+    @Xpath(xpath={"//android.widget.TextView[@resource-id='com.zkj.guimi:id/groupItemTitle' and @text='视频通话']"})
+    @Description(description="视频通话")
+    public  View  videoCall;
+
+    @Xpath(xpath={"//android.widget.TextView[@resource-id='com.zkj.guimi:id/groupItemTitle' and @text='语音通话']"})
+    @Description(description="语音通话")
+    public  View  voiceCall;
 
     public OtherUserInfoPageBean(AppiumDriver aDriver){super(aDriver);}
 

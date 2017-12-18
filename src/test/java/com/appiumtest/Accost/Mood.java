@@ -8,7 +8,7 @@ import com.appium.Utils.Assertion;
 import com.appium.Utils.DriverCommon;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
-import org.openqa.selenium.NoSuchContextException;
+
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;

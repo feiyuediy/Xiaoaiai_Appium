@@ -4,6 +4,10 @@ import com.appium.PageBeans.NewPageBeans.ContactsPageBean;
 import com.appium.PageBeans.NewPageBeans.SearchPageBean;
 import com.appium.Pages.MinePage.OtherUserInfoPage;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.TouchAction;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 public class ContactsPage {
     private AppiumDriver appiumDriver;
@@ -31,6 +35,14 @@ public class ContactsPage {
         contactsPageBeas.myBlock.click();
     }
 
+
+    //搜索,页面停留在个人资料
+    public void search(String key){
+        contactsPageBeas.search.click();
+        searchPageBean.serchEdit.input(key);
+        searchPageBean.search_network.click();
+        searchPageBean.user_has_find.click();
+    }
     //搜索并关注
     public void searchAndAttention(String key){
         //搜索

@@ -103,7 +103,7 @@ public class ChatBean extends BaseBean{
     public  Text  input_container;
 
 
-    @Xpath(xpath={"//android.widget.Button[@resource-id='com.zkj.guimi:id/btn_emoticons']"})
+    @Xpath(xpath={"//android.support.v7.widget.RecyclerView[@resource-id='com.zkj.guimi:id/fc_shortcut_fun_view']/android.widget.RelativeLayout[6]/android.widget.ImageView[1]"})
     @Description(description="")
     public  Click  btn_emoticons;
 
@@ -131,7 +131,7 @@ public class ChatBean extends BaseBean{
     public  View  gridView13;
 
 
-    @Xpath(xpath={"//android.widget.GridView[@resource-id='com.zkj.guimi:id/other_container']/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.ImageView[1]"})
+    @Xpath(xpath={"//android.support.v7.widget.RecyclerView[@resource-id='com.zkj.guimi:id/fc_shortcut_fun_view']/android.widget.RelativeLayout[1]/android.widget.ImageView[1]"})
     @Description(description="")
     public  View  add_pic;
 
@@ -158,7 +158,11 @@ public class ChatBean extends BaseBean{
     @Description(description="")
     public  View  imageView16;
 
-    @Xpath(xpath={"//android.widget.GridView[@resource-id='com.zkj.guimi:id/gridview']/android.widget.RelativeLayout[3]/android.widget.ImageView[1]"})
+    @Xpath(xpath={"//android.support.v7.widget.RecyclerView[@resource-id='com.zkj.guimi:id/fc_shortcut_fun_view']/android.widget.RelativeLayout[6]/android.widget.ImageView[1]"})
+    @Description(description="")
+    public  View  send_emoj;
+
+    @Xpath(xpath={"    //android.widget.GridView[@resource-id='com.zkj.guimi:id/gridview']/android.widget.RelativeLayout[1]/android.widget.ImageView[1]\n"})
     @Description(description="")
     public  View  emoj;
 
@@ -186,12 +190,12 @@ public class ChatBean extends BaseBean{
     public  View  imageView17;
 
 
-    @Xpath(xpath={"//android.widget.TextView[@text='阅后即焚']"})
+    @Xpath(xpath={"//android.support.v7.widget.RecyclerView[@resource-id='com.zkj.guimi:id/fc_shortcut_fun_view']/android.widget.RelativeLayout[4]/android.widget.ImageView[1]"})
     @Description(description="阅后即焚")
     public  PlainText  add_BurnAfterReading;
 
 
-    @Xpath(xpath={"//android.widget.GridView[@resource-id='com.zkj.guimi:id/other_container']/android.widget.LinearLayout[5]/android.widget.RelativeLayout[1]/android.widget.ImageView[1]"})
+    @Xpath(xpath={"//android.support.v7.widget.RecyclerView[@resource-id='com.zkj.guimi:id/fc_shortcut_fun_view']/android.widget.RelativeLayout[5]/android.widget.ImageView[1]"})
     @Description(description="")
     public  View  add_gift;
 

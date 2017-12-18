@@ -29,8 +29,9 @@ public class MineTest extends TestcaseBase {
     private MinePage minePage;
     private AccountInfoPage accountInfoPage;
     private UserInfoPage userInfoPage;
+
     @BeforeClass
-    @Parameters({"driverName2", "remoteAddress2","apkPath"})
+    @Parameters({"driverName1", "remoteAddress1","apkPath"})
     public void setup(String driverName1, String remoteAddress1,String apkPath) throws MalformedURLException {
         System.out.println("login setup");
         driver = DriverCommon.getAndroidDriver(driverName1, remoteAddress1,apkPath);

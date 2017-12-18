@@ -6,6 +6,7 @@ import com.appium.Utils.DriverCommon;
 import com.appium.Utils.ReportUtil;
 import com.appium.Utils.Screenshot;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidKeyCode;
 import org.openqa.selenium.By;
@@ -63,6 +64,9 @@ public class HotPage {
         int y = hotBean.banner.toWebElement().getSize().getWidth();
         int width = appiumDriver.manage().window().getSize().width;
         int height = appiumDriver.manage().window().getSize().height;
+//        TouchAction touchAction = new TouchAction(appiumDriver);
+//        touchAction.press(x / 4, y / 2).moveTo( x * 3 / 4, y / 2).release().perform();
+
         appiumDriver.swipe(x / 4, y / 2, x * 3 / 4, y / 2, 5000);
     }
 

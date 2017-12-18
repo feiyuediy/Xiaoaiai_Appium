@@ -29,7 +29,7 @@ public class OrderFrame {
 
     //接受
     public void click_accept(){
-        orderFrameBean.accept.expectElementExistOrNot(true,30);
+        orderFrameBean.accept.expectElementExistOrNot(true,30000);
         orderFrameBean.accept.click();
     }
 
@@ -40,6 +40,7 @@ public class OrderFrame {
 
     //获取额外打赏
     public String get_reward_by_send(){
+        orderFrameBean.reward_by_sender.expectElementExistOrNot(true,30000);
         return orderFrameBean.reward_by_sender.getText();
     }
 }

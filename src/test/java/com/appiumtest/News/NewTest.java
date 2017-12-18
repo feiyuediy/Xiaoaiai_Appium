@@ -1,18 +1,14 @@
-package com.appiumtest.NewsTest;
+package com.appiumtest.News;
 
 import com.appium.Moudle.TestcaseBase;
 import com.appium.Pages.AccostPages.AccostPage;
-import com.appium.Pages.CallPages.ComingCallPage;
-import com.appium.Pages.CallPages.VoiceCallPaeg;
 import com.appium.Pages.LoginPages.LoginPage;
 import com.appium.Pages.MinePage.OtherUserInfoPage;
 import com.appium.Pages.NewsPages.*;
 import com.appium.Utils.Assertion;
 import com.appium.Utils.DriverCommon;
 import io.appium.java_client.AppiumDriver;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Stories;
 import ru.yandex.qatools.allure.annotations.Title;
@@ -22,6 +18,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Features("消息")
+@Listeners({com.appium.Listener.AssertionListener.class })
+
 public class NewTest extends TestcaseBase {
     private AccostPage accostPage;
     private ChatPage chatPage;
@@ -29,7 +27,6 @@ public class NewTest extends TestcaseBase {
     private GroupPage groupPage;
     private ContactsPage contactsPage;
     private AppiumDriver launch;
-    private AppiumDriver accpect;
 
     private static String nick = "0001";
 
@@ -45,7 +42,7 @@ public class NewTest extends TestcaseBase {
     @Test
     public void test_click_back(){
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login("18676390321","123456");
+        loginPage.login("18688880000","123456");
         accostPage = new AccostPage(driver);
         accostPage.gotoNews();
         ChatNewPage chatNewPage = new ChatNewPage(driver);
@@ -175,7 +172,7 @@ public class NewTest extends TestcaseBase {
         String desc = groupPage.get_fristRecommendGroupDesc();
         groupPage.click_fristRecommendGroup();
         String activity = driver.currentActivity();
-        Assertion.verifyEquals(activity,".ui.GroupInfoActivity","点击点击推荐群组跳转到群资料界面");
+        Assertion.verifyEquals(activity,".ui.ChatActivity","点击点击推荐群组跳转到群资料聊天界面");
         driver.pressKeyCode(4);
     }
 
@@ -253,49 +250,9 @@ public class NewTest extends TestcaseBase {
     }
 
 
-    @Stories("联系人")
-    @Title("我的粉丝列表--视频")
-    @Test
-    @Parameters({"driverName2","apkPath"})
-    public void myFollow_test(String driverName1,String apkPath){
-        //点击我的粉丝到粉丝列表
-        contactsPage.click_myFans();
-        FansListPage fansListPage = new FansListPage(launch);
-
-        String fans_nick = fansListPage.get_frist_nick();
-        fansListPage.click_nick();
-        OtherUserInfoPage otherUserInfoPage = new OtherUserInfoPage(launch);
-
-        //连接接收端的设备
-        accpect = DriverCommon.getAndroidDriver(driverName1, "http://0.0.0.0:4724/wd/hub",apkPath);
-        //接收端登录
-        LoginPage loginPage = new LoginPage(accpect);
-        loginPage.login("18676390007","123456");
-
-        //邀请方点击语音
-        otherUserInfoPage.click_voiceCall();
-
-
-        //接收方点击接受按钮
-        ComingCallPage comingCallPage = new ComingCallPage(accpect);
-        comingCallPage.click_answer();
-
-        //通话10s
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        //接收方挂断
-        VoiceCallPaeg voiceCallPaeg = new VoiceCallPaeg(accpect);
-        voiceCallPaeg.click_hangup();
-    }
-
-    @BeforeClass
+    @AfterClass
     public void tear(){
-        accpect.quit();
-        launch.quit();
+        driver.quit();
     }
 
 }

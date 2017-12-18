@@ -447,6 +447,10 @@ public class MoodBean extends BaseBean{
     public PlainText myPlaintext;
 
 
+    @Xpath(xpath = {"//android.widget.Button[@resource-id='com.zkj.guimi:id/dg_btn_confirm']"})
+    @Description(description = "确定弹窗")
+    public PlainText ok;
+
 
     public MoodBean(AppiumDriver aDriver){super(aDriver);}
 

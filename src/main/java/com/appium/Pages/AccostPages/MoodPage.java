@@ -84,4 +84,9 @@ public class MoodPage {
         moodBean.myPlaintext.setXpath(xpath);
         return moodBean.myPlaintext.isExists();
     }
+
+    //点击关注弹窗中的我知道了
+    public void click_ok(){
+        moodBean.ok.click();
+    }
 }

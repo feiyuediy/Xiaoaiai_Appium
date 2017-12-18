@@ -11,6 +11,7 @@ import com.appium.Utils.Assertion;
 import com.appium.Utils.Common;
 import com.appium.Utils.DriverCommon;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import org.testng.annotations.*;
 import ru.yandex.qatools.allure.annotations.Features;
@@ -24,6 +25,7 @@ import java.net.MalformedURLException;
  */
 
 @Features("发现")
+@Listeners({com.appium.Listener.AssertionListener.class })
 public class HotTest extends TestcaseBase{
     private HotPage hotPage;
     private AccostPage accostPage;
@@ -35,7 +37,6 @@ public class HotTest extends TestcaseBase{
     @BeforeClass
     @Parameters({"driverName1", "remoteAddress1","apkPath"})
     public void setup(String driverName1, String remoteAddress1,String apkPath) throws MalformedURLException {
-        System.out.println("login setup");
         appiumDriver = DriverCommon.getAndroidDriver(driverName1, remoteAddress1,apkPath);
         driver = (AndroidDriver) appiumDriver;
     }
@@ -143,6 +144,8 @@ public class HotTest extends TestcaseBase{
     public void test_click_ui_feed() throws InterruptedException {
         int width = driver.manage().window().getSize().width;
         int height = driver.manage().window().getSize().height;
+//        TouchAction touchAction = new TouchAction(driver);
+//        touchAction.press(width/2,height*3/4).moveTo( width / 2, height * 7 / 20).perform();
         driver.swipe(width / 2, height *3/ 4, width / 2, height * 7 / 20, 500);
         Thread.sleep(2);
         boolean is = hotPage.isExitPublisherTag();
@@ -367,7 +370,7 @@ public class HotTest extends TestcaseBase{
     @Title("点击图文动态")
     @Test
     public void test_click_textFeed(){
-        remindPage.click_txt_feed(0);
+        remindPage.click_txt_feed();
 
         Assertion.verifyEquals(".ui.FeedDetailActivity",driver.currentActivity(),"点击图文动态提醒进入到图文动态");
         System.out.println(driver.currentActivity());

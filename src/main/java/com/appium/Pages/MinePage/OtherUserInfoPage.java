@@ -5,6 +5,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -75,31 +76,18 @@ public class OtherUserInfoPage {
 
     //点击视频--语音通话
     public void click_voiceCall(){
-        WebElement video_button = otherUserInfoPageBean.video_button_frame.toWebElement();
-        int height = video_button.getSize().height;
-        int width = video_button.getSize().width;
-        int x = video_button.getLocation().getX();
-        int y = video_button.getLocation().getY();
-
         otherUserInfoPageBean.video_button.click();
-        System.out.println("x:"+String.valueOf(x+width/2));
-        System.out.println("y:"+String.valueOf(y-height/2));
-
-        TouchAction action = new TouchAction(appiumDriver);
-        action.tap(x+(width)/2,y-height/2).perform();
+        otherUserInfoPageBean.voiceCall.click();
     }
 
     //点击视频--视频通话
     public void click_videoCall(){
-        WebElement video_button = otherUserInfoPageBean.video_button.toWebElement();
-        int height = video_button.getSize().height;
-        int width = video_button.getSize().width;
-        int x = video_button.getLocation().getX();
-        int y = video_button.getLocation().getY();
 
         otherUserInfoPageBean.video_button.click();
-
-        TouchAction action = new TouchAction(appiumDriver);
-        action.tap(x+(width)/2,y-height*3/2).perform();
+        otherUserInfoPageBean.videoCall.click();
+    }
+    //点击弹窗中的ok
+    public void click_ok(){
+        otherUserInfoPageBean.dc_dialog_btn_ok.click();
     }
 }

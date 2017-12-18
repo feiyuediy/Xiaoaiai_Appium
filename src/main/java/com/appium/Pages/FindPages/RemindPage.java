@@ -2,6 +2,8 @@ package com.appium.Pages.FindPages;
 
 import com.appium.PageBeans.FindPageBeans.RemindBean;
 import io.appium.java_client.AppiumDriver;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
@@ -91,10 +93,18 @@ public class RemindPage {
     }
 
     //点击第N条文字动态提醒
-    public void click_txt_feed(int i){
-        String id = "com.zkj.guimi:id/pic";
-        List<WebElement> list = appiumDriver.findElementsById(id);
-        WebElement webElement = list.get(i);
-        webElement.click();
+    public void click_txt_feed( ){
+
+       for(int i = 1; i<=6;i++){
+           System.out.println("i:"+i);
+           try {
+               String xpth = "//android.widget.ListView[@resource-id='com.zkj.guimi:id/list']/android.widget.RelativeLayout["+Integer.valueOf(i)+"]/android.widget.RelativeLayout[2]/android.widget.ImageView[1]";
+               WebElement webElement = appiumDriver.findElementByXPath(xpth);
+           }catch (NoSuchElementException e){
+               e.printStackTrace();
+               appiumDriver.findElementById("//android.widget.ListView[@resource-id='com.zkj.guimi:id/list']/android.widget.RelativeLayout["+Integer.valueOf(i)+"]/android.widget.RelativeLayout[1]/android.widget.ImageView[1]").click();
+           }
+       }
+
     }
 }

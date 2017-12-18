@@ -1,8 +1,6 @@
-package com.appiumtest.NewsTest;
+package com.appiumtest.News;
 
-import com.appium.Moudle.TestcaseBase;
 import com.appium.Pages.AccostPages.AccostPage;
-import com.appium.Pages.LoginPages.LoginPage;
 import com.appium.Pages.NewsPages.ChatNewPage;
 import com.appium.Pages.NewsPages.ChatPage;
 import com.appium.Pages.NewsPages.GroupInfoPage;

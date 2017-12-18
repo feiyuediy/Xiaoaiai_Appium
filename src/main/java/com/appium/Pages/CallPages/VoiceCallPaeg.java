@@ -17,6 +17,7 @@ public class VoiceCallPaeg {
         voiceCallBean.mute.click();
     }
 
+
     //点击挂断
     public void click_hangup(){
         voiceCallBean.hangup.click();

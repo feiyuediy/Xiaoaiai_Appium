@@ -1,17 +1,12 @@
-package com.appiumtest.NewsTest;
+package com.appiumtest.News;
 
-import com.appium.Moudle.TestcaseBase;
 import com.appium.Pages.AccostPages.AccostPage;
-import com.appium.Pages.LoginPages.LoginPage;
 import com.appium.Pages.NewsPages.ChatNewPage;
 import com.appium.Pages.NewsPages.ChatPage;
 import com.appium.Pages.NewsPages.GroupPage;
 import com.appium.Utils.Assertion;
-import com.appium.Utils.Common;
 import com.appium.Utils.DriverCommon;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.Connection;
-import org.apache.bcel.generic.DREM;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;

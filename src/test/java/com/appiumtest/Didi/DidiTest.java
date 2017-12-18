@@ -24,6 +24,8 @@ import ru.yandex.qatools.allure.annotations.Title;
 import java.net.MalformedURLException;
 
 @Features("DIDI")
+@Listeners({com.appium.Listener.AssertionListener.class })
+
 public class DidiTest extends TestcaseBase {
     private AndroidDriver passge;
     private DidiPage didiPage;
@@ -100,30 +102,6 @@ public class DidiTest extends TestcaseBase {
         accostPage_driver.gotoNews();//进入到消息界面
         ChatNewPage chatNewPage = new ChatNewPage(driver);
         chatNewPage.click_frist_new(); //进入到聊天界面
-
-        //点击中间让输入框消失，不然的话。获取礼物信息很难到
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.println("第一次点击屏幕");
-        DriverCommon.tapInMid(driver);
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.println("第二次点击屏幕");
-        DriverCommon.tapInMid(driver);
-
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        chatNewPage.click_timestamp();
-
         ChatPage chatPage = new ChatPage(driver);
         String fristMsg = chatPage.get_msg(1);
         String secMsg = chatPage.get_msg(2);
@@ -227,11 +205,11 @@ public class DidiTest extends TestcaseBase {
         Thread.sleep(20000);
         accostPage_passge.gotoDIdi();
         didiPage.click_yuetiao();
-        driver.tap(1,700,700,1000);//让那个输入框消失
+//        driver.tap(1,700,700,1000);//让那个输入框消失
 
         Thread.sleep(20000);
         didiPage.click_yuetiao();
-        driver.tap(1,700,700,1000);//让那个输入框消失
+//        driver.tap(1,700,700,1000);//让那个输入框消失
 
 
         //乘客发起didiyuetia
@@ -311,7 +289,7 @@ public class DidiTest extends TestcaseBase {
                 Thread.sleep(3000);
                 otherUserInfoPage.backOrUnback();
                 otherUserInfoPage.click_back();
-                driver.tap(1,500,500,1000);//司机点一下，不然60s之后会退出的
+//                driver.tap(1,500,500,1000);//司机点一下，不然60s之后会退出的
             }
         }
 

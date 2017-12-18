@@ -277,7 +277,7 @@ public class SettingBean extends BaseBean{
     public  View  imageView19;
 
 
-    @Xpath(xpath={"//android.widget.TextView[@text='退出登录']"})
+    @Xpath(xpath={"//android.widget.RelativeLayout[@resource-id='com.zkj.guimi:id/comment_layout_logout']"})
     @Description(description="退出登录")
     public  PlainText  quit;
 

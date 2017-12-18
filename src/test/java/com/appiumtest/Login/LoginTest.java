@@ -17,6 +17,8 @@ import java.net.MalformedURLException;
  * Created by admin on 2017/8/31.
  */
 @Features("登录")
+@Listeners({com.appium.Listener.AssertionListener.class })
+
 public class LoginTest extends TestcaseBase{
     private LoginPage loginPage ;
     private AndroidDriver androidDriver;

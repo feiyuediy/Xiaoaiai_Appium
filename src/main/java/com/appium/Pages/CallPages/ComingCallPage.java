@@ -19,6 +19,7 @@ public class ComingCallPage {
 
     //点击接受
     public void click_answer(){
+        comingCallBean.answer_call.expectElementExistOrNot(true,30000);
         comingCallBean.answer_call.click();
     }
 

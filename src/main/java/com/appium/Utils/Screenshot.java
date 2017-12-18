@@ -2,7 +2,6 @@ package com.appium.Utils;
 
 import io.appium.java_client.AppiumDriver;
 import org.apache.commons.io.FileUtils;
-import org.apache.regexp.RE;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Point;

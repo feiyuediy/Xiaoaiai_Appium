@@ -3,7 +3,7 @@ package com.appium.Utils;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
-import org.apache.regexp.RE;
+
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Point;
@@ -71,6 +71,8 @@ public class DriverCommon {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+//            TouchAction touchAction = new TouchAction(driver);
+//            touchAction.press(width / 2, height *3 / 4).moveTo(width / 2, height  / 4).release().perform();
             driver.swipe(width / 2, height *3 / 4, width / 2, height  / 4, during);
             goSleep(3);
         }
@@ -89,6 +91,8 @@ public class DriverCommon {
         System.out.println(width);
         System.out.println(height);
         for (int i = 0; i < num; i++) {
+//            TouchAction touchAction = new TouchAction(driver);
+//            touchAction.press(width / 2, height  / 4).moveTo(width*3 / 2, height  / 4).release().perform();
             driver.swipe(width / 2, height / 4, width / 2, height * 3 / 4, during);
             goSleep(3);
         }
@@ -105,6 +109,8 @@ public class DriverCommon {
         int width = driver.manage().window().getSize().width;
         int height = driver.manage().window().getSize().height;
         for (int i = 0; i < num; i++) {
+//            TouchAction touchAction = new TouchAction(driver);
+//            touchAction.press(width *3/ 4, height  / 2).moveTo(width / 2, height  / 2).release().perform();
             driver.swipe(width * 3 / 4, height / 2, width / 4, height / 2, during);
             goSleep(3);
         }
@@ -121,7 +127,9 @@ public class DriverCommon {
         int width = driver.manage().window().getSize().width;
         int height = driver.manage().window().getSize().height;
         for (int i = 0; i < num; i++) {
-            driver.swipe(width / 4, height / 2, width * 3 / 4, height / 2, during);
+            TouchAction touchAction = new TouchAction(driver);
+            touchAction.press(width / 4, height / 2).moveTo(width * 3 / 4, height / 2).release().perform();
+//            driver.swipe(width / 4, height / 2, width * 3 / 4, height / 2, during);
             goSleep(3);
         }
     }
@@ -143,6 +151,8 @@ public class DriverCommon {
         int y = (elementfrom.getLocation().getY()+elementfrom.getSize().getHeight())/2;
         int xto = (elementTo.getLocation().getX()+elementTo.getSize().getWidth())/2;
         int yto = (elementTo.getLocation().getY()+elementTo.getSize().getHeight())/2;
+//        TouchAction touchAction = new TouchAction(driver);
+//        touchAction.press(x,y).moveTo(xto,yto).release().perform();
         driver.swipe(x,y,xto,yto,500);
     }
 }

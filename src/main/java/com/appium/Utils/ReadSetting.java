@@ -10,9 +10,8 @@ import java.io.File;
 import java.io.IOException;
 
 public class ReadSetting {
-    private static File file = new File("D:\\javaProject\\AppiumTest\\src\\main\\resources\\setting.json");
-    public static void main(String args[]){
-        getDesiredCapabilities("");
+    private static File file = new File("src\\main\\resources\\setting.json");
+    public static void main(String args[]) throws IOException {
     }
 
 

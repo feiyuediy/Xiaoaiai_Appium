@@ -5,9 +5,11 @@ import com.appium.Pages.AccostPages.PhotoSelectPage;
 import com.appium.Utils.Common;
 import com.appium.Utils.DriverCommon;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.TouchAction;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.time.Duration;
 import java.util.List;
 
 /**
@@ -68,27 +70,32 @@ public class ChatPage {
     }
     //发送语音
     public void send_voice(int i){
+//        TouchAction touchAction = new TouchAction(appiumDriver);
         if (chatBean.btn_press_to_speak.isExists()){
             chatBean.btn_press_to_speak.click();
             DriverCommon.Hand_permission(appiumDriver);
             chatBean.btn_mode_voice.click();
             appiumDriver.tap(1,chatBean.btn_press_to_speak.toWebElement(),i*1000);
+//          touchAction.longPress(chatBean.btn_press_to_speak.toWebElement()).wait(i*1000);
+
+            appiumDriver.tap(1,chatBean.btn_press_to_speak.toWebElement(),i*1000);
         }else {
             chatBean.btn_mode_voice.click();
             DriverCommon.Hand_permission(appiumDriver);
             appiumDriver.tap(1,chatBean.btn_press_to_speak.toWebElement(),i*1000);
+//              touchAction.longPress(chatBean.btn_press_to_speak.toWebElement()).wait(i*1000);
+
+
         }
     }
     //发送表情
     public void send_emoj(){
-        chatBean.btn_emoticons.click();
+        chatBean.send_emoj.click();
         chatBean.emoj.click();
-        chatBean.btn_mode_voice.click();
         chatBean.send.click();
     }
     //发送图片
     public void send_pic(){
-        chatBean.btn_add.click();
         chatBean.add_pic.click();
         DriverCommon.Hand_permission(appiumDriver);
         PhotoSelectPage photoSelectPage = new PhotoSelectPage(appiumDriver);
@@ -104,7 +111,6 @@ public class ChatPage {
     }
     //发送阅后即焚
     public void send_brunAfterRead(){
-        chatBean.btn_add.click();
         chatBean.add_BurnAfterReading.click();
         chatBean.dchi_tv_select_from_phone.click();
 
@@ -114,10 +120,9 @@ public class ChatPage {
 
     //发送礼包
     public void send_gift() throws InterruptedException {
-        chatBean.btn_add.click();
         chatBean.add_gift.click();
         SendGiftPage sendGiftPage = new SendGiftPage(appiumDriver);
-        sendGiftPage.selectGiftName("普通礼物2");
+        sendGiftPage.selectGiftName("普通礼物 喜鹊翎毛");
         sendGiftPage.click_send();
         Thread.sleep(2000);
     }

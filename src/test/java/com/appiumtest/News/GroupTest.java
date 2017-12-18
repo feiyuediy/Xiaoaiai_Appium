@@ -1,4 +1,4 @@
-package com.appiumtest.NewsTest;
+package com.appiumtest.News;
 
 import com.appium.Moudle.TestcaseBase;
 import com.appium.Pages.AccostPages.AccostPage;

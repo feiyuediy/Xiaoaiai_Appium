@@ -1,4 +1,4 @@
-package com.appiumtest.NewsTest;
+package com.appiumtest.News;
 
 import com.appium.Pages.AccostPages.AccostPage;
 import com.appium.Pages.CallPages.ComingCallPage;

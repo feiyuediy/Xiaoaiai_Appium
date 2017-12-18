@@ -1,7 +1,9 @@
 package com.appium.Pages.DidiPages;
 
 import com.appium.PageBeans.DidiPageBeans.DidiPageBean;
+import com.appium.Utils.DriverCommon;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.TouchAction;
 
 public class DidiPage {
     private AppiumDriver appiumDriver;
@@ -40,7 +42,15 @@ public class DidiPage {
     //创建didi订单_视频
     public void creat_didi_video(){
         click_video();
-        click_di();
+        didiPageBean.di.click();
+        try{
+            DriverCommon.Hand_permission(appiumDriver);
+            DriverCommon.Hand_permission(appiumDriver);
+            DriverCommon.Hand_permission(appiumDriver);
+            click_di();
+        }catch (Exception e){
+            click_di();
+        }
 
     }
 
@@ -77,6 +87,8 @@ public class DidiPage {
         didiPageBean.reward.click();
         int width = appiumDriver.manage().window().getSize().width;
         int height = appiumDriver.manage().window().getSize().height;
+//        TouchAction touchAction = new TouchAction(appiumDriver);
+//        touchAction.press(width/2,height*8/9).moveTo( width/ 2, height*15 / 18).release().perform();
         appiumDriver.swipe(width / 2, height * 8 / 9, width / 2, height *15/ 18,2000);
 
         didiPageBean.reward_ok.click();

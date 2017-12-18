@@ -5,7 +5,7 @@ import com.appium.Utils.DriverCommon;
 import com.appium.Utils.Screenshot;
 import io.appium.java_client.AppiumDriver;
 import lazy.android.controls.View;
-import org.apache.regexp.RE;
+
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
