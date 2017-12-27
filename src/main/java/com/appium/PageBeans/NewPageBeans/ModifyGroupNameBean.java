@@ -1,7 +1,7 @@
 package com.appium.PageBeans.NewPageBeans;
-import lazy.android.annotations.*;
-import lazy.android.bean.BaseBean;
-import lazy.android.controls.*;
+import com.lazy.annotations.Description;import com.lazy.annotations.Xpath;import com.lazy.bean.BaseBean;import com.lazy.controls.PlainText;
+import com.lazy.controls.Text;
+import com.lazy.controls.View;
 import io.appium.java_client.AppiumDriver;
 
 
@@ -45,7 +45,7 @@ public class ModifyGroupNameBean extends BaseBean{
 
     @Xpath(xpath={"//android.widget.EditText[@resource-id='com.zkj.guimi:id/aegn_et_name']"})
     @Description(description="武神")
-    public  Text  et_name;
+    public Text et_name;
 
 
     @Xpath(xpath={"//android.widget.ImageView[@resource-id='com.zkj.guimi:id/aegn_img_clear']"})

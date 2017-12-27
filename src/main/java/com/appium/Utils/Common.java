@@ -7,7 +7,7 @@ import org.testng.Assert;
 
 import javax.imageio.ImageIO;
 import java.io.*;
-
+import java.util.Random;
 
 
 /**
@@ -30,6 +30,7 @@ public class Common {
     public static String exeCmd(String commandStr) {
         BufferedReader br = null;
         try {
+            System.out.println("commandStr:"+commandStr);
             Process p = Runtime.getRuntime().exec(commandStr);
             br = new BufferedReader(new InputStreamReader(p.getInputStream()));
             String line = null;
@@ -72,5 +73,12 @@ public class Common {
         }else {
             return false;
         }
+    }
+
+    //随机生成N位数字
+    public static String getRandom(){
+
+        int s = (int)((Math.random()*9+1)*1000);
+        return String.valueOf(s);
     }
 }

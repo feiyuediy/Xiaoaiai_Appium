@@ -1,7 +1,7 @@
 package com.appium.PageBeans.MinePageBeans;
-import lazy.android.annotations.*;
-import lazy.android.bean.BaseBean;
-import lazy.android.controls.*;
+import com.lazy.annotations.Description;
+import com.lazy.annotations.FullIndexXpath;
+import com.lazy.annotations.Xpath;import com.lazy.bean.BaseBean;import com.lazy.controls.PlainText;import com.lazy.controls.View;
 import io.appium.java_client.AppiumDriver;
 
 
@@ -83,7 +83,7 @@ public class UserInfoBean extends BaseBean{
     public  PlainText  userNickTable;
 
 
-    @FullIndexXpath(fullIndexXpath="//android.widget.FrameLayout[1]/android.view.View[2]/android.widget.FrameLayout[2]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[3]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[2]")
+    @Xpath(xpath={"//android.widget.FrameLayout[1]/android.view.View[2]/android.widget.FrameLayout[2]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[3]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[2]"})
     @Description(description="12345654441")
     public  PlainText  userNick;
 
@@ -233,9 +233,9 @@ public class UserInfoBean extends BaseBean{
     public  View  imageView24;
 
 
-    @Xpath(xpath={"//android.widget.LinearLayout/android.view.View[11]"})
+    @Xpath(xpath={"//android.widget.TextView[@resource-id='com.zkj.guimi:id/iuh_tv_wealth']"})
     @Description(description="")
-    public  View  view25;
+    public  View  aiaidou;
 
 
 

@@ -1,6 +1,7 @@
 package com.appium.Pages.FindPages;
 
 import com.appium.PageBeans.FindPageBeans.RemindBean;
+import com.appium.Utils.DriverCommon;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -86,8 +87,9 @@ public class RemindPage {
     }
     //点击第N条视频动态
     public void click_video_feed(int i){
+        DriverCommon.goSleep(1);
         String id = "com.zkj.guimi:id/video_flag_video";
-        List<WebElement> list = appiumDriver.findElementsById(id);
+        List<WebElement> list = appiumDriver.findElements(By.id(id));
         WebElement webElement = list.get(i);
         webElement.click();
     }

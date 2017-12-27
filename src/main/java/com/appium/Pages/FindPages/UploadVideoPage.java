@@ -39,6 +39,7 @@ public class UploadVideoPage {
     }
     //判断上传成功弹窗是否存在
     public boolean isOkExit(){
+        uploadVideoBean.dc_dialog_btn_ok.expectElementExistOrNot(true,30000);
         if (uploadVideoBean.dc_dialog_btn_ok.isExists()){
             return true;
         }else {
@@ -51,6 +52,7 @@ public class UploadVideoPage {
     }
     //获取上传成功的文字
     public String get_ok_title(){
+        uploadVideoBean.dc_dialog_btn_ok.expectElementExistOrNot(true,30000);
         return uploadVideoBean.dc_dialog_txt_content.getText();
     }
 }

@@ -4,8 +4,8 @@ import com.appium.PageBeans.FindPageBeans.MoreTopicBean;
 import com.appium.Utils.DriverCommon;
 import com.appium.Utils.Screenshot;
 import io.appium.java_client.AppiumDriver;
-import lazy.android.controls.View;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
@@ -56,7 +56,12 @@ public class MoreTopicPage {
 
     //获取第N个话题列表的名称
     public String getTopicName(int i){
-        List<WebElement>  list = appiumDriver.findElementsById("com.zkj.guimi:id/name");
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        List<WebElement>  list = appiumDriver.findElements(By.id("com.zkj.guimi:id/name"));
         WebElement webElement = list.get(i);
         return webElement.getText();
     }

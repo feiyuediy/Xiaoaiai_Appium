@@ -26,12 +26,18 @@ public class ReadSetting {
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         try {
             desiredCapabilities.setCapability(CapabilityType.BROWSER_NAME,"");
-            desiredCapabilities.setCapability("platformName",JsonPath.read(file,"$."+driveName+".platformName"));
-            desiredCapabilities.setCapability("deviceName",JsonPath.read(file,"$."+driveName+".deviceName"));
-            desiredCapabilities.setCapability("platformVersion",JsonPath.read(file,"$."+driveName+".platformVersion"));
-            desiredCapabilities.setCapability("appPackage",JsonPath.read(file,"$."+driveName+".appPackage"));
-            desiredCapabilities.setCapability("unicodeKeyboard",JsonPath.read(file,"$."+driveName+".unicodeKeyboard"));
-            desiredCapabilities.setCapability("appActivity",JsonPath.read(file,"$."+driveName+".appActivity"));
+            desiredCapabilities.setCapability("platformName",JsonPath.read(file,"$."+driveName+".platformName").toString());
+            desiredCapabilities.setCapability("deviceName",JsonPath.read(file,"$."+driveName+".deviceName").toString());
+            desiredCapabilities.setCapability("platformVersion",JsonPath.read(file,"$."+driveName+".platformVersion").toString());
+            desiredCapabilities.setCapability("appPackage",JsonPath.read(file,"$."+driveName+".appPackage").toString());
+            desiredCapabilities.setCapability("unicodeKeyboard",JsonPath.read(file,"$."+driveName+".unicodeKeyboard").toString());
+            desiredCapabilities.setCapability("appActivity",JsonPath.read(file,"$."+driveName+".appActivity").toString());
+            desiredCapabilities.setCapability("automationName",JsonPath.read(file,"$."+driveName+".automationName").toString());
+
+            desiredCapabilities.setCapability("autoAcceptAlerts",JsonPath.read(file,"$."+driveName+".autoAcceptAlerts").toString());
+            desiredCapabilities.setCapability("newCommandTimeout",JsonPath.read(file,"$."+driveName+".newCommandTimeout").toString());
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }

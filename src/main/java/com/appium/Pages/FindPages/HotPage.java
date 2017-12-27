@@ -11,6 +11,8 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidKeyCode;
 import org.openqa.selenium.By;
 
+import java.time.Duration;
+
 /**
  * Created by admin on 2017/9/5.
  */
@@ -64,10 +66,11 @@ public class HotPage {
         int y = hotBean.banner.toWebElement().getSize().getWidth();
         int width = appiumDriver.manage().window().getSize().width;
         int height = appiumDriver.manage().window().getSize().height;
-//        TouchAction touchAction = new TouchAction(appiumDriver);
-//        touchAction.press(x / 4, y / 2).moveTo( x * 3 / 4, y / 2).release().perform();
+        Duration duration=Duration.ofSeconds(1);
+        TouchAction action1 = new TouchAction(appiumDriver).press(x / 4, y / 2).waitAction(duration).moveTo (x * 3 / 4, y / 2).release();
+        action1.perform();
 
-        appiumDriver.swipe(x / 4, y / 2, x * 3 / 4, y / 2, 5000);
+//        appiumDriver.swipe(x / 4, y / 2, x * 3 / 4, y / 2, 5000);
     }
 
     //点击banner

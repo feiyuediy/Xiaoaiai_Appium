@@ -30,11 +30,7 @@ public class RecordVideoPage {
     }
     //判断删除按钮是否存在
     public boolean isDeleteExist(){
-        if (recordVideoBean.delete.isExists()){
-            return true;
-        }else {
-            return false;
-        }
+        return recordVideoBean.delete.isExists();
     }
     //点击打开文件夹
     public void click_open_folder(){

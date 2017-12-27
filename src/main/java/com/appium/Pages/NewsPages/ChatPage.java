@@ -51,6 +51,11 @@ public class ChatPage {
 
     //获取第N条信息的文字
     public String get_msg(int i) {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         String id = "com.zkj.guimi:id/tv_chatcontent";
         List<WebElement> webElements = appiumDriver.findElementsById(id);
         return webElements.get(i - 1).getText();
@@ -75,14 +80,18 @@ public class ChatPage {
             chatBean.btn_press_to_speak.click();
             DriverCommon.Hand_permission(appiumDriver);
             chatBean.btn_mode_voice.click();
-            appiumDriver.tap(1,chatBean.btn_press_to_speak.toWebElement(),i*1000);
-//          touchAction.longPress(chatBean.btn_press_to_speak.toWebElement()).wait(i*1000);
+//            appiumDriver.tap(1,chatBean.btn_press_to_speak.toWebElement(),i*1000);
+            Duration duration = Duration.ofMillis(i);
+            TouchAction touchAction = new TouchAction(appiumDriver);
+            touchAction.longPress(chatBean.btn_press_to_speak.toWebElement()).waitAction(duration);
 
-            appiumDriver.tap(1,chatBean.btn_press_to_speak.toWebElement(),i*1000);
+//            appiumDriver.tap(1,chatBean.btn_press_to_speak.toWebElement(),i*1000);
         }else {
             chatBean.btn_mode_voice.click();
             DriverCommon.Hand_permission(appiumDriver);
-            appiumDriver.tap(1,chatBean.btn_press_to_speak.toWebElement(),i*1000);
+            Duration duration = Duration.ofMillis(i);
+            TouchAction touchAction = new TouchAction(appiumDriver);
+            touchAction.longPress(chatBean.btn_press_to_speak.toWebElement()).waitAction(duration);
 //              touchAction.longPress(chatBean.btn_press_to_speak.toWebElement()).wait(i*1000);
 
 

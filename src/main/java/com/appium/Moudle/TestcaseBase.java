@@ -6,6 +6,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.AutomationName;
 import io.appium.java_client.remote.MobileCapabilityType;
+import io.appium.java_client.service.local.AppiumDriverLocalService;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.*;
@@ -19,5 +20,6 @@ import java.net.URL;
 public class TestcaseBase {
     public static AndroidDriver driver;
     public static  AndroidDriver driver2;
+
 
 }

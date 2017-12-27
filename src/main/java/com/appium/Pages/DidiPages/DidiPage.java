@@ -5,6 +5,8 @@ import com.appium.Utils.DriverCommon;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 
+import java.time.Duration;
+
 public class DidiPage {
     private AppiumDriver appiumDriver;
     private DidiPageBean didiPageBean;
@@ -49,7 +51,7 @@ public class DidiPage {
             DriverCommon.Hand_permission(appiumDriver);
             click_di();
         }catch (Exception e){
-            click_di();
+            didiPageBean.dialog_ok.click();
         }
 
     }
@@ -87,9 +89,10 @@ public class DidiPage {
         didiPageBean.reward.click();
         int width = appiumDriver.manage().window().getSize().width;
         int height = appiumDriver.manage().window().getSize().height;
-//        TouchAction touchAction = new TouchAction(appiumDriver);
-//        touchAction.press(width/2,height*8/9).moveTo( width/ 2, height*15 / 18).release().perform();
-        appiumDriver.swipe(width / 2, height * 8 / 9, width / 2, height *15/ 18,2000);
+        Duration duration=Duration.ofSeconds(1);
+        TouchAction action1 = new TouchAction(appiumDriver).press(width / 2, height * 8 / 9).waitAction(duration).moveTo(width / 2, height *15/ 18).release();
+        action1.perform();
+//        appiumDriver.swipe(width / 2, height * 8 / 9, width / 2, height *15/ 18,2000);
 
         didiPageBean.reward_ok.click();
     }

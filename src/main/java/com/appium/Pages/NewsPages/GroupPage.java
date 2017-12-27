@@ -2,6 +2,7 @@ package com.appium.Pages.NewsPages;
 
 import com.appium.PageBeans.NewPageBeans.GroupBean;
 import io.appium.java_client.AppiumDriver;
+import org.omg.PortableServer.THREAD_POLICY_ID;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
@@ -25,6 +26,11 @@ public class GroupPage {
 
     //点击我的第一个群组
     public void click_myFristGroup(){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         String id = "com.zkj.guimi:id/agl_image";
         List<WebElement> webElements = appiumDriver.findElementsById(id);
         webElements.get(0).click();
@@ -35,12 +41,22 @@ public class GroupPage {
     }
     //获取第一个群组的名称
     public String get_myFristGroupName(){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         String id = "com.zkj.guimi:id/agl_image";
         List<WebElement> webElements = appiumDriver.findElementsById(id);
         return webElements.get(0).getText();
     }
     //获取第一个群组的描述
     public String get_myFristGroupDesc(){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         String id = "com.zkj.guimi:id/agl_tv_desc";
         List<WebElement> webElements = appiumDriver.findElementsById(id);
         return webElements.get(0).getText();
@@ -51,18 +67,33 @@ public class GroupPage {
     }
     //点击第一个推荐群组
     public void click_fristRecommendGroup(){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         String id = "com.zkj.guimi:id/agl_image";
         List<WebElement> webElements = appiumDriver.findElementsById(id);
        webElements.get(0).click();
     }
     //获取第一个推荐群组的名称
     public  String get_fristRecommendGroupName(){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         String id = "com.zkj.guimi:id/agl_tv_title";
         List<WebElement> webElements = appiumDriver.findElementsById(id);
         return webElements.get(2).getText();
     }
     //获取第一个推荐群组的描述
     public String get_fristRecommendGroupDesc(){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         String id = "com.zkj.guimi:id/agl_tv_desc";
         List<WebElement> webElements = appiumDriver.findElementsById(id);
         return webElements.get(2).getText();

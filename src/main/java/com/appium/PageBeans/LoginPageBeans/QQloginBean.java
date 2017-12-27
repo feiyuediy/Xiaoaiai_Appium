@@ -1,7 +1,7 @@
 package com.appium.PageBeans.LoginPageBeans;
-import lazy.android.annotations.*;
-import lazy.android.bean.BaseBean;
-import lazy.android.controls.*;
+import com.lazy.annotations.Description;import com.lazy.annotations.Xpath;import com.lazy.bean.BaseBean;
+import com.lazy.controls.Click;
+import com.lazy.controls.PlainText;import com.lazy.controls.View;
 import io.appium.java_client.AppiumDriver;
 
 
@@ -70,7 +70,7 @@ public class QQloginBean extends BaseBean{
 
     @Xpath(xpath={"//android.widget.Button[@resource-id='com.tencent.mobileqq:id/name']"})
     @Description(description="登录")
-    public  Click  qqLogin;
+    public Click qqLogin;
 
 
     @Xpath(xpath={"//android.widget.TextView[@text='切换帐号']"})

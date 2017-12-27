@@ -2,6 +2,7 @@ package com.appium.Pages.MinePage;
 
 import com.appium.PageBeans.MinePageBeans.MineBean;
 import io.appium.java_client.AppiumDriver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
@@ -53,18 +54,20 @@ public class MinePage {
     public void goFeedback(){
         mineBean.feedback.click();
     }
-
+    //我的玩具
+    public void goMytool(){
+        mineBean.mytool.click();
+    }
+    //进入关于
+    public void goAbuout(){
+        mineBean.about.click();
+    }
     //获取爱爱豆数量
     public int get_remaind_aiai(){
         goAccountPage();
         UserInfoPage userInfoPage = new UserInfoPage(appiumDriver);
+        int aiaidou = Integer.valueOf(userInfoPage.get_aiaidou_num());
         userInfoPage.click_back();
-        String id = "com.zkj.guimi:id/vii_tv_content";
-        List<WebElement> list = appiumDriver.findElementsById(id);
-        WebElement webElement = list.get(0);
-        String s = webElement.getText();
-        int i = Integer.valueOf(s.split("爱爱豆")[0]);
-        System.out.println(i);
-        return i;
+        return aiaidou;
     }
 }

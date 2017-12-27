@@ -14,6 +14,7 @@ public class YuetiaoCallPage {
 
     //点击设备弹窗中的取消按钮
     public void click_device_dialog_cancle(){
+        yuetiaoCallPageBean.dialog_btn_cancel.expectElementExistOrNot(true,10000);
         yuetiaoCallPageBean.dialog_btn_cancel.click();
     }
 

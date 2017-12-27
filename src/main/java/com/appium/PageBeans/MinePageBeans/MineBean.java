@@ -1,7 +1,5 @@
 package com.appium.PageBeans.MinePageBeans;
-import lazy.android.annotations.*;
-import lazy.android.bean.BaseBean;
-import lazy.android.controls.*;
+import com.lazy.annotations.Description;import com.lazy.annotations.Xpath;import com.lazy.bean.BaseBean;import com.lazy.controls.PlainText;import com.lazy.controls.View;
 import io.appium.java_client.AppiumDriver;
 
 
@@ -148,7 +146,7 @@ public class MineBean extends BaseBean{
     public  View  imageView17;
 
 
-    @Xpath(xpath={"//android.widget.TextView[@text='许愿夺宝']"})
+    @Xpath(xpath={"//android.widget.TextView[@text='许愿商城']"})
     @Description(description="许愿夺宝")
     public  PlainText  wishCenter;
 
@@ -322,7 +320,14 @@ public class MineBean extends BaseBean{
     @Description(description="我")
     public  PlainText  textView22;
 
+    @Xpath(xpath={"//android.widget.TextView[@text='我的玩具']"})
+    @Description(description="我的玩具")
+    public  PlainText  mytool;
 
+
+    @Xpath(xpath={"//android.widget.TextView[@text='关于']"})
+    @Description(description="关于")
+    public  PlainText  about;
 
 
     public MineBean(AppiumDriver aDriver){super(aDriver);}

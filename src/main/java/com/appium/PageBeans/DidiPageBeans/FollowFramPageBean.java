@@ -1,7 +1,7 @@
 package com.appium.PageBeans.DidiPageBeans;
-import lazy.android.annotations.*;
-import lazy.android.bean.BaseBean;
-import lazy.android.controls.*;
+import com.lazy.annotations.Description;import com.lazy.annotations.Xpath;import com.lazy.bean.BaseBean;
+import com.lazy.controls.Click;
+import com.lazy.controls.PlainText;import com.lazy.controls.View;
 import io.appium.java_client.AppiumDriver;
 
 
@@ -35,7 +35,7 @@ public class FollowFramPageBean extends BaseBean{
 
     @Xpath(xpath={"//android.widget.Button[@resource-id='com.zkj.guimi:id/dc_dialog_btn_cancel']"})
     @Description(description="cancel")
-    public  Click  button1;
+    public Click button1;
 
 
     @Xpath(xpath={"//android.view.View[@resource-id='com.zkj.guimi:id/dc_dialog_view_line_v']"})

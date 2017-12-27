@@ -1,7 +1,7 @@
 package com.appium.PageBeans.NewPageBeans;
-import lazy.android.annotations.*;
-import lazy.android.bean.BaseBean;
-import lazy.android.controls.*;
+import com.lazy.annotations.Description;import com.lazy.annotations.Xpath;import com.lazy.bean.BaseBean;import com.lazy.controls.PlainText;
+import com.lazy.controls.Text;
+import com.lazy.controls.View;
 import io.appium.java_client.AppiumDriver;
 
 
@@ -40,7 +40,7 @@ public class SearchPageBean extends BaseBean{
 
     @Xpath(xpath={"//android.widget.EditText[@resource-id='com.zkj.guimi:id/lse_edit']"})
     @Description(description="搜索")
-    public  Text  serchEdit;
+    public Text serchEdit;
 
 
     @Xpath(xpath={"//android.widget.RelativeLayout[@resource-id='com.zkj.guimi:id/ab_layout_search']/android.widget.RelativeLayout[1]/android.view.View[1]"})

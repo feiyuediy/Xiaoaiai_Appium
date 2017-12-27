@@ -1,7 +1,6 @@
 package com.appium.PageBeans.NewPageBeans;
-import lazy.android.annotations.*;
-import lazy.android.bean.BaseBean;
-import lazy.android.controls.*;
+import com.lazy.annotations.Description;import com.lazy.annotations.Xpath;import com.lazy.bean.BaseBean;
+import com.lazy.controls.*;
 import io.appium.java_client.AppiumDriver;
 
 
@@ -55,7 +54,7 @@ public class SendGiftBean extends BaseBean{
 
     @Xpath(xpath={"//android.widget.Spinner[@resource-id='com.zkj.guimi:id/gift_type']"})
     @Description(description="")
-    public  Select  gift_type;
+    public Select gift_type;
 
 
     @Xpath(xpath={"//android.widget.TextView[@resource-id='com.zkj.guimi:id/name']"})
@@ -75,7 +74,7 @@ public class SendGiftBean extends BaseBean{
 
     @Xpath(xpath={"//android.widget.EditText[@resource-id='com.zkj.guimi:id/gift_num']"})
     @Description(description="1")
-    public  Text  gift_num;
+    public Text gift_num;
 
 
     @Xpath(xpath={"//android.widget.TextView[@resource-id='com.zkj.guimi:id/fen']"})
@@ -125,7 +124,7 @@ public class SendGiftBean extends BaseBean{
 
     @Xpath(xpath={"//android.widget.CheckBox[@resource-id='com.zkj.guimi:id/notice_cb']"})
     @Description(description="")
-    public  Click  notice_cb;
+    public Click notice_cb;
 
 
     @Xpath(xpath={"//android.widget.TextView[@text='公告']"})

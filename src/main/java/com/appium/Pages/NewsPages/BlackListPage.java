@@ -1,6 +1,7 @@
 package com.appium.Pages.NewsPages;
 
 import com.appium.PageBeans.NewPageBeans.AttentionListPageBean;
+import com.appium.Utils.DriverCommon;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -32,6 +33,7 @@ public class BlackListPage {
 
     //判断拉黑列表是否为空
     public boolean isEmptyBlack(){
+        DriverCommon.goSleep(1);
         WebElement webElement = appiumDriver.findElement(By.xpath("//android.widget.ListView[@resource-id='com.zkj.guimi:id/scroll']"));
         int size = webElement.findElements(By.xpath("//android.widget.ListView[@resource-id='com.zkj.guimi:id/scroll']/android.widget.RelativeLayout[1]")).size();
         System.out.println("size:"+size);

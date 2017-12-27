@@ -1,7 +1,7 @@
 package com.appium.PageBeans.DidiPageBeans;
-import lazy.android.annotations.*;
-import lazy.android.bean.BaseBean;
-import lazy.android.controls.*;
+import com.lazy.annotations.Description;import com.lazy.annotations.Xpath;import com.lazy.bean.BaseBean;import com.lazy.controls.PlainText;
+import com.lazy.controls.Text;
+import com.lazy.controls.View;
 import io.appium.java_client.AppiumDriver;
 
 
@@ -50,7 +50,7 @@ public class TakeMsgPageBean extends BaseBean{
 
     @Xpath(xpath={"//android.widget.EditText[@resource-id='com.zkj.guimi:id/adem_edittext']"})
     @Description(description="输入你想说的话")
-    public  Text  editText1;
+    public Text editText1;
 
 
     @Xpath(xpath={"//android.widget.TextView[@resource-id='com.zkj.guimi:id/adem_tv_words_limit']"})

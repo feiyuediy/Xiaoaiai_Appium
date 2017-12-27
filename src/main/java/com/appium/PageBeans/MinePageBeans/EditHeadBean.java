@@ -1,7 +1,5 @@
 package com.appium.PageBeans.MinePageBeans;
-import lazy.android.annotations.*;
-import lazy.android.bean.BaseBean;
-import lazy.android.controls.*;
+import com.lazy.annotations.Description;import com.lazy.annotations.Xpath;import com.lazy.bean.BaseBean;import com.lazy.controls.PlainText;import com.lazy.controls.View;
 import io.appium.java_client.AppiumDriver;
 
 

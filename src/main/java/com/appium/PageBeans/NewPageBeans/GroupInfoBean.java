@@ -1,7 +1,7 @@
 package com.appium.PageBeans.NewPageBeans;
-import lazy.android.annotations.*;
-import lazy.android.bean.BaseBean;
-import lazy.android.controls.*;
+import com.lazy.annotations.Description;import com.lazy.annotations.Xpath;import com.lazy.bean.BaseBean;
+import com.lazy.controls.Click;
+import com.lazy.controls.PlainText;import com.lazy.controls.View;
 import io.appium.java_client.AppiumDriver;
 
 
@@ -291,7 +291,7 @@ public class GroupInfoBean extends BaseBean{
 
     @Xpath(xpath={"//android.widget.Button[@resource-id='com.zkj.guimi:id/agi_btn_join_group']"})
     @Description(description="退出该群")
-    public  Click  join_group;
+    public Click join_group;
 
 
 

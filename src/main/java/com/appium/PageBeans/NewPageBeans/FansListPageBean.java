@@ -1,19 +1,20 @@
 package com.appium.PageBeans.NewPageBeans;
 
+import com.lazy.annotations.Description;
+import com.lazy.annotations.Xpath;
+import com.lazy.bean.BaseBean;
+import com.lazy.controls.PlainText;
+import com.lazy.controls.View;
 import io.appium.java_client.AppiumDriver;
-import lazy.android.annotations.Description;
-import lazy.android.annotations.Xpath;
-import lazy.android.bean.BaseBean;
-import lazy.android.controls.PlainText;
-import lazy.android.controls.View;
 
 
-public class FansListPageBean extends BaseBean{
+
+public class FansListPageBean extends BaseBean {
 
 
     @Xpath(xpath={"//android.widget.FrameLayout[1]/android.view.View[1]"})
     @Description(description="")
-    public  View  view1;
+    public View view1;
 
 
     @Xpath(xpath={"//android.view.View[@resource-id='android:id/action_bar_overlay_layout']"})
@@ -28,7 +29,7 @@ public class FansListPageBean extends BaseBean{
 
     @Xpath(xpath={"//android.widget.TextView[@resource-id='com.zkj.guimi:id/txt_title']"})
     @Description(description="我的关注")
-    public  PlainText  tilte;
+    public PlainText tilte;
 
 
     @Xpath(xpath={"//android.widget.ImageView[@resource-id='com.zkj.guimi:id/icon_left']"})

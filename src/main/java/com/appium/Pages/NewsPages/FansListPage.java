@@ -4,6 +4,8 @@ import com.appium.PageBeans.NewPageBeans.AttentionListPageBean;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import org.openqa.selenium.WebElement;
+
+import java.time.Duration;
 import java.util.List;
 
 public class FansListPage {
@@ -32,14 +34,21 @@ public class FansListPage {
 
     //取消关注
     public void cancleAttention(String key) {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         String id = "com.zkj.guimi:id/name";
         List<WebElement> lists = appiumDriver.findElementsById(id);
         for (WebElement webElement : lists) {
             if (webElement.getText().equals(key)) {
                 TouchAction touchAction = new TouchAction(appiumDriver);
-                touchAction.longPress(webElement).perform();
+                Duration duration = Duration.ofMillis(2);
+                touchAction.longPress(webElement).waitAction(duration).perform();
                 String cancle_fen_id = "com.zkj.guimi:id/ok";
                 appiumDriver.findElementById(cancle_fen_id).click();
+                break;
             }
         }
     }

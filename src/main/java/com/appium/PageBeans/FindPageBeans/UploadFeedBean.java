@@ -1,7 +1,9 @@
 package com.appium.PageBeans.FindPageBeans;
-import lazy.android.annotations.*;
-import lazy.android.bean.BaseBean;
-import lazy.android.controls.*;
+import com.lazy.annotations.Description;import com.lazy.annotations.Xpath;import com.lazy.bean.BaseBean;
+import com.lazy.controls.Click;
+import com.lazy.controls.PlainText;
+import com.lazy.controls.Text;
+import com.lazy.controls.View;
 import io.appium.java_client.AppiumDriver;
 
 
@@ -50,7 +52,7 @@ public class UploadFeedBean extends BaseBean{
 
     @Xpath(xpath={"//android.widget.EditText[@resource-id='com.zkj.guimi:id/apn_et_news']"})
     @Description(description="添加文字")
-    public  Text  apn_et_news;
+    public Text apn_et_news;
 
 
     @Xpath(xpath={"//android.widget.TextView[@resource-id='com.zkj.guimi:id/apn_tv_content_length']"})
@@ -254,7 +256,7 @@ public class UploadFeedBean extends BaseBean{
 
     @Xpath(xpath={"//android.widget.TextView[@resource-id='com.zkj.guimi:id/title']"})
     @Description(description="进度条")
-    public  Click  dialog_progressbar_title;
+    public Click dialog_progressbar_title;
 
 
     public UploadFeedBean(AppiumDriver aDriver){super(aDriver);}

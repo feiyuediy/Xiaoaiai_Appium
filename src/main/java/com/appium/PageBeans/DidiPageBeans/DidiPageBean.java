@@ -1,21 +1,24 @@
 package com.appium.PageBeans.DidiPageBeans;
-import lazy.android.annotations.*;
-import lazy.android.bean.BaseBean;
-import lazy.android.controls.*;
+
+import com.lazy.annotations.Description;
+import com.lazy.annotations.Xpath;
+import com.lazy.bean.BaseBean;
+import com.lazy.controls.PlainText;
+import com.lazy.controls.View;
 import io.appium.java_client.AppiumDriver;
 
 
-public class DidiPageBean extends BaseBean{
+public class DidiPageBean extends BaseBean {
 
 
     @Xpath(xpath={"//android.widget.FrameLayout/android.view.View[1]"})
     @Description(description="")
-    public  View  view1;
+    public View view1;
 
 
     @Xpath(xpath={"//android.widget.TextView[@resource-id='com.zkj.guimi:id/txt_title']"})
     @Description(description="DIDI")
-    public  PlainText  title;
+    public PlainText title;
 
 
     @Xpath(xpath={"//android.widget.TextView[@resource-id='com.zkj.guimi:id/txt_left']"})

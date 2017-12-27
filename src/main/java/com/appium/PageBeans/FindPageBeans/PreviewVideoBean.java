@@ -1,16 +1,18 @@
 package com.appium.PageBeans.FindPageBeans;
-import lazy.android.annotations.*;
-import lazy.android.bean.BaseBean;
-import lazy.android.controls.*;
+import com.lazy.annotations.Description;
+import com.lazy.annotations.Xpath;
+import com.lazy.bean.BaseBean;
+import com.lazy.controls.PlainText;
+import com.lazy.controls.View;
 import io.appium.java_client.AppiumDriver;
 
 
-public class PreviewVideoBean extends BaseBean{
+public class PreviewVideoBean extends BaseBean {
 
 
     @Xpath(xpath={"//android.widget.FrameLayout[1]/android.view.View[1]"})
     @Description(description="")
-    public  View  view1;
+    public View view1;
 
 
     @Xpath(xpath={"//android.view.View[@resource-id='android:id/action_bar_overlay_layout']"})
@@ -25,7 +27,7 @@ public class PreviewVideoBean extends BaseBean{
 
     @Xpath(xpath={"//android.widget.TextView[@resource-id='com.zkj.guimi:id/txt_title']"})
     @Description(description="视频预览")
-    public  PlainText  title;
+    public PlainText title;
 
 
     @Xpath(xpath={"//android.widget.ImageView[@resource-id='com.zkj.guimi:id/icon_left']"})

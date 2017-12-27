@@ -1,7 +1,7 @@
 package com.appium.PageBeans.NewPageBeans;
-import lazy.android.annotations.*;
-import lazy.android.bean.BaseBean;
-import lazy.android.controls.*;
+import com.lazy.annotations.Description;import com.lazy.annotations.Xpath;import com.lazy.bean.BaseBean;import com.lazy.controls.PlainText;
+import com.lazy.controls.Text;
+import com.lazy.controls.View;
 import io.appium.java_client.AppiumDriver;
 
 
@@ -45,7 +45,7 @@ public class ModifyGroupDescBean extends BaseBean{
 
     @Xpath(xpath={"//android.widget.EditText[@resource-id='com.zkj.guimi:id/aegd_et_desc']"})
     @Description(description="德玛西亚之")
-    public  Text  et_desc;
+    public Text et_desc;
 
 
     @Xpath(xpath={"//android.widget.TextView[@resource-id='com.zkj.guimi:id/aegd_tv_length']"})

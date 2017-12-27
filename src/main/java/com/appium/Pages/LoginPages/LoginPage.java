@@ -105,7 +105,12 @@ public class LoginPage {
     //输入密码
     public void setPWd(String pwd){
         loginBean.pwd.clear();
-        loginBean.pwd.input(pwd);
+        if (appiumDriver.getCapabilities().getCapability("platformVersion").toString().equals("4.4.2")){
+
+            Common.exeCmd("adb -s " + appiumDriver.getCapabilities().getCapability("deviceName").toString() + " shell input text "+pwd);
+        }else {
+            loginBean.pwd.input(pwd);
+        }
     }
 
     public void click_login(){
@@ -117,10 +122,17 @@ public class LoginPage {
     }
     //登录
     public void login(String acc, String pwd){
+        starupBean.login.expectElementExistOrNot(true,10000);
         starupBean.login.click();
         loginBean.account.clear();
         loginBean.account.input(acc);
-        loginBean.pwd.input(pwd);
+        if (appiumDriver.getCapabilities().getCapability("platformVersion").toString().equals("4.4.2")){
+            loginBean.pwd.clear();
+            Common.exeCmd("adb -s " + appiumDriver.getCapabilities().getCapability("deviceName").toString() + " shell input text "+pwd);
+        }else {
+            loginBean.pwd.input(pwd);
+        }
+
         loginBean.login.click();
     }
 }

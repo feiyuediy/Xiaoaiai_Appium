@@ -28,6 +28,11 @@ public class ThemeFeedsPage {
 
     //获取第一条动态的内容
     public String getContent(){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         String xpth = "com.zkj.guimi:id/af_tv_content";
         List<WebElement> list = appiumDriver.findElementsById(xpth);
         WebElement webElement = list.get(0);

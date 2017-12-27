@@ -1,7 +1,10 @@
 package com.appium.PageBeans.AccostPageBeans;
-import lazy.android.annotations.*;
-import lazy.android.bean.BaseBean;
-import lazy.android.controls.*;
+import com.lazy.annotations.Description;
+import com.lazy.annotations.Xpath;
+import com.lazy.bean.BaseBean;
+import com.lazy.controls.Click;
+import com.lazy.controls.PlainText;
+import com.lazy.controls.View;
 import io.appium.java_client.AppiumDriver;
 
 
@@ -116,7 +119,7 @@ public class UploadIdphotoBean extends BaseBean{
 
     @Xpath(xpath={"//android.widget.Button[@resource-id='com.zkj.guimi:id/dc_dialog_btn_cancel']"})
     @Description(description="取消")
-    public  Click  delectCanleButton;
+    public Click delectCanleButton;
 
 
     @Xpath(xpath={"//android.view.View[@resource-id='com.zkj.guimi:id/dc_dialog_view_line_v']"})

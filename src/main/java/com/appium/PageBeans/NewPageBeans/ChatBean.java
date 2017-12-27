@@ -1,7 +1,9 @@
 package com.appium.PageBeans.NewPageBeans;
-import lazy.android.annotations.*;
-import lazy.android.bean.BaseBean;
-import lazy.android.controls.*;
+import com.lazy.annotations.Description;import com.lazy.annotations.Xpath;import com.lazy.bean.BaseBean;
+import com.lazy.controls.Click;
+import com.lazy.controls.PlainText;
+import com.lazy.controls.Text;
+import com.lazy.controls.View;
 import io.appium.java_client.AppiumDriver;
 
 
@@ -95,12 +97,12 @@ public class ChatBean extends BaseBean{
 
     @Xpath(xpath={"//android.widget.Button[@resource-id='com.zkj.guimi:id/btn_mode_voice']"})
     @Description(description="")
-    public  Click  btn_mode_voice;
+    public Click btn_mode_voice;
 
 
     @Xpath(xpath={"//android.widget.EditText[@resource-id='com.zkj.guimi:id/input_container']"})
     @Description(description="")
-    public  Text  input_container;
+    public Text input_container;
 
 
     @Xpath(xpath={"//android.support.v7.widget.RecyclerView[@resource-id='com.zkj.guimi:id/fc_shortcut_fun_view']/android.widget.RelativeLayout[6]/android.widget.ImageView[1]"})

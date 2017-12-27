@@ -2,6 +2,7 @@ package com.appium.Pages.FindPages;
 
 import com.appium.PageBeans.FindPageBeans.LoadVideoBean;
 import io.appium.java_client.AppiumDriver;
+import org.openqa.selenium.By;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -33,7 +34,7 @@ public class LoadVideoPage{
     public void click_machTimeVideo(){
         for (int i=1;i<=12;i++){
             System.out.println("i="+i);
-            String[] xpath = {"//android.widget.FrameLayout[1]/android.view.View[1]/android.widget.FrameLayout[2]/android.widget.GridView[1]/android.widget.FrameLayout["+Integer.toString(i)+"]/android.widget.LinearLayout[1]/android.widget.TextView[1]"};
+            String[] xpath = {"//android.widget.FrameLayout[1]/android.view.ViewGroup[1]/android.widget.FrameLayout[2]/android.widget.GridView[1]/android.widget.FrameLayout["+Integer.toString(i)+"]/android.widget.LinearLayout[1]/android.widget.TextView[1]"};
             String desc = "";
             loadVideoBean.time.setXpath(xpath);
             loadVideoBean.time.setDescription(desc);

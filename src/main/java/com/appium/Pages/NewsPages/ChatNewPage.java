@@ -5,6 +5,8 @@ import com.appium.PageBeans.NewPageBeans.ChatNewBean;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 
+import java.time.Duration;
+
 /**
  * Created by admin on 2017/9/15.
  */
@@ -46,9 +48,10 @@ public class ChatNewPage {
     }
     //长按第一个消息联系人的名称
     public void tapFrist(){
-//        TouchAction touchAction = new TouchAction(appiumDriver);
-//        touchAction.longPress(chatNewBean.fristName.toWebElement()).perform();
-            appiumDriver.tap(1,chatNewBean.fristName.toWebElement(),2000);
+        Duration duration=Duration.ofSeconds(2);
+        TouchAction action1 = new TouchAction(appiumDriver).longPress(chatNewBean.fristName.toWebElement(),duration);
+        action1.perform();
+//            appiumDriver.tap(1,chatNewBean.fristName.toWebElement(),2000);
     }
 
     //删除一个人的聊天记录

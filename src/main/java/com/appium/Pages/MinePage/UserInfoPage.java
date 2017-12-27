@@ -2,7 +2,12 @@ package com.appium.Pages.MinePage;
 
 import com.appium.PageBeans.MinePageBeans.UserInfoBean;
 import com.appium.Pages.MinePage.MinePage;
+import com.appium.Utils.DriverCommon;
 import io.appium.java_client.AppiumDriver;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 /**
  * Created by admin on 2017/8/30.
@@ -36,7 +41,11 @@ public class UserInfoPage {
     }
     //获取用户昵称
     public String getNickName(){
-        return userInfoBean.userNick.getText();
+        DriverCommon.goSleep(1);
+        String id = "com.zkj.guimi:id/vii_tv_content";
+        List<WebElement> list = appiumDriver.findElementsById(id);
+        return list.get(0).getText();
+//        return userInfoBean.userNick.getText();
     }
     //获取用户的爱爱号
     public String getAiaiNum(){
@@ -45,4 +54,10 @@ public class UserInfoPage {
     public void click_back(){
         userInfoBean.back.click();
     }
+
+    //h获取爱爱豆
+    public String get_aiaidou_num(){
+        return userInfoBean.aiaidou.getText();
+    }
+
 }
