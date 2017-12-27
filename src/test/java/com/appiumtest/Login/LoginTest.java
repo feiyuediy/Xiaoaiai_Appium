@@ -37,14 +37,14 @@ public class LoginTest extends TestcaseBase{
         loginPage = new LoginPage(driver);
         loginPage.login("18676390321","111111");
         String title = loginPage.getTitle();
-        Assertion.verifyEquals(title,"登录");
+        DriverCommon.findToast(driver,"账号或密码错误");
     }
 
 
     @Test()
     @Stories("登录")
     @Title("爱爱号登录")
-    public void test_login_aiaiNum() {
+    public void  test_login_aiaiNum() {
         loginPage.setAcc("8011764");
         loginPage.setPWd("123456");
         loginPage.click_login();
@@ -64,7 +64,7 @@ public class LoginTest extends TestcaseBase{
     public void test_login_qq(){
         loginPage.qqlogin();
         try {
-            Thread.sleep(2000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -105,6 +105,6 @@ public class LoginTest extends TestcaseBase{
 
     @AfterClass
     public void teardown(){
-        driver.quit();
+        DriverCommon.quit(driver);
     }
 }

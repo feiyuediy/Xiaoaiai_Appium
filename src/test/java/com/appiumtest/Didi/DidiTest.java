@@ -39,8 +39,8 @@ public class DidiTest extends TestcaseBase {
     @Parameters({"driverName1", "driverName2","apkPath"})
     public void setup(String driverName1, String driverName2, String apkPath) throws MalformedURLException {
 
-        passge = DriverCommon.getAndroidDriver(driverName1, "http://0.0.0.0:4723/wd/hub",apkPath);
-        driver = DriverCommon.getAndroidDriver(driverName2, "http://0.0.0.0:4724/wd/hub",apkPath);
+        passge = DriverCommon.getAndroidDriver(driverName1, "http://127.0.0.1:4723/wd/hub",apkPath);
+        driver = DriverCommon.getAndroidDriver(driverName2, "http://127.0.0.1:4724/wd/hub",apkPath);
         driver2 = passge;
     }
     @Test
@@ -68,7 +68,7 @@ public class DidiTest extends TestcaseBase {
 
         didiPage.click_video();
 
-
+        DriverCommon.goSleep(10);
         didiPage.creat_didi_video();
 
         //司机接单
@@ -90,7 +90,7 @@ public class DidiTest extends TestcaseBase {
         //乘客评价
         EvaluatePage evaluatePage = new EvaluatePage(passge);
         evaluatePage.evaluteStar(3);
-
+        DriverCommon.findToast(passge,"评价成功");
         //乘客查看是否扣除了爱爱豆
         accostPage_passge.gotoMine();
         int y = minePage.get_remaind_aiai();
@@ -107,7 +107,7 @@ public class DidiTest extends TestcaseBase {
         String secMsg = chatPage.get_msg(2);
         //司机返回到首页
         chatPage.click_back();
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
         accostPage_passge.gotoDIdi();
 
         System.out.println("fristMsg:"+fristMsg);
@@ -139,6 +139,7 @@ public class DidiTest extends TestcaseBase {
         String msg = didiPage.get_takeMsg();
         System.out.println("乘客端的捎话：" + msg);
         //点击滴一下
+        DriverCommon.goSleep(30);
         didiPage.click_di();
 
         //司机接单端校验打赏和捎话
@@ -155,11 +156,7 @@ public class DidiTest extends TestcaseBase {
         orderFrame.click_accept();
 
         //通话两分钟
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        DriverCommon.goSleep(10);
 
         //司机挂断
         VoiceCallPaeg voiceCallPaeg = new VoiceCallPaeg(driver);
@@ -188,7 +185,7 @@ public class DidiTest extends TestcaseBase {
         String secMsg = chatPage.get_msg(4);
         //司机返回到首页
         chatPage.click_back();
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
 
         System.out.println("fristMsg:"+fristMsg);
 //        Assertion.verifyEquals(fristMsg.contains("通话时长"),true);
@@ -317,7 +314,7 @@ public class DidiTest extends TestcaseBase {
 
     @AfterClass
     public void teardown(){
-        driver.quit();
-        passge.quit();
+        DriverCommon.quit(passge);
+        DriverCommon.quit(driver);
     }
 }

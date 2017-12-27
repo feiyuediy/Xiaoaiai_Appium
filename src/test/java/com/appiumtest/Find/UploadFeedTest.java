@@ -95,12 +95,17 @@ public class UploadFeedTest extends TestcaseBase {
         uploadFeedPage.click_dialog_ok();
         boolean isExitDialog1 = uploadFeedPage.isExitDialog();
         Assertion.verifyEquals(false,isExitDialog1,"点击对话框中的我知道了，对话框消失");
+        DriverCommon.back(driver);
     }
 
     @Stories("发布图文动态")
     @Title("发布包含文字和图片的动态")
     @Test
     public void test_upload_txtAndPic() throws InterruptedException {
+        //进入到发布图文动态的页面
+        hotPage.click_publsh();
+        hotPage.click_publish_text();
+
         String txt = "大师傅234234*（*&aaa"+Integer.toString((int)((Math.random()*9+1)*10000));
         uploadFeedPage.editNews(txt);
 
@@ -125,7 +130,6 @@ public class UploadFeedTest extends TestcaseBase {
         String content = themeFeedsPage.getContent();
         Assertion.verifyEquals(txt,content,"检查跳转后页面的主题的内容");
 
-        driver.pressKeyCode(4);//
         Assertion.verifyEquals(".ui.MainActivity",driver.currentActivity(),"由主题话题页面点击返回，返回到主页面");
     }
 
@@ -152,7 +156,7 @@ public class UploadFeedTest extends TestcaseBase {
         String content = themeFeedsPage.getContent();
         Assertion.verifyEquals(txt,content,"检查跳转后页面的主题的内容");
 
-        driver.pressKeyCode(4);//
+        DriverCommon.back(driver);//
         Assertion.verifyEquals(".ui.MainActivity",driver.currentActivity(),"由主题话题页面点击返回，返回到主页面");
     }
 
@@ -183,12 +187,12 @@ public class UploadFeedTest extends TestcaseBase {
         String[] namelist = {"雅致的倪明初_吴彦祖","雅致的迪丽热巴"};
         System.out.println("name:"+name);
         Assertion.verifyEquals(Arrays.asList(namelist).contains(name),true,"判断匿名的名称是否符合");
-        driver.pressKeyCode(4);//
+        DriverCommon.back(driver);//
         Assertion.verifyEquals(".ui.MainActivity",driver.currentActivity(),"由主题话题页面点击返回，返回到主页面");
     }
 
     @AfterClass
     public void teardown(){
-        appiumDriver.quit();
+        DriverCommon.quit(driver);
     }
 }

@@ -9,7 +9,7 @@
         <parameter name="testEnv4" value="${remoteAddress2}"/>
         <parameter name="testEnv5" value="${apkPath}"/>
         <classes>
-            <!--&lt;!&ndash;测试&ndash;&gt;-->
+            <!--测试-->
             <!--<class name="com.appiumtest.testPack.Demo">-->
                 <!--<methods>-->
                     <!--<include name="test2"/>-->
@@ -96,11 +96,26 @@
                     <include name="test_cilck_back"/>
                     <include name="test_noNews_click_upload"/>
                     <include name="test_noTopic_upload"/>
-                    <include name="test_upload_txtAndPic"/>
+                    <!--<include name="test_upload_txtAndPic"/>  有bug-->
                     <include name="test_upload_txt"/>
                     <include name="test_upload_anonymity"/>
                 </methods>
             </class>
+
+            <!--发布视频动态-->
+            <class name="com.appiumtest.Find.VideoTest">
+                <methods>
+                    <include name="test_noRecord_colse"/>
+                    <include name="test_record_close"/>
+                    <include name="test_check_deleteAndConnat"/>
+                    <include name="test_delete"/>
+                    <include name="test_click_folder"/>
+                    <include name="test_local_video"/>
+                    <include name="test_upload_local_video"/>
+                    <include name="test_upload_video"/>
+                </methods>
+            </class>
+
 
             <!--滴滴-->
             <class name="com.appiumtest.Didi.DidiTest">
@@ -155,12 +170,23 @@
             <!--我-->
             <class name="com.appiumtest.Mine.MineTest">
                 <methods>
+                    <!--点击跳转-->
                     <include name="test_click_head"/>
                     <include name="test_click_rechange"/>
                     <include name="test_click_vip"/>
                     <include name="test_click_growup"/>
-                    <include name="test_Edit_nickName"/>
-                    <include name="test_edite_head"/>
+                    <include name="test_click_gameCaten"/>
+                    <include name="test_click_WishPage"/>
+                    <include name="test_click_myToolPage"/>
+                    <include name="test_click_setting"/>
+                    <include name="test_click_help"/>
+                    <include name="test_click_feedback"/>
+                    <!--<include name="test_click_share"/>   这个还没有实现-->
+                    <include name="test_click_about"/>
+
+                    <!--编辑个人资料-->
+                    <include name="test_Edit_headImg"/>
+                    <include name="test_edite_nickname"/>
                     <include name="test_edite_idPhoto"/>
                     <include name="test_edite_city"/>
                 </methods>

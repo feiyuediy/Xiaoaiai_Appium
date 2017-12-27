@@ -13,12 +13,14 @@ import com.appium.Utils.DriverCommon;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidKeyCode;
 import org.testng.annotations.*;
 import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Stories;
 import ru.yandex.qatools.allure.annotations.Title;
 
 import java.net.MalformedURLException;
+import java.time.Duration;
 
 /**
  * Created by admin on 2017/9/5.
@@ -51,8 +53,9 @@ public class HotTest extends TestcaseBase{
         accostPage.gotoFind();
         hotPage = new HotPage(driver);
         hotPage.click_remind();
+
         Assertion.verifyEquals(".ui.TipListActivity",driver.currentActivity(),"点击全部提醒跳转到提醒页面");
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
     }
 
     @Test
@@ -77,18 +80,17 @@ public class HotTest extends TestcaseBase{
     @Title("点击发布动态按钮")
     public void test_click_publsh() throws InterruptedException {
         hotPage.click_publsh();
-        Thread.sleep(2000);
         Assertion.verifyEquals(true,hotPage.isExitFeed(),"点击发布动态按钮，是否弹出对话框");
         hotPage.click_cancle_publish();
         Assertion.verifyEquals(false,hotPage.isExitFeed(),"点击弹窗中的取消，对话框消失");
         hotPage.click_publsh();
         hotPage.click_publisc_vedio();
         Assertion.verifyEquals(".shortvideo.ShortVideoRecordActivity",driver.currentActivity(),"点击发布动态-视频，跳转到录制视频页面");
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
         hotPage.click_publsh();
         hotPage.click_publish_text();
         Assertion.verifyEquals(".ui.PostNewsGridActivity",driver.currentActivity(),"点击发布动态，文字/图片进入到发布动态页面");
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
     }
     @Test
     @Stories("热门")
@@ -98,7 +100,7 @@ public class HotTest extends TestcaseBase{
         Assertion.verifyEquals(".ui.H5Activity",driver.currentActivity(),"点击banner图进入到H5页面");
         System.out.println(driver.currentActivity());
         Thread.sleep(1000);
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
     }
 
     @Test
@@ -125,7 +127,7 @@ public class HotTest extends TestcaseBase{
     public void test_click_cr_topic(){
         hotPage.click_CRToptic();
         Assertion.verifyEquals(".ui.ThemeFeedsActivity",driver.currentActivity(),"点击轮播话题，进入到该话题列表");
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
     }
 
     @Test
@@ -135,18 +137,20 @@ public class HotTest extends TestcaseBase{
         hotPage.cick_moreTopic();
         System.out.println(driver.currentActivity());
         Assertion.verifyEquals(".ui.CircleAllActivity",driver.currentActivity(),"点击轮播话题，进入到该话题列表");
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
     }
 
     @Test
     @Stories("热门")
     @Title("动态信息检查")
     public void test_click_ui_feed() throws InterruptedException {
-        int width = driver.manage().window().getSize().width;
-        int height = driver.manage().window().getSize().height;
-//        TouchAction touchAction = new TouchAction(driver);
-//        touchAction.press(width/2,height*3/4).moveTo( width / 2, height * 7 / 20).perform();
-        driver.swipe(width / 2, height *3/ 4, width / 2, height * 7 / 20, 500);
+//        int width = driver.manage().window().getSize().width;
+//        int height = driver.manage().window().getSize().height;
+//        Duration duration=Duration.ofSeconds(1);
+//        TouchAction action1 = new TouchAction(driver).press(width / 2, height *3/ 4).waitAction(duration).moveTo(width / 2, height * 7 / 20).release();
+//        action1.perform();
+//        driver.swipe(width / 2, height *3/ 4, width / 2, height * 7 / 20, 500);
+       DriverCommon.swipeToUp(driver,1,1);
         Thread.sleep(2);
         boolean is = hotPage.isExitPublisherTag();
         Assertion.verifyEquals(true,is,"检查发布人的各种标签");
@@ -158,7 +162,7 @@ public class HotTest extends TestcaseBase{
     public void test_click_head(){
         hotPage.click_head();
         Assertion.verifyEquals(".ui.UserInfoActivity",driver.currentActivity(),"点击动态中的用户头像跳转到用户资料页面");
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
     }
 
     @Test
@@ -168,7 +172,7 @@ public class HotTest extends TestcaseBase{
         hotPage.click_feed();
         System.out.println(driver.currentActivity());
         Assertion.verifyEquals(".ui.FeedDetailActivity",driver.currentActivity(),"点击动态中的用户头像跳转到用户资料页面");
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
     }
 
     @Test
@@ -178,7 +182,7 @@ public class HotTest extends TestcaseBase{
         hotPage.click_img();
         System.out.println(driver.currentActivity());
         Assertion.verifyEquals(".ui.DraweeGalleryActivity",driver.currentActivity(),"点击动态中的用户头像跳转到用户资料页面");
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
     }
 
     @Test
@@ -188,7 +192,7 @@ public class HotTest extends TestcaseBase{
         hotPage.click_topicTags();
         System.out.println(driver.currentActivity());
         Assertion.verifyEquals(".ui.ThemeFeedsActivity",driver.currentActivity(),"点击动态中的用户头像跳转到用户资料页面");
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
     }
 
     @Test
@@ -203,6 +207,7 @@ public class HotTest extends TestcaseBase{
         Assertion.verifyEquals(false,is1,"点击举报按钮弹窗中的取消按钮，弹窗消失");
         hotPage.click_report();
         hotPage.click_confirm_report();
+        DriverCommon.findToast(driver,"您已经举报过了");
         boolean is2 = hotPage.repotrFrameIsExit();
         Assertion.verifyEquals(false,is2,"点击举报按钮弹窗中的确定按钮，弹窗消失");
     }
@@ -214,7 +219,7 @@ public class HotTest extends TestcaseBase{
         hotPage.click_comment();
         System.out.println(driver.currentActivity());
         Assertion.verifyEquals(".ui.FeedDetailActivity",driver.currentActivity(),"点击动态中的用户头像跳转到用户资料页面");
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
     }
 
     @Test
@@ -224,7 +229,7 @@ public class HotTest extends TestcaseBase{
         hotPage.click_zan_imgHead();
         System.out.println(driver.currentActivity());
         Assertion.verifyEquals(".ui.UserInfoActivity",driver.currentActivity(),"点击动态中的用户头像跳转到用户资料页面");
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
     }
     @Test
     @Stories("热门")
@@ -233,7 +238,7 @@ public class HotTest extends TestcaseBase{
         hotPage.click_zan_more();
         System.out.println(driver.currentActivity());
         Assertion.verifyEquals(".ui.FeedDetailActivity",driver.currentActivity(),"点击动态中的用户头像跳转到用户资料页面");
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
     }
 
 
@@ -268,7 +273,7 @@ public class HotTest extends TestcaseBase{
         String activity = driver.currentActivity();
 
         Assertion.verifyEquals(".ui.PostNewsGridActivity",activity,"点击编辑按钮跳转到发布话题界面");
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
     }
     @Stories("圈子页面")
     @Title("点击推荐话题")
@@ -278,7 +283,7 @@ public class HotTest extends TestcaseBase{
         String activity = driver.currentActivity();
 
         Assertion.verifyEquals(".ui.ThemeFeedsActivity",activity,"点击推荐话题跳转到该话题的页面");
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
         Thread.sleep(3000);
     }
 
@@ -299,7 +304,7 @@ public class HotTest extends TestcaseBase{
     public void test_click_moreRecommend(){
         moreTopicPage.click_recommend(4);
         System.out.println(driver.currentActivity());
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
     }
 
     @Stories("圈子页面")
@@ -312,7 +317,7 @@ public class HotTest extends TestcaseBase{
         ThemeFeedsPage themeFeedsPage = new ThemeFeedsPage(driver);
         String title = themeFeedsPage.getTitle();
         Assertion.verifyEquals(title,topicName,"检查跳转的主题动态是否是该动态");
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
     }
     @Stories("圈子页面")
     @Title("翻页到最后显示没有更多数据")
@@ -327,7 +332,7 @@ public class HotTest extends TestcaseBase{
 
         String txt = moreTopicPage.getStateTxt();
         Assertion.verifyEquals("没有更多数据了",txt,"检查最后的没有多数据文字");
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
     }
 
 
@@ -363,7 +368,7 @@ public class HotTest extends TestcaseBase{
     public void test_click_vedioFeed(){
         remindPage.click_video_feed(0);
         Assertion.verifyEquals(".ui.VideoFeedDetailActivity",driver.currentActivity(),"点击视频动态提醒进入到视频动态");
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
     }
 
     @Stories("全部提醒")
@@ -374,7 +379,7 @@ public class HotTest extends TestcaseBase{
 
         Assertion.verifyEquals(".ui.FeedDetailActivity",driver.currentActivity(),"点击图文动态提醒进入到图文动态");
         System.out.println(driver.currentActivity());
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
     }
 
     @Stories("全部提醒")
@@ -384,14 +389,13 @@ public class HotTest extends TestcaseBase{
         remindPage.click_name(2);
         System.out.println(driver.currentActivity());
         Assertion.verifyEquals(".ui.UserInfoActivity",driver.currentActivity(),"点击头像进入到用户资料页面");
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
         Thread.sleep(2000);
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
     }
 
     @AfterClass
     public void tear(){
-
-        appiumDriver.quit();
+        DriverCommon.quit(driver);
     }
 }

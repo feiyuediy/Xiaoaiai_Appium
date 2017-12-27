@@ -61,7 +61,7 @@ public class ChatTest {
         chatPage.click_ziliao();
         System.out.println(driver.currentActivity());
         Assertion.verifyEquals(driver.currentActivity(),".ui.GroupInfoActivity","点击资料跳转到群资料");
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
     }
 
     @Stories("聊天界面")

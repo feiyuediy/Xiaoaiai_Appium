@@ -137,9 +137,8 @@ public class ContactsTest {
 
     @AfterTest
     public void teardown(){
-        System.out.println("teardown");
-        launch.quit();
-        accpect.quit();
+        DriverCommon.quit(launch);
+        DriverCommon.quit(accpect);
     }
 
 }

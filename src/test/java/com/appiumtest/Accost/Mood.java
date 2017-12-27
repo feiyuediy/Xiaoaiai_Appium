@@ -65,7 +65,7 @@ public class Mood  {
     public void test_click_head() {
         moodPage.click_head(2);
         Assertion.verifyEquals(".ui.UserInfoActivity",driver.currentActivity(),"点击心情列表中的头像跳转到个人资料");
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
     }
 
     @Test

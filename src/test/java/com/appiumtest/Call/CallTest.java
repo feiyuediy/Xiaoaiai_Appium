@@ -2,6 +2,7 @@ package com.appiumtest.Call;
 
 
 import com.appium.Moudle.TestcaseBase;
+import com.appium.PageBeans.NewPageBeans.SearchPageBean;
 import com.appium.Pages.AccostPages.AccostPage;
 import com.appium.Pages.CallPages.ComingCallPage;
 import com.appium.Pages.CallPages.VidelCallPage;
@@ -45,8 +46,8 @@ public class CallTest extends TestcaseBase{
     @BeforeClass
     @Parameters({"driverName1", "driverName2","apkPath"})
     public void setup(String driverName1, String driverName2, String apkPath) throws MalformedURLException {
-        lauch = DriverCommon.getAndroidDriver(driverName1, "http://0.0.0.0:4723/wd/hub",apkPath);
-        accpect = DriverCommon.getAndroidDriver(driverName2, "http://0.0.0.0:4724/wd/hub",apkPath);
+        lauch = DriverCommon.getAndroidDriver(driverName1, "http://localhost:4723/wd/hub",apkPath);
+        accpect = DriverCommon.getAndroidDriver(driverName2, "http://localhost:4724/wd/hub",apkPath);
         driver2 = lauch;
         driver = accpect;
     }
@@ -96,9 +97,10 @@ public class CallTest extends TestcaseBase{
 
         //发起方看自己的爱爱豆是否少了
         otherUserInfoPage.click_back();
-        lauch.pressKeyCode(4);
-        Thread.sleep(2000);
-        lauch.pressKeyCode(4);
+        SearchPageBean  searchPageBean =  new SearchPageBean(lauch);
+        searchPageBean.back.click();
+        DriverCommon.goSleep(1);
+        searchPageBean.back.click();
         accostPage.gotoMine();
         int after_aiai_num = minePage.get_remaind_aiai();
         Assertion.verifyEquals(aiai_num-after_aiai_num,40,"非粉丝视频通话后爱爱豆减少");
@@ -135,9 +137,10 @@ public class CallTest extends TestcaseBase{
 
         //发起方看自己的爱爱豆是否少了
         otherUserInfoPage.click_back();
-        lauch.pressKeyCode(4);
-        Thread.sleep(2000);
-        lauch.pressKeyCode(4);
+        SearchPageBean  searchPageBean =  new SearchPageBean(lauch);
+        searchPageBean.back.click();
+        DriverCommon.goSleep(1);
+        searchPageBean.back.click();
         accostPage.gotoMine();
         int after_aiai_num = minePage.get_remaind_aiai();
         Assertion.verifyEquals(aiai_num-after_aiai_num,40+30,"非粉丝语音通话后爱爱豆减少");
@@ -231,7 +234,7 @@ public class CallTest extends TestcaseBase{
 
     @AfterClass
     public void teardown(){
-        lauch.quit();
-        accpect.quit();
+        DriverCommon.quit(lauch);
+        DriverCommon.quit(accpect);
     }
 }

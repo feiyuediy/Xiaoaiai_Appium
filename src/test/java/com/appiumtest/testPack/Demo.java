@@ -60,13 +60,14 @@ public class Demo extends TestcaseBase{
     @Test
     public void test2() throws InterruptedException {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login("8011245","123456");
-        Thread.sleep(5000);
-        String xpath = "//android.support.v7.widget.RecyclerView[@resource-id='com.zkj.guimi:id/scroll']/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[2]/android.widget.LinearLayout[1]/android.widget.ImageView[1]";
-        driver.findElementByXPath(xpath).click();
-        String toast="不能关注自己";
+        loginPage.login("dd","dddd");
+//        Thread.sleep(5000);
+//        String xpath = "//android.support.v7.widget.RecyclerView[@resource-id='com.zkj.guimi:id/scroll']/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[2]/android.widget.LinearLayout[1]/android.widget.ImageView[1]";
+//        driver.findElementByXPath(xpath).click();
+
+        String toast="请输入正确的邮箱地址";
         try {
-            final WebDriverWait wait = new WebDriverWait(driver,2);
+            final WebDriverWait wait = new WebDriverWait(driver,5);
             Assert.assertNotNull(wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(".//*[contains(@text,'"+ toast + "')]"))));
             System.out.println("找到了toast");
         } catch (Exception e) {

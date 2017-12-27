@@ -46,7 +46,7 @@ public class GroupTest extends TestcaseBase {
         groupPage = new GroupPage(driver);
         groupPage.click_banner();
         String activity = driver.currentActivity();
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
         Assertion.verifyEquals(activity,".ui.H5Activity","点击banner图跳转到配置的h5页面");
     }
 
@@ -58,7 +58,7 @@ public class GroupTest extends TestcaseBase {
         String desc = groupPage.get_myFristGroupDesc();
         groupPage.click_myFristGroup();
         String activity = driver.currentActivity();
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
         Assertion.verifyEquals(activity,".ui.ChatActivity","点击我的群组跳转到聊天界面");
 
     }
@@ -71,7 +71,7 @@ public class GroupTest extends TestcaseBase {
         String desc = groupPage.get_fristRecommendGroupDesc();
         groupPage.click_fristRecommendGroup();
         String activity = driver.currentActivity();
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
         Assertion.verifyEquals(activity,".ui.GroupInfoActivity","点击点击推荐群组跳转到群资料界面");
 
     }
@@ -82,7 +82,7 @@ public class GroupTest extends TestcaseBase {
     public void test_click_allGrout(){
         groupPage.click_allGroup();
         String activity = driver.currentActivity();
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
         Assertion.verifyEquals(activity,".ui.GroupCategoryLabelNewActivity","点击全部群组跳转到全部界面");
     }
 }

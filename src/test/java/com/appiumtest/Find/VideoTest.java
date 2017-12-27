@@ -1,5 +1,6 @@
 package com.appiumtest.Find;
 
+import com.appium.Moudle.TestcaseBase;
 import com.appium.Pages.AccostPages.AccostPage;
 import com.appium.Pages.FindPages.HotPage;
 import com.appium.Pages.FindPages.RecordVideoPage;
@@ -10,6 +11,7 @@ import com.appium.Utils.DriverCommon;
 import com.appium.Utils.ReportUtil;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
+import org.omg.PortableInterceptor.AdapterNameHelper;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -19,19 +21,17 @@ import ru.yandex.qatools.allure.annotations.Title;
 
 import java.net.MalformedURLException;
 
-public class VideoTest {
+public class VideoTest extends TestcaseBase{
     private RecordVideoPage recordVideoPage;
     private HotPage hotPage;
     private UploadVideoPage uploadVideoPage;
-    private AppiumDriver appiumDriver;
-    private AndroidDriver driver;
 
 
     @BeforeClass
-    @Parameters({"driverName2", "remoteAddress2","apkPath"})
+    @Parameters({"driverName1", "remoteAddress1","apkPath"})
     public void setup(String driverName1, String remoteAddress1,String apkPath) throws MalformedURLException {
         System.out.println("login setup");
-        driver = DriverCommon.getAndroidDriver(driverName1, remoteAddress1,apkPath);
+        AppiumDriver appiumDriver = DriverCommon.getAndroidDriver(driverName1, remoteAddress1,apkPath);
         driver = (AndroidDriver) appiumDriver;
     }
 
@@ -126,7 +126,7 @@ public class VideoTest {
         recordVideoPage.click_open_folder();
         System.out.println(driver.currentActivity());
         Assertion.verifyEquals(".ui.ImageGridActivity",driver.currentActivity(),"点击录制节目的问文件夹按钮，进入到文件选择页面");
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
     }
 
     @Stories("录制视频动态")
@@ -180,13 +180,7 @@ public class VideoTest {
 
         boolean isDialog_progressbar = uploadVideoPage.isDialog_progressbarExit();
         Assertion.verifyEquals(true,isDialog_progressbar,"点击上传后弹窗进度条");
-        try {
-            Thread.sleep(20000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        boolean isOkDialog = uploadVideoPage.isOkExit();
-        Assertion.verifyEquals(true,isOkDialog,"上传成功后弹窗上传成功");
+
         String title = uploadVideoPage.get_ok_title();
         Assertion.verifyEquals("上传成功",title,"检查上传成功的弹窗文案：上传成功");
         uploadVideoPage.click_ok();
@@ -195,6 +189,6 @@ public class VideoTest {
 
     @AfterClass
     public void teardown(){
-        appiumDriver.quit();
+        DriverCommon.quit(driver);
     }
 }

@@ -53,7 +53,7 @@ public class AccostTest extends TestcaseBase{
 
         System.out.println(driver.currentActivity());
         Assertion.verifyEquals(".ui.EditIdPhotoActivity",driver.currentActivity());
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
     }
     @Test
     @Stories("ID照")
@@ -68,7 +68,7 @@ public class AccostTest extends TestcaseBase{
     public void test_click_idPhoto(){
         iDphotoPage.click_idphoto();
         Assertion.verifyEquals(".ui.UserInfoActivity",driver.currentActivity());
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
     }
 
     @Test
@@ -88,7 +88,7 @@ public class AccostTest extends TestcaseBase{
         String title = uploadIdphotoPage.getTile();
         System.out.println(driver.currentActivity());
         Assertion.verifyEquals("ID照上传",title);
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
     }
 
     @Test
@@ -130,7 +130,7 @@ public class AccostTest extends TestcaseBase{
         Assertion.verifyEquals("审核中",tips);
         String text = uploadIdphotoPage.getUploadText();
         Assertion.verifyEquals("审核中",text);
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
     }
 
 
@@ -144,7 +144,7 @@ public class AccostTest extends TestcaseBase{
         moodPage.changeScreen("女");
         moodPage.click_head(2);
         Assertion.verifyEquals(".ui.UserInfoActivity",driver.currentActivity(),"点击心情列表中的头像跳转到个人资料");
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
     }
 
     @Test
@@ -207,6 +207,6 @@ public class AccostTest extends TestcaseBase{
 
     @AfterClass
     public void teardown(){
-        driver.quit();
+        DriverCommon.quit(driver);
     }
 }

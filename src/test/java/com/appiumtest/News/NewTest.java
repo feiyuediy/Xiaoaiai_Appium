@@ -65,7 +65,7 @@ public class NewTest extends TestcaseBase {
         chatPage.click_ziliao();
         System.out.println(driver.currentActivity());
         Assertion.verifyEquals(driver.currentActivity(),".ui.GroupInfoActivity","点击资料跳转到群资料");
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
     }
 
     @Stories("消息-聊天界面")
@@ -132,7 +132,7 @@ public class NewTest extends TestcaseBase {
 //        Thread.sleep(10000);
         boolean is= chatPage.get_msg_status();
         Assertion.verifyEquals(is,true,"发送礼包成功");
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
     }
 
     @Stories("群组")
@@ -147,7 +147,7 @@ public class NewTest extends TestcaseBase {
         groupPage = new GroupPage(driver);
         groupPage.click_banner();
         String activity = driver.currentActivity();
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
         Assertion.verifyEquals(activity,".ui.H5Activity","点击banner图跳转到配置的h5页面");
     }
 
@@ -159,7 +159,7 @@ public class NewTest extends TestcaseBase {
         String desc = groupPage.get_myFristGroupDesc();
         groupPage.click_myFristGroup();
         String activity = driver.currentActivity();
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
         Assertion.verifyEquals(activity,".ui.ChatActivity","点击我的群组跳转到聊天界面");
 
     }
@@ -173,7 +173,7 @@ public class NewTest extends TestcaseBase {
         groupPage.click_fristRecommendGroup();
         String activity = driver.currentActivity();
         Assertion.verifyEquals(activity,".ui.ChatActivity","点击点击推荐群组跳转到群资料聊天界面");
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
     }
 
     @Stories("群组")
@@ -182,7 +182,7 @@ public class NewTest extends TestcaseBase {
     public void test_click_allGrout(){
         groupPage.click_allGroup();
         String activity = driver.currentActivity();
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
         Assertion.verifyEquals(activity,".ui.GroupCategoryLabelNewActivity","点击全部群组跳转到全部界面");
     }
 

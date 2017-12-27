@@ -85,7 +85,7 @@ public class GroupInfoTest   {
     public void test_click_group_id(){
         groupInfoPage.click_group_id();
         System.out.println(driver.currentActivity());
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
     }
 
     @Stories("群资料")
@@ -108,7 +108,7 @@ public class GroupInfoTest   {
         groupInfoPage.click_group_number_list();
         System.out.println(driver.currentActivity());
 
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
     }
 
     @Stories("群资料")
@@ -129,7 +129,7 @@ public class GroupInfoTest   {
     @Test
     public void test_nomagener_click_group_name(){
         groupInfoPage.click_back();
-        driver.pressKeyCode(4);
+        DriverCommon.back(driver);
 
         groupPage.click_mySecGroup();
         chatPage.click_ziliao();
