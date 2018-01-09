@@ -73,7 +73,6 @@ public abstract class AbstractControl {
 	 * @return
 	 */
 	public String getValidXpath() {
-
 		validXpath = getXpath()[0];
 		try {
 			WebDriverWait wait = new WebDriverWait(driver,5);
@@ -166,7 +165,7 @@ public abstract class AbstractControl {
 
 			if (!flag) {
 				throw new NoSuchElementException(
-						"Cannot locate an element using xPath:" + xpath.toString());
+						"Cannot locate an element using xPath:" + getValidXpath());
 			}
 		} else {
 			boolean flag = false;

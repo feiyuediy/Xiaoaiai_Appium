@@ -116,7 +116,9 @@ public class UploadFeedTest extends TestcaseBase {
         String pic_length = uploadFeedPage.get_pic_length();
         Assertion.verifyEquals("4/9",pic_length,"上传图片后检查图片长度tips");
 
-        uploadFeedPage.select_topicByText("#猜猜猜猜#");
+        uploadFeedPage.select_topicByInt(1);//预发布环境只有三个topic
+        String topicText = uploadFeedPage.get_topicTextByInt(1);
+
         uploadFeedPage.click_upload();
         boolean isExitProgressbar = uploadFeedPage.isExitprogressbar();
         Assertion.verifyEquals(true,isExitProgressbar,"发送中的进度条是否存在");
@@ -126,10 +128,12 @@ public class UploadFeedTest extends TestcaseBase {
         //检查调整后的话题页面是否正确
         ThemeFeedsPage themeFeedsPage = new ThemeFeedsPage(driver);
         String title = themeFeedsPage.getTitle();
-        Assertion.verifyEquals("猜猜猜猜",title,"检查跳转后页面的主题的title");
+        Assertion.verifyEquals(topicText.split("#")[0],title,"检查跳转后页面的主题的title");
         String content = themeFeedsPage.getContent();
         Assertion.verifyEquals(txt,content,"检查跳转后页面的主题的内容");
 
+        //上传刚才发布的动态,清理环境
+        themeFeedsPage.delectFeed();
         Assertion.verifyEquals(".ui.MainActivity",driver.currentActivity(),"由主题话题页面点击返回，返回到主页面");
     }
 
@@ -144,7 +148,8 @@ public class UploadFeedTest extends TestcaseBase {
         String txt = "大傻逼，。*&……aaa"+Integer.toString((int)((Math.random()*9+1)*10000));
         uploadFeedPage.editNews(txt);
 
-        uploadFeedPage.select_topicByText("#猜猜猜猜#");
+        uploadFeedPage.select_topicByInt(1);//预发布环境只有三个topic
+        String topicText = uploadFeedPage.get_topicTextByInt(1);
         uploadFeedPage.click_upload();
         Thread.sleep(4000);
         Assertion.verifyEquals(".ui.ThemeFeedsActivity",driver.currentActivity(),"发布成功后调整到该话题动态页面");
@@ -152,9 +157,12 @@ public class UploadFeedTest extends TestcaseBase {
         //检查调整后的话题页面是否正确
         ThemeFeedsPage themeFeedsPage = new ThemeFeedsPage(driver);
         String title = themeFeedsPage.getTitle();
-        Assertion.verifyEquals("猜猜猜猜",title,"检查跳转后页面的主题的title");
+        Assertion.verifyEquals(topicText.split("#")[1],title,"检查跳转后页面的主题的title");
         String content = themeFeedsPage.getContent();
         Assertion.verifyEquals(txt,content,"检查跳转后页面的主题的内容");
+
+        //上传刚才发布的动态,清理环境
+        themeFeedsPage.delectFeed();
 
         DriverCommon.back(driver);//
         Assertion.verifyEquals(".ui.MainActivity",driver.currentActivity(),"由主题话题页面点击返回，返回到主页面");
@@ -171,7 +179,9 @@ public class UploadFeedTest extends TestcaseBase {
         uploadFeedPage.select_photo_pic(2);
         uploadFeedPage.click_anonymity();
 
-        uploadFeedPage.select_topicByText("#hdw#");
+        uploadFeedPage.select_topicByInt(1);//预发布环境只有三个topic
+        String topicText = uploadFeedPage.get_topicTextByInt(1);
+
         uploadFeedPage.click_upload();
 
         boolean isExitProgressbar = uploadFeedPage.isExitprogressbar();
@@ -182,11 +192,15 @@ public class UploadFeedTest extends TestcaseBase {
         //检查调整后的话题页面是否正确
         ThemeFeedsPage themeFeedsPage = new ThemeFeedsPage(driver);
         String title = themeFeedsPage.getTitle();
-        Assertion.verifyEquals("hdw",title,"检查跳转后页面的主题的title");
+        Assertion.verifyEquals(topicText.split("#")[1],title,"检查跳转后页面的主题的title");
         String name = themeFeedsPage.getFristFeedNick();
         String[] namelist = {"雅致的倪明初_吴彦祖","雅致的迪丽热巴"};
         System.out.println("name:"+name);
         Assertion.verifyEquals(Arrays.asList(namelist).contains(name),true,"判断匿名的名称是否符合");
+
+        //上传刚才发布的动态,清理环境
+        themeFeedsPage.delectFeed();
+
         DriverCommon.back(driver);//
         Assertion.verifyEquals(".ui.MainActivity",driver.currentActivity(),"由主题话题页面点击返回，返回到主页面");
     }

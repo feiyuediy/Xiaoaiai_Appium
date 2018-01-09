@@ -13,6 +13,7 @@ public class AppiumServer {
         // appiumObj.excuteCMD(APPIUMSERVERSTART);
         DefaultExecuteResultHandler resultHandler = new DefaultExecuteResultHandler();
         CommandLine commandLine = CommandLine.parse(APPIUMSERVERSTART+" -a 127.0.0.1 -p "+String.valueOf(port)+ " --log-level error --log D:\\GitProject\\Xiaoaiai_appium\\Xiaoaiai_Appium\\logs\\appium.log");
+        System.out.println(APPIUMSERVERSTART+" -a 127.0.0.1 -p "+String.valueOf(port)+ " --log-level info --log D:\\GitProject\\Xiaoaiai_appium\\Xiaoaiai_Appium\\logs\\appium.log");
         ExecuteWatchdog dog = new ExecuteWatchdog(60 * 1000);
         executor = new DefaultExecutor();
         executor.setExitValue(1);
@@ -34,6 +35,11 @@ public class AppiumServer {
         Command.exeCmd("cmd /c echo off & FOR /F \\\"usebackq tokens=5\\\" %a in\"\n" +
                 "                + \" (`netstat -nao ^| findstr /R /C:\\\"\" + appiumServicePort + \"\\\"`) do (FOR /F \\\"usebackq\\\" %b in\"\n" +
                 "                + \" (`TASKLIST /FI \\\"PID eq %a\\\" ^| findstr /I node.exe`) do taskkill /F /PID %a)\"");
-    }
 
+    }
+    public static void main(String args[]){
+        System.out.println("cmd /c echo off & FOR /F \\\"usebackq tokens=5\\\" %a in\"\n" +
+                "                + \" (`netstat -nao ^| findstr /R /C:\\\"\" + appiumServicePort + \"\\\"`) do (FOR /F \\\"usebackq\\\" %b in\"\n" +
+                "                + \" (`TASKLIST /FI \\\"PID eq %a\\\" ^| findstr /I node.exe`) do taskkill /F /PID %a)\"");
+    }
 }

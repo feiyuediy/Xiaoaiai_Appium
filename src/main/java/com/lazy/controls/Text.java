@@ -19,6 +19,7 @@ public class Text extends AbstractControl implements Inputable, Clearable {
 	public void input(String value) {
 		this.expectElementExistOrNot(true);
 		String xpathExpression = getValidXpath();
+		driver.findElement(By.xpath(xpathExpression)).clear();
 		driver.findElement(By.xpath(xpathExpression)).sendKeys(value);
 	}
 

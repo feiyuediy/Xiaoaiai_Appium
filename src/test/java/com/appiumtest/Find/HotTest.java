@@ -53,7 +53,6 @@ public class HotTest extends TestcaseBase{
         accostPage.gotoFind();
         hotPage = new HotPage(driver);
         hotPage.click_remind();
-
         Assertion.verifyEquals(".ui.TipListActivity",driver.currentActivity(),"点击全部提醒跳转到提醒页面");
         DriverCommon.back(driver);
     }
@@ -180,6 +179,7 @@ public class HotTest extends TestcaseBase{
     @Title("点击动态中的图片")
     public void test_click_img_container(){
         hotPage.click_img();
+        DriverCommon.goSleep(1);
         System.out.println(driver.currentActivity());
         Assertion.verifyEquals(".ui.DraweeGalleryActivity",driver.currentActivity(),"点击动态中的用户头像跳转到用户资料页面");
         DriverCommon.back(driver);
@@ -302,7 +302,7 @@ public class HotTest extends TestcaseBase{
     @Title("点击更多推荐圈子按钮")
     @Test
     public void test_click_moreRecommend(){
-        moreTopicPage.click_recommend(4);
+        moreTopicPage.click_recommend(2);
         System.out.println(driver.currentActivity());
         DriverCommon.back(driver);
     }
@@ -311,8 +311,8 @@ public class HotTest extends TestcaseBase{
     @Title("点击话题列表")
     @Test
     public void test_click_topicList(){
-        String topicName = moreTopicPage.getTopicName(3);
-        moreTopicPage.click_topic(3);
+        String topicName = moreTopicPage.getTopicName(2);
+        moreTopicPage.click_topic(2);
         Assertion.verifyEquals(".ui.ThemeFeedsActivity",driver.currentActivity(),"点击话题跳转到该话题的页面");
         ThemeFeedsPage themeFeedsPage = new ThemeFeedsPage(driver);
         String title = themeFeedsPage.getTitle();

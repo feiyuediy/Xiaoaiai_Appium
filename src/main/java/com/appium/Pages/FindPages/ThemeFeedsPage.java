@@ -38,4 +38,10 @@ public class ThemeFeedsPage {
         WebElement webElement = list.get(0);
         return webElement.getText();
     }
+
+    //删除第一条能删除的动态
+    public void delectFeed(){
+        themeFeedsBean.af_tv_delete.click();
+        themeFeedsBean.ok.click();
+    }
 }

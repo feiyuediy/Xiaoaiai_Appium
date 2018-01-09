@@ -4,20 +4,16 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 
-import io.appium.java_client.service.local.AppiumDriverLocalService;
-import io.appium.java_client.service.local.AppiumServiceBuilder;
 import org.openqa.selenium.*;
-import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-import java.io.File;
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
+import java.util.List;
 
 /**
  * Created by admin on 2017/9/1.
@@ -52,20 +48,17 @@ public class DriverCommon {
     }
     public static AndroidDriver getAndroidDriver(String driveName,String remoteAddress,String apkPath)  {
 
-
-
-
         DesiredCapabilities capabilities;
         capabilities = ReadSetting.getDesiredCapabilities(driveName);
         capabilities.setCapability("app", apkPath);
         //如果是6.0.1系统的，先卸载uiautomator2
         if (capabilities.getCapability("platformVersion").toString().equals("6.0.1")){
             //重启adb命令
-            String kill = "adb kill-server";
-            Command.exeCmd(kill);
-            String commandStr = "adb start-server";
-            //String commandStr = "ipconfig";
-            Command.exeCmd(commandStr);
+//            String kill = "adb kill-server";
+//            Command.exeCmd(kill);
+//            String commandStr = "adb start-server";
+//            //String commandStr = "ipconfig";
+//            Command.exeCmd(commandStr);
 
             String uninstallServer = "adb -s 23663455 uninstall io.appium.uiautomator2.server";
             String uninstallServertest = "adb -s 23663455 uninstall io.appium.uiautomator2.server.test";
@@ -237,6 +230,28 @@ public class DriverCommon {
             System.out.println("找到了toast:"+toast);
         } catch (Exception e) {
             throw new AssertionError("找不到"+toast);
+        }
+    }
+
+    //获取element
+    public static WebElement findElementById(AndroidDriver androidDriver, String id){
+        try{
+            final WebDriverWait webDriverWait = new WebDriverWait(androidDriver,5);
+            Assert.assertNotNull((webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.id(id)))));
+            return androidDriver.findElementById(id);
+        }catch (Exception e){
+            throw new NoSuchElementException("没有找到id："+id);
+        }
+    }
+
+    //获取element
+    public static List<WebElement> findElementsById(AppiumDriver androidDriver, String id){
+        try{
+            final WebDriverWait webDriverWait = new WebDriverWait(androidDriver,5);
+            Assert.assertNotNull((webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.id(id)))));
+            return androidDriver.findElementsById(id);
+        }catch (Exception e){
+            throw new NoSuchElementException("没有找到id："+id);
         }
     }
 }

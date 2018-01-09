@@ -126,5 +126,4 @@ public class LoginBean extends BaseBean{
     public  PlainText  textView12;
 
     public LoginBean(AppiumDriver aDriver){super(aDriver);}
-
 }

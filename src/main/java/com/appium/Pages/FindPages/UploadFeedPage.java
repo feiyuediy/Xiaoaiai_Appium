@@ -5,6 +5,9 @@ import com.appium.PageBeans.FindPageBeans.UploadVideoBean;
 import com.appium.Pages.AccostPages.PhotoSelectPage;
 import com.appium.Utils.DriverCommon;
 import io.appium.java_client.AppiumDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 /**
  * Created by admin on 2017/9/8.
@@ -60,10 +63,16 @@ public class UploadFeedPage {
 
     //根据话题标签选择一个标签
     public void select_topicByInt(int i){
-        String[] xpath = {"//android.widget.FrameLayout[1]/android.view.View[2]/android.widget.FrameLayout[2]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.view.View[1]/android.widget.RelativeLayout["+Integer.toString(i)+"]/android.widget.TextView[1]\n"};
-        uploadFeedBean.intTopic.setXpath(xpath);
-        uploadFeedBean.intTopic.setDescription("第"+Integer.toString(i)+"个话题");
-        uploadFeedBean.intTopic.click();
+        String id =  "com.zkj.guimi:id/lint_tv_theme";
+        List<WebElement> list = DriverCommon.findElementsById(appiumDriver,id);
+        list.get(i).click();
+    }
+
+    //获取第N个话题标签的txt
+    public String get_topicTextByInt(int i){
+        String id =  "com.zkj.guimi:id/lint_tv_theme";
+        List<WebElement> list = DriverCommon.findElementsById(appiumDriver,id);
+        return list.get(i).getText();
     }
 
     //点击添加图片

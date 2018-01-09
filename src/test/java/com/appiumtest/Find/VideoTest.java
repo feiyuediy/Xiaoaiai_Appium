@@ -12,14 +12,15 @@ import com.appium.Utils.ReportUtil;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import org.omg.PortableInterceptor.AdapterNameHelper;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import ru.yandex.qatools.allure.annotations.Stories;
 import ru.yandex.qatools.allure.annotations.Title;
 
 import java.net.MalformedURLException;
+
+
+@Stories("视频动态")
+@Listeners({com.appium.Listener.AssertionListener.class })
 
 public class VideoTest extends TestcaseBase{
     private RecordVideoPage recordVideoPage;
@@ -147,11 +148,7 @@ public class VideoTest extends TestcaseBase{
         uploadVideoPage.click_upload();
         boolean isDialog_progressbar = uploadVideoPage.isDialog_progressbarExit();
         Assertion.verifyEquals(true,isDialog_progressbar,"点击上传后弹窗进度条");
-        try {
-            Thread.sleep(25000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
         boolean isOkDialog = uploadVideoPage.isOkExit();
         Assertion.verifyEquals(true,isOkDialog,"上传成功后弹窗上传成功");
         String title = uploadVideoPage.get_ok_title();

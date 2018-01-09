@@ -255,7 +255,13 @@ public class ThemeFeedsBean extends BaseBean{
     @Description(description="")
     public  View  view33;
 
+    @Xpath(xpath={"//android.widget.TextView[@resource-id='com.zkj.guimi:id/af_tv_delete']"})
+    @Description(description="")
+    public  View  af_tv_delete;
 
+    @Xpath(xpath={"//android.widget.TextView[@resource-id='com.zkj.guimi:id/ok']"})
+    @Description(description="")
+    public  View  ok;
 
 
     public ThemeFeedsBean(AppiumDriver aDriver){super(aDriver);}

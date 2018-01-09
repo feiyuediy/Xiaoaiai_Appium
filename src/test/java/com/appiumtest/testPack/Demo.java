@@ -15,10 +15,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import ru.yandex.qatools.allure.annotations.Description;
 import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Stories;
@@ -31,6 +28,8 @@ import java.net.MalformedURLException;
  * Created by admin on 2017/8/29.
  */
 
+@Stories("猫眼测试")
+@Listeners({com.appium.Listener.AssertionListener.class })
 public class Demo extends TestcaseBase{
 
     @BeforeClass
@@ -40,21 +39,24 @@ public class Demo extends TestcaseBase{
 
     }
     @Test
+    @Features("登录")
+    @Description("测试assert")
     public void login1() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login("8011245","123456");
-
-        AccostPage accostPage = new AccostPage(driver);
-        accostPage.gotoNews();
-
-        ChatNewPage chatNewPage = new ChatNewPage(driver);
-        chatNewPage.click_contacts();
-
-        ContactsPage contactsPage = new ContactsPage(driver);
-        contactsPage.click_myAttountion();
-
-        FansListPage fansListPage = new FansListPage(driver);
-        fansListPage.cancleAttention("88880000");
+        Assertion.verifyEquals(1,3);
+//
+//        AccostPage accostPage = new AccostPage(driver);
+//        accostPage.gotoNews();
+//
+//        ChatNewPage chatNewPage = new ChatNewPage(driver);
+//        chatNewPage.click_contacts();
+//
+//        ContactsPage contactsPage = new ContactsPage(driver);
+//        contactsPage.click_myAttountion();
+//
+//        FansListPage fansListPage = new FansListPage(driver);
+//        fansListPage.cancleAttention("88880000");
     }
 
     @Test

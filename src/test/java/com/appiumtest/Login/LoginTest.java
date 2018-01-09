@@ -45,7 +45,8 @@ public class LoginTest extends TestcaseBase{
     @Stories("登录")
     @Title("爱爱号登录")
     public void  test_login_aiaiNum() {
-        loginPage.setAcc("8011764");
+        loginPage.setAcc("18676390321");
+
         loginPage.setPWd("123456");
         loginPage.click_login();
         try {
