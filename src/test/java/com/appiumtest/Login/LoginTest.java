@@ -3,6 +3,8 @@ package com.appiumtest.Login;
 import com.appium.Moudle.TestcaseBase;
 import com.appium.Pages.LoginPages.LoginPage;
 import com.appium.Utils.Assertion;
+import com.appium.Utils.Command;
+import com.appium.Utils.Common;
 import com.appium.Utils.DriverCommon;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
@@ -21,15 +23,17 @@ import java.net.MalformedURLException;
 
 public class LoginTest extends TestcaseBase{
     private LoginPage loginPage ;
-    private AndroidDriver androidDriver;
-    @BeforeClass
-    @Stories("初始化")
-    @Parameters({"driverName1","remoteAddress1","apkPath"})
-    public void setup(String driverName1, String remoteAddress1,String apkPath){
-        driver = DriverCommon.getAndroidDriver(driverName1, remoteAddress1,apkPath);
-        androidDriver = (AndroidDriver) driver;
-    }
 
+//    @BeforeClass
+//    @Stories("初始化")
+//    public void setup(){
+//        driver.launchApp();
+//    }
+    @BeforeClass
+    @Parameters({"driverName1", "remoteAddress1","apkPath"})
+    public void setup(String driverName1, String remoteAddress1,String apkPath) throws MalformedURLException {
+        driver = DriverCommon.getAndroidDriver(driverName1, remoteAddress1,apkPath);
+    }
     @Test()
     @Stories(" 登录")
     @Title("错误的密码登录")
@@ -54,8 +58,8 @@ public class LoginTest extends TestcaseBase{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println(androidDriver.currentActivity());
-        Assertion.verifyEquals(".ui.MainActivity", androidDriver.currentActivity());
+        System.out.println(driver.currentActivity());
+        Assertion.verifyEquals(".ui.MainActivity", driver.currentActivity());
         loginPage.quitLogin();
 
     }
@@ -69,7 +73,7 @@ public class LoginTest extends TestcaseBase{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Assertion.verifyEquals(".ui.MainActivity", androidDriver.currentActivity());
+        Assertion.verifyEquals(".ui.MainActivity", driver.currentActivity());
         loginPage.quitLogin();
     }
 
@@ -78,8 +82,8 @@ public class LoginTest extends TestcaseBase{
     @Title("微信登录")
     public void test_login_weixin(){
         loginPage.weixinLogin();
-        System.out.println(androidDriver.currentActivity());
-        Assertion.verifyEquals(".ui.MainActivity", androidDriver.currentActivity());
+        System.out.println(driver.currentActivity());
+        Assertion.verifyEquals(".ui.MainActivity", driver.currentActivity());
         loginPage.quitLogin();
     }
 
@@ -88,7 +92,7 @@ public class LoginTest extends TestcaseBase{
     @Title("微信登录")
     public void test_login_weibo(){
         loginPage.weiboLogin();
-        Assertion.verifyEquals(".ui.MainActivity", androidDriver.currentActivity());
+        Assertion.verifyEquals(".ui.MainActivity", driver.currentActivity());
         loginPage.quitLogin();
 
     }
@@ -100,12 +104,14 @@ public class LoginTest extends TestcaseBase{
         loginPage.setAcc("18676390321");
         loginPage.setPWd("123456");
         loginPage.click_login();
-        Assertion.verifyEquals(".ui.MainActivity",androidDriver.currentActivity());
+        Assertion.verifyEquals(".ui.MainActivity",driver.currentActivity());
     }
 
 
     @AfterClass
     public void teardown(){
-        DriverCommon.quit(driver);
+//        Command.clearEvn();
+        driver.quit();
+//        DriverCommon.quit(driver);
     }
 }

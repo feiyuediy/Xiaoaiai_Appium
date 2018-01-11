@@ -60,10 +60,10 @@ public class DriverCommon {
 //            //String commandStr = "ipconfig";
 //            Command.exeCmd(commandStr);
 
-            String uninstallServer = "adb -s 23663455 uninstall io.appium.uiautomator2.server";
-            String uninstallServertest = "adb -s 23663455 uninstall io.appium.uiautomator2.server.test";
-            Command.exeCmd(uninstallServer);
-            Command.exeCmd(uninstallServertest);
+//            String uninstallServer = "adb -s 23663455 uninstall io.appium.uiautomator2.server";
+//            String uninstallServertest = "adb -s 23663455 uninstall io.appium.uiautomator2.server.test";
+//            Command.exeCmd(uninstallServer);
+//            Command.exeCmd(uninstallServertest);
         }
 
         //启动appium服务
@@ -83,9 +83,10 @@ public class DriverCommon {
 //        appiumDriverLocalService.start();
 
         String[] list = remoteAddress.split(":");
-        System.out.println("list[]:"+list);
+        System.out.println(remoteAddress);
+        System.out.println("list[]:"+list.length);
         System.out.println(list[2].substring(0,4));
-        AppiumServer.startServer(Integer.valueOf(list[2].substring(0,4)));
+//        AppiumServer.startServer(Integer.valueOf(list[2].substring(0,4)));
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
@@ -218,7 +219,7 @@ public class DriverCommon {
     }
 
     public static void quit(AndroidDriver androidDriver){
-        androidDriver.quit();
+        androidDriver.closeApp();
 
     }
 
@@ -234,14 +235,18 @@ public class DriverCommon {
     }
 
     //获取element
-    public static WebElement findElementById(AndroidDriver androidDriver, String id){
+    public static WebElement findElementById(AndroidDriver androidDriver, String id,int timeout){
         try{
-            final WebDriverWait webDriverWait = new WebDriverWait(androidDriver,5);
+            final WebDriverWait webDriverWait = new WebDriverWait(androidDriver,timeout);
             Assert.assertNotNull((webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.id(id)))));
             return androidDriver.findElementById(id);
         }catch (Exception e){
             throw new NoSuchElementException("没有找到id："+id);
         }
+    }
+
+    public static WebElement findElementById(AndroidDriver androidDriver,String id){
+        return findElementById(androidDriver,id,5);
     }
 
     //获取element

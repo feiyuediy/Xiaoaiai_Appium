@@ -13,6 +13,7 @@ import com.appium.Pages.MinePage.OtherUserInfoPage;
 import com.appium.Pages.NewsPages.ChatNewPage;
 import com.appium.Pages.NewsPages.ChatPage;
 import com.appium.Utils.Assertion;
+import com.appium.Utils.Command;
 import com.appium.Utils.Common;
 import com.appium.Utils.DriverCommon;
 import io.appium.java_client.android.AndroidDriver;
@@ -28,6 +29,7 @@ import java.net.MalformedURLException;
 
 public class DidiTest extends TestcaseBase {
     private AndroidDriver passge;
+    private AndroidDriver true_driver;
     private DidiPage didiPage;
     private OrderFrame orderFrame;
     private MinePage minePage;
@@ -35,24 +37,37 @@ public class DidiTest extends TestcaseBase {
     private FollowFramPage followFramPage;
     private int remanent_aiai;
 
-    @BeforeClass
-    @Parameters({"driverName1", "driverName2","apkPath"})
-    public void setup(String driverName1, String driverName2, String apkPath) throws MalformedURLException {
+//    @BeforeClass
+//    public void setup() {
+//        driver.launchApp();
+//        driver2.launchApp();
+//
+//        passge = driver;
+//        true_driver = driver2;
+//    }
 
-        passge = DriverCommon.getAndroidDriver(driverName1, "http://127.0.0.1:4723/wd/hub",apkPath);
-        driver = DriverCommon.getAndroidDriver(driverName2, "http://127.0.0.1:4724/wd/hub",apkPath);
-        driver2 = passge;
+    @BeforeClass
+    @Parameters({"driverName1", "remoteAddress1","driverName2", "remoteAddress2","apkPath"})
+    public void setup(String driverName1, String remoteAddress1,String driverName2, String remoteAddress2,String apkPath) throws MalformedURLException {
+        driver = DriverCommon.getAndroidDriver(driverName1, remoteAddress1,apkPath);
+        driver2 = DriverCommon.getAndroidDriver(driverName2, remoteAddress2,apkPath);
+        passge = driver;
+        true_driver = driver2;
     }
+
     @Test
     @Stories("视频")
     @Title("didi视频")
     public void test_didi_video() {
+
+
+
         //登录乘客账号
         LoginPage loginPage_passger = new LoginPage(passge);
         loginPage_passger.login("18676390321", "123456");
 
         //登录司机账号
-        LoginPage loginPage_driver = new LoginPage(driver);
+        LoginPage loginPage_driver = new LoginPage(true_driver);
         loginPage_driver.login("18676390001", "123456");
 
         //或取乘客的剩余爱爱豆
@@ -72,10 +87,10 @@ public class DidiTest extends TestcaseBase {
         didiPage.creat_didi_video();
 
         //司机接单
-        orderFrame = new OrderFrame(driver);
+        orderFrame = new OrderFrame(true_driver);
         orderFrame.click_accept();
-        DriverCommon.Hand_permission(driver);
-        DriverCommon.Hand_permission(driver);
+        DriverCommon.Hand_permission(true_driver);
+        DriverCommon.Hand_permission(true_driver);
         //通话两分钟
         try {
             Thread.sleep(10000);
@@ -84,7 +99,7 @@ public class DidiTest extends TestcaseBase {
         }
 
         //司机挂断
-        VidelCallPage videlCallPage = new VidelCallPage(driver);
+        VidelCallPage videlCallPage = new VidelCallPage(true_driver);
         videlCallPage.click_refuse();
 
         //乘客评价
@@ -98,16 +113,16 @@ public class DidiTest extends TestcaseBase {
 
 
         //司机查看发送礼物信息
-        AccostPage accostPage_driver = new AccostPage(driver);
+        AccostPage accostPage_driver = new AccostPage(true_driver);
         accostPage_driver.gotoNews();//进入到消息界面
-        ChatNewPage chatNewPage = new ChatNewPage(driver);
+        ChatNewPage chatNewPage = new ChatNewPage(true_driver);
         chatNewPage.click_frist_new(); //进入到聊天界面
-        ChatPage chatPage = new ChatPage(driver);
+        ChatPage chatPage = new ChatPage(true_driver);
         String fristMsg = chatPage.get_msg(1);
         String secMsg = chatPage.get_msg(2);
         //司机返回到首页
         chatPage.click_back();
-        DriverCommon.back(driver);
+        DriverCommon.back(true_driver);
         accostPage_passge.gotoDIdi();
 
         System.out.println("fristMsg:"+fristMsg);
@@ -143,7 +158,7 @@ public class DidiTest extends TestcaseBase {
         didiPage.click_di();
 
         //司机接单端校验打赏和捎话
-        orderFrame = new OrderFrame(driver);
+        orderFrame = new OrderFrame(true_driver);
         String reward_drive = orderFrame.get_reward_by_send();
         System.out.println("司机端的打赏：" + reward_drive);
 
@@ -159,7 +174,7 @@ public class DidiTest extends TestcaseBase {
         DriverCommon.goSleep(10);
 
         //司机挂断
-        VoiceCallPaeg voiceCallPaeg = new VoiceCallPaeg(driver);
+        VoiceCallPaeg voiceCallPaeg = new VoiceCallPaeg(true_driver);
         voiceCallPaeg.click_hangup();
 
         //乘客评价
@@ -175,22 +190,22 @@ public class DidiTest extends TestcaseBase {
         remanent_aiai = y;
 
         //司机查看发送礼物信息
-        AccostPage accostPage_driver = new AccostPage(driver);
+        AccostPage accostPage_driver = new AccostPage(true_driver);
         accostPage_driver.gotoNews();//进入到消息界面
-        ChatNewPage chatNewPage = new ChatNewPage(driver);
+        ChatNewPage chatNewPage = new ChatNewPage(true_driver);
         chatNewPage.click_frist_new(); //进入到聊天界面
 
-        ChatPage chatPage = new ChatPage(driver);
-        String fristMsg = chatPage.get_msg(3);
-        String secMsg = chatPage.get_msg(4);
+        ChatPage chatPage = new ChatPage(true_driver);
+//        String fristMsg = chatPage.get_msg(3);
+//        String secMsg = chatPage.get_msg(4);
         //司机返回到首页
         chatPage.click_back();
         DriverCommon.back(driver);
 
-        System.out.println("fristMsg:"+fristMsg);
+//        System.out.println("fristMsg:"+fristMsg);
 //        Assertion.verifyEquals(fristMsg.contains("通话时长"),true);
 
-        System.out.println("secMsg:"+secMsg);
+//        System.out.println("secMsg:"+secMsg);
 //        Assertion.verifyEquals("23424234给0001赠送了 粥×20",secMsg);
     }
 
@@ -216,7 +231,7 @@ public class DidiTest extends TestcaseBase {
         //司机点击接受
         orderFrame.click_accept();
 
-        YuetiaoCallPage yuetiaoCallPage_driver = new YuetiaoCallPage(driver);
+        YuetiaoCallPage yuetiaoCallPage_driver = new YuetiaoCallPage(true_driver);
         yuetiaoCallPage_driver.click_device_dialog_cancle();
 
         //通话20S
@@ -247,15 +262,15 @@ public class DidiTest extends TestcaseBase {
         remanent_aiai = y;
 
         //司机查看发送礼物信息
-        AccostPage accostPage_driver = new AccostPage(driver);
+        AccostPage accostPage_driver = new AccostPage(true_driver);
         accostPage_driver.gotoNews();//进入到消息界面
-        ChatNewPage chatNewPage = new ChatNewPage(driver);
+        ChatNewPage chatNewPage = new ChatNewPage(true_driver);
         chatNewPage.click_frist_new(); //进入到聊天界面
 
-        ChatPage chatPage = new ChatPage(driver);
-        String fristMsg = chatPage.get_msg(5);
+        ChatPage chatPage = new ChatPage(true_driver);
+//        String fristMsg = chatPage.get_msg(5);
 
-        System.out.println("frist:"+fristMsg);
+//        System.out.println("frist:"+fristMsg);
 
     }
 
@@ -314,7 +329,9 @@ public class DidiTest extends TestcaseBase {
 
     @AfterClass
     public void teardown(){
-        DriverCommon.quit(passge);
-        DriverCommon.quit(driver);
+        driver2.quit();
+        driver.quit();
+//        DriverCommon.quit(passge);
+//        DriverCommon.quit(true_driver);
     }
 }

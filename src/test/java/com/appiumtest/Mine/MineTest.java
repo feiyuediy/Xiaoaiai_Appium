@@ -27,13 +27,17 @@ public class MineTest extends TestcaseBase {
     private AccountInfoPage accountInfoPage;
     private UserInfoPage userInfoPage;
 
+//    @BeforeClass
+//    @Parameters({"driverName1", "remoteAddress1","apkPath"})
+//    public void setup(String driverName1, String remoteAddress1,String apkPath) throws MalformedURLException {
+//        driver.launchApp();
+//    }
+
     @BeforeClass
     @Parameters({"driverName1", "remoteAddress1","apkPath"})
     public void setup(String driverName1, String remoteAddress1,String apkPath) throws MalformedURLException {
-        System.out.println("login setup");
         driver = DriverCommon.getAndroidDriver(driverName1, remoteAddress1,apkPath);
     }
-
     @Test
     @Stories("点击跳转")
     @Title("点击头像跳转到个人资料页面")
@@ -243,6 +247,7 @@ public class MineTest extends TestcaseBase {
 
     @AfterClass
     public void tear(){
-        DriverCommon.quit(driver);
+        driver.quit();
+//        DriverCommon.quit(driver);
     }
 }

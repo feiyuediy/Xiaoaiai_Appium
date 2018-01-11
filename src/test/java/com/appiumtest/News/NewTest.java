@@ -30,11 +30,16 @@ public class NewTest extends TestcaseBase {
 
     private static String nick = "0001";
 
+//    @BeforeClass
+//    @Parameters({"driverName1", "remoteAddress1","apkPath"})
+//    public void setup(String driverName1, String remoteAddress1,String apkPath) throws MalformedURLException {
+//        driver.launchApp();
+//        launch = driver;
+//    }
     @BeforeClass
     @Parameters({"driverName1", "remoteAddress1","apkPath"})
     public void setup(String driverName1, String remoteAddress1,String apkPath) throws MalformedURLException {
         driver = DriverCommon.getAndroidDriver(driverName1, remoteAddress1,apkPath);
-        launch = driver;
     }
 
     @Stories("消息-聊天界面")
@@ -253,6 +258,7 @@ public class NewTest extends TestcaseBase {
     @AfterClass
     public void tear(){
         driver.quit();
+//        driver.closeApp();
     }
 
 }

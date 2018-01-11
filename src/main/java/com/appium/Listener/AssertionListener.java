@@ -25,7 +25,7 @@ public class AssertionListener extends TestListenerAdapter {
     @Override
     public void onTestFailure(ITestResult tr) {
         try {
-           Screenshot.snapshot(TestcaseBase.driver,Assertion.getCurrentDateTime());
+            Screenshot.snapshot(TestcaseBase.driver,Assertion.getCurrentDateTime());
         } catch (SecurityException e) {
             e.printStackTrace();
         } catch (IllegalArgumentException e) {

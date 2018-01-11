@@ -6,9 +6,7 @@ import com.appium.Pages.FindPages.HotPage;
 import com.appium.Pages.FindPages.RecordVideoPage;
 import com.appium.Pages.FindPages.UploadVideoPage;
 import com.appium.Pages.LoginPages.LoginPage;
-import com.appium.Utils.Assertion;
-import com.appium.Utils.DriverCommon;
-import com.appium.Utils.ReportUtil;
+import com.appium.Utils.*;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import org.omg.PortableInterceptor.AdapterNameHelper;
@@ -28,14 +26,16 @@ public class VideoTest extends TestcaseBase{
     private UploadVideoPage uploadVideoPage;
 
 
+//    @BeforeClass
+//    public void setup()  {
+//        System.out.println("login setup");
+//        driver.launchApp();
+//    }
     @BeforeClass
     @Parameters({"driverName1", "remoteAddress1","apkPath"})
     public void setup(String driverName1, String remoteAddress1,String apkPath) throws MalformedURLException {
-        System.out.println("login setup");
-        AppiumDriver appiumDriver = DriverCommon.getAndroidDriver(driverName1, remoteAddress1,apkPath);
-        driver = (AndroidDriver) appiumDriver;
+        driver = DriverCommon.getAndroidDriver(driverName1, remoteAddress1,apkPath);
     }
-
 
     @Stories("录制视频动态")
     @Title("没有录制时退出录制")
@@ -186,6 +186,7 @@ public class VideoTest extends TestcaseBase{
 
     @AfterClass
     public void teardown(){
-        DriverCommon.quit(driver);
+        driver.quit();
+//        driver.closeApp();
     }
 }

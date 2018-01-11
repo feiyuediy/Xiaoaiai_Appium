@@ -49,9 +49,10 @@ public class Screenshot {
     }
     public static String snapshot(AppiumDriver drivername, String filename) {
         String currentPath = System.getProperty("user.dir"); // get current work
-        File scrFile = drivername.getScreenshotAs(OutputType.FILE);
+
 
         try {
+            File scrFile = drivername.getScreenshotAs(OutputType.FILE);
             System.out.println("save snapshot path is:" + currentPath + "\\"
                     + filename);
             FileUtils

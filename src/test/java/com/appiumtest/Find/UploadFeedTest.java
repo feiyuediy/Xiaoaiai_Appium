@@ -28,14 +28,17 @@ import java.util.Arrays;
 public class UploadFeedTest extends TestcaseBase {
     private UploadFeedPage uploadFeedPage;
     private HotPage hotPage;
-    private AppiumDriver appiumDriver;
 
 
+//    @BeforeClass
+//    public void setup() {
+//        driver.launchApp();
+//
+//    }
     @BeforeClass
     @Parameters({"driverName1", "remoteAddress1","apkPath"})
     public void setup(String driverName1, String remoteAddress1,String apkPath) throws MalformedURLException {
-        appiumDriver = DriverCommon.getAndroidDriver(driverName1, remoteAddress1,apkPath);
-        driver = (AndroidDriver) appiumDriver;
+        driver = DriverCommon.getAndroidDriver(driverName1, remoteAddress1,apkPath);
     }
     @Stories("发布图文动态")
     @Title("页面检查")
@@ -112,9 +115,9 @@ public class UploadFeedTest extends TestcaseBase {
         String conont_length = uploadFeedPage.get_content_length();
         Assertion.verifyEquals("21/200字",conont_length,"输入文字后检查文字长度tips");
 
-        uploadFeedPage.select_photo_pic(4);
+        uploadFeedPage.select_photo_pic(3);
         String pic_length = uploadFeedPage.get_pic_length();
-        Assertion.verifyEquals("4/9",pic_length,"上传图片后检查图片长度tips");
+        Assertion.verifyEquals("3/9",pic_length,"上传图片后检查图片长度tips");
 
         uploadFeedPage.select_topicByInt(1);//预发布环境只有三个topic
         String topicText = uploadFeedPage.get_topicTextByInt(1);
@@ -128,13 +131,17 @@ public class UploadFeedTest extends TestcaseBase {
         //检查调整后的话题页面是否正确
         ThemeFeedsPage themeFeedsPage = new ThemeFeedsPage(driver);
         String title = themeFeedsPage.getTitle();
-        Assertion.verifyEquals(topicText.split("#")[0],title,"检查跳转后页面的主题的title");
+        System.out.println(topicText);
+        System.out.println(topicText.split("#").length);
+        System.out.println(topicText.split("#")[1]);
+        Assertion.verifyEquals(topicText.split("#")[1],title,"检查跳转后页面的主题的title");
         String content = themeFeedsPage.getContent();
         Assertion.verifyEquals(txt,content,"检查跳转后页面的主题的内容");
 
         //上传刚才发布的动态,清理环境
         themeFeedsPage.delectFeed();
-        Assertion.verifyEquals(".ui.MainActivity",driver.currentActivity(),"由主题话题页面点击返回，返回到主页面");
+        Assertion.verifyEquals(".ui.ThemeFeedsActivity",driver.currentActivity(),"由主题话题页面点击返回，返回到主页面");
+        DriverCommon.back(driver);
     }
 
     @Stories("发布图文动态")
@@ -207,6 +214,7 @@ public class UploadFeedTest extends TestcaseBase {
 
     @AfterClass
     public void teardown(){
-        DriverCommon.quit(driver);
-    }
+        driver.quit();
+//        driver.closeApp();
+            }
 }

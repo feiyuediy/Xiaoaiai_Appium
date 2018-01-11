@@ -10,10 +10,7 @@ import com.appium.Pages.LoginPages.LoginPage;
 import com.appium.Pages.NewsPages.ChatNewPage;
 import com.appium.Pages.NewsPages.ContactsPage;
 import com.appium.Pages.NewsPages.FansListPage;
-import com.appium.Utils.Assertion;
-import com.appium.Utils.Common;
-import com.appium.Utils.DriverCommon;
-import com.appium.Utils.Screenshot;
+import com.appium.Utils.*;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import org.testng.annotations.*;
@@ -35,12 +32,15 @@ public class AccostTest extends TestcaseBase{
     private  UploadIdphotoPage uploadIdphotoPage;
     private MoodPage moodPage;
 
+//    @BeforeClass
+//    public void setup() throws MalformedURLException {
+//        driver.launchApp();
+//    }
     @BeforeClass
     @Parameters({"driverName1", "remoteAddress1","apkPath"})
     public void setup(String driverName1, String remoteAddress1,String apkPath) throws MalformedURLException {
         driver = DriverCommon.getAndroidDriver(driverName1, remoteAddress1,apkPath);
-    }
-
+}
     @Test
     @Stories("ID照")
     @Title("点击上传")
@@ -207,6 +207,7 @@ public class AccostTest extends TestcaseBase{
 
     @AfterClass
     public void teardown(){
-        DriverCommon.quit(driver);
+//        driver.closeApp();
+        driver.quit();
     }
 }

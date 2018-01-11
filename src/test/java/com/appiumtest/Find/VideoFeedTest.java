@@ -37,12 +37,17 @@ public class VideoFeedTest {
     private AndroidDriver driver;
 
 
+//    @BeforeClass
+//    public void setup() {
+//        System.out.println("login setup");
+//        driver.launchApp();
+//        driver = (AndroidDriver) appiumDriver;
+//    }
+
     @BeforeClass
-    @Parameters({"driverName2", "remoteAddress2","apkPath"})
+    @Parameters({"driverName1", "remoteAddress1","apkPath"})
     public void setup(String driverName1, String remoteAddress1,String apkPath) throws MalformedURLException {
-        System.out.println("login setup");
         driver = DriverCommon.getAndroidDriver(driverName1, remoteAddress1,apkPath);
-        driver = (AndroidDriver) appiumDriver;
     }
 
     @Stories("视频")
@@ -79,6 +84,7 @@ public class VideoFeedTest {
 
     @AfterClass
     public void teardown(){
-        appiumDriver.quit();
+        driver.quit();
+//        driver.closeApp();
     }
 }

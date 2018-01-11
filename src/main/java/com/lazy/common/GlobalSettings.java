@@ -15,7 +15,7 @@ public class GlobalSettings {
 
 	public static String appPath = prop.getProperty("appPath", "apps");
 
-	public static String timeout = prop.getProperty("timeout", "5000");
+	public static String timeout = prop.getProperty("timeout", "7000");
 
 	public static String stepInterval = prop.getProperty("stepInterval", "500");
 

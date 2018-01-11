@@ -1,5 +1,6 @@
 package com.appiumtest.News;
 
+import com.appium.Moudle.TestcaseBase;
 import com.appium.Pages.AccostPages.AccostPage;
 import com.appium.Pages.NewsPages.ChatNewPage;
 import com.appium.Pages.NewsPages.ChatPage;
@@ -7,6 +8,7 @@ import com.appium.Pages.NewsPages.GroupPage;
 import com.appium.Utils.Assertion;
 import com.appium.Utils.DriverCommon;
 import io.appium.java_client.android.AndroidDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -22,17 +24,20 @@ import java.util.Date;
  * Created by admin on 2017/9/20.
  */
 @Features("消息")
-public class ChatTest {
+public class ChatTest extends TestcaseBase {
     private ChatPage chatPage;
-    private AndroidDriver driver;
 
+//    @BeforeClass
+//    @Parameters({"driverName2", "remoteAddress2","apkPath"})
+//    public void setup(String driverName1, String remoteAddress1,String apkPath) throws MalformedURLException {
+//        System.out.println("login setup");
+//        driver.launchApp();
+//    }
     @BeforeClass
-    @Parameters({"driverName2", "remoteAddress2","apkPath"})
+    @Parameters({"driverName1", "remoteAddress1","apkPath"})
     public void setup(String driverName1, String remoteAddress1,String apkPath) throws MalformedURLException {
-        System.out.println("login setup");
         driver = DriverCommon.getAndroidDriver(driverName1, remoteAddress1,apkPath);
     }
-
     @Stories("聊天界面")
     @Title("点击返回按钮")
     @Test
@@ -137,6 +142,10 @@ public class ChatTest {
         boolean is= chatPage.get_msg_status();
 
         Assertion.verifyEquals(is,true,"发送礼包成功");
+    }
+    @AfterClass
+    public void tear(){
+        driver.closeApp();
     }
 
 }

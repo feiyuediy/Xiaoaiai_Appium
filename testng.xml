@@ -9,219 +9,188 @@
         <parameter name="testEnv4" value="${remoteAddress2}"/>
         <parameter name="testEnv5" value="${apkPath}"/>
         <classes>
-            <!--测试-->
-            <class name="com.appiumtest.testPack.Demo">
+            <!--&lt;!&ndash;测试&ndash;&gt;-->
+            <!--<class name="com.appiumtest.testPack.Demo">-->
+                <!--<methods>-->
+                    <!--<include name="login1"/>-->
+                <!--</methods>-->
+            <!--</class>-->
+
+
+            <!--登录-->
+            <class name="com.appiumtest.Login.LoginTest">
                 <methods>
-                    <include name="login1"/>
+                    <include name="test_login_wrong_pwd"/>
+                    <include name="test_login_aiaiNum"/>
+                    <include name="test_login_qq"/>
+                    <include name="test_login_weixin"/>
+                    <include name="test_login_weibo"/>
+                    <include name="test_login_mobile"/>
+                </methods>
+            </class>
+
+            <!--搭讪-->
+            <class name="com.appiumtest.Accost.AccostTest">
+                <methods>
+                    <!--id照-->
+                    <include name="test_click_uploas"/>
+                    <include name="test_change_list"/>
+                    <include name="test_click_idPhoto"/>
+                    <include name="test_back_idphotoUpload"/>
+                    <include name="test_UIcheck_idphotoUpload"/>
+
+
+                    <!--<include name="test_dphotoUpload"/>-->
+                    <!--<include name="test_deleteIdphoto"/>-->
+                    <!--<include name="test_upload"/>-->
+                    <!--心情-->
+                    <include name="test_click_head"/>
+                    <include name="test_UI_check"/>
+                    <include name="test_edit_mood"/>
+                    <include name="test_UI_tag"/>
+                    <include name="test_mood_floow"/>
+                </methods>
+            </class>
+
+            <!--热门-->
+            <class name="com.appiumtest.Find.HotTest">
+                <methods>
+                    <include name="test_click_remind"/>
+                    <!--<include name="test_click_zan"/>-->
+                    <include name="test_click_publsh"/>
+                    <include name="test_click_banner"/>
+                    <include name="test_check_cr_topic"/>
+                    <include name="test_click_cr_topic"/>
+                    <include name="test_click_moreTopic"/>
+                    <include name="test_click_ui_feed"/>
+                    <include name="test_click_head"/>
+                    <include name="test_click_feed"/>
+                    <include name="test_click_img_container"/>
+                    <include name="test_click_topicTag"/>
+                    <include name="test_click_report"/>
+                    <include name="test_click_comment"/>
+
+                    <include name="test_check_ui"/>
+                    <include name="test_click_edit"/>
+                    <include name="test_click_recommend"/>
+                    <!--&lt;!&ndash;<include name="test_swip_recommend"/>&ndash;&gt; 这个有问题，因为移动之后，第一元素图标还是在第一个位置-->
+                    <include name="test_click_moreRecommend"/>
+                    <include name="test_click_topicList"/>
+                    <include name="test_swip"/>
+
+                    <!--全部提醒-->
+                    <include name="test_check_ui_remade"/>
+                    <include name="test_click_back_remde"/>
+                    <include name="test_click_vedioFeed"/>
+                    <!--&lt;!&ndash;<include name="test_click_textFeed"/>&ndash;&gt;  麻痹的有问题-->
+                    <include name="test_click_headImg"/>
+                    <include name="test_click_topicList"/>
+                    <include name="test_swip"/>
+                </methods>
+            </class>
+
+            <!--发布动态-->
+            <class name="com.appiumtest.Find.UploadFeedTest">
+                <methods>
+                    <include name="test_UI_check"/>
+                    <include name="test_cilck_back"/>
+                    <include name="test_noNews_click_upload"/>
+                    <include name="test_noTopic_upload"/>
+                    <include name="test_upload_txtAndPic"/>
+                    <include name="test_upload_txt"/>
+                    <include name="test_upload_anonymity"/>
+                </methods>
+            </class>
+
+            <!--发布视频动态-->
+            <class name="com.appiumtest.Find.VideoTest">
+                <methods>
+                    <include name="test_noRecord_colse"/>
+                    <include name="test_record_close"/>
+                    <include name="test_check_deleteAndConnat"/>
+                    <include name="test_delete"/>
+                    <include name="test_click_folder"/>
+                    <include name="test_local_video"/>
+                    <include name="test_upload_local_video"/>
+                    <include name="test_upload_video"/>
                 </methods>
             </class>
 
 
-            <!--&lt;!&ndash;登录&ndash;&gt;-->
-            <!--<class name="com.appiumtest.Login.LoginTest">-->
-                <!--<methods>-->
-                    <!--<include name="test_login_wrong_pwd"/>-->
-                    <!--<include name="test_login_aiaiNum"/>-->
-                    <!--<include name="test_login_qq"/>-->
-                    <!--<include name="test_login_weixin"/>-->
-                    <!--<include name="test_login_weibo"/>-->
-                    <!--&lt;!&ndash;<include name="test_login_mobile"/>&ndash;&gt;-->
-                <!--</methods>-->
-            <!--</class>-->
-
-            <!--&lt;!&ndash;搭讪&ndash;&gt;-->
-            <!--<class name="com.appiumtest.Accost.AccostTest">-->
-                <!--<methods>-->
-                    <!--&lt;!&ndash;id照&ndash;&gt;-->
-                    <!--<include name="test_click_uploas"/>-->
-                    <!--<include name="test_change_list"/>-->
-                    <!--<include name="test_click_idPhoto"/>-->
-                    <!--<include name="test_back_idphotoUpload"/>-->
-                    <!--<include name="test_UIcheck_idphotoUpload"/>-->
+            <!--滴滴-->
+            <class name="com.appiumtest.Didi.DidiTest">
+                <methods>
+                    <include name="test_didi_video"/>
+                    <include name="test_didi_voice"/>
+                    <include name="test_didi_yuetiao"/>
+                    <include name="test_didi_follow"/>
+                </methods>
+            </class>
 
 
-                    <!--&lt;!&ndash;<include name="test_dphotoUpload"/>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<include name="test_deleteIdphoto"/>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<include name="test_upload"/>&ndash;&gt;-->
-                    <!--&lt;!&ndash;心情&ndash;&gt;-->
-                    <!--<include name="test_click_head"/>-->
-                    <!--<include name="test_UI_check"/>-->
-                    <!--<include name="test_edit_mood"/>-->
-                    <!--<include name="test_UI_tag"/>-->
-                    <!--<include name="test_mood_floow"/>-->
-                <!--</methods>-->
-            <!--</class>-->
+            <!--消息-->
+            <class name="com.appiumtest.News.NewTest">
+                <methods>
+                    <!--消息-->
+                    <include name="test_click_back"/>
+                    <include name="test_click_ziliao"/>
+                    <include name="test_send_txt"/>
+                    <include name="test_send_voice"/>
+                    <include name="test_send_emoj"/>
+                    <include name="test_send_pic"/>
+                    <include name="test_send_brunAfterRead"/>
+                    <include name="test_send_gift"/>
 
-            <!--&lt;!&ndash;热门&ndash;&gt;-->
-            <!--<class name="com.appiumtest.Find.HotTest">-->
-                <!--<methods>-->
-                    <!--<include name="test_click_remind"/>-->
-                    <!--&lt;!&ndash;<include name="test_click_zan"/>&ndash;&gt;-->
-                    <!--<include name="test_click_publsh"/>-->
-                    <!--<include name="test_click_banner"/>-->
-                    <!--<include name="test_check_cr_topic"/>-->
-                    <!--<include name="test_click_cr_topic"/>-->
-                    <!--<include name="test_click_moreTopic"/>-->
-                    <!--<include name="test_click_ui_feed"/>-->
-                    <!--<include name="test_click_head"/>-->
-                    <!--<include name="test_click_feed"/>-->
-                    <!--<include name="test_click_img_container"/>-->
-                    <!--<include name="test_click_topicTag"/>-->
-                    <!--<include name="test_click_report"/>-->
-                    <!--<include name="test_click_comment"/>-->
+                    <!--群组-->
+                    <include name="test_click_banner"/>
+                    <include name="test_click_myGroup"/>
+                    <include name="test_click_recommendGroup"/>
+                    <include name="test_click_allGrout"/>
 
-                    <!--<include name="test_check_ui"/>-->
-                    <!--<include name="test_click_edit"/>-->
-                    <!--<include name="test_click_recommend"/>-->
-                    <!--&lt;!&ndash;&lt;!&ndash;<include name="test_swip_recommend"/>&ndash;&gt; 这个有问题，因为移动之后，第一元素图标还是在第一个位置&ndash;&gt;-->
-                    <!--<include name="test_click_moreRecommend"/>-->
-                    <!--<include name="test_click_topicList"/>-->
-                    <!--<include name="test_swip"/>-->
+                    <!--联系人-->
+                    <include name="search_aiai_test"/>
+                    <include name="attentionList_test"/>
+                    <include name="blackList_test"/>
+                    <!--<include name="myFollow_test"/>-->
 
-                    <!--&lt;!&ndash;全部提醒&ndash;&gt;-->
-                    <!--<include name="test_check_ui_remade"/>-->
-                    <!--<include name="test_click_back_remde"/>-->
-                    <!--<include name="test_click_vedioFeed"/>-->
-                    <!--&lt;!&ndash;&lt;!&ndash;<include name="test_click_textFeed"/>&ndash;&gt;  麻痹的有问题&ndash;&gt;-->
-                    <!--<include name="test_click_headImg"/>-->
-                    <!--<include name="test_click_topicList"/>-->
-                    <!--<include name="test_swip"/>-->
-                <!--</methods>-->
-            <!--</class>-->
+                </methods>
+            </class>
 
-            <!--&lt;!&ndash;发布动态&ndash;&gt;-->
-            <!--<class name="com.appiumtest.Find.UploadFeedTest">-->
-                <!--<methods>-->
-                    <!--<include name="test_UI_check"/>-->
-                    <!--<include name="test_cilck_back"/>-->
-                    <!--<include name="test_noNews_click_upload"/>-->
-                    <!--<include name="test_noTopic_upload"/>-->
-                    <!--&lt;!&ndash;<include name="test_upload_txtAndPic"/>  有bug&ndash;&gt;-->
-                    <!--<include name="test_upload_txt"/>-->
-                    <!--<include name="test_upload_anonymity"/>-->
-                <!--</methods>-->
-            <!--</class>-->
-
-            <!--&lt;!&ndash;发布视频动态&ndash;&gt;-->
-            <!--<class name="com.appiumtest.Find.VideoTest">-->
-                <!--<methods>-->
-                    <!--<include name="test_noRecord_colse"/>-->
-                    <!--<include name="test_record_close"/>-->
-                    <!--<include name="test_check_deleteAndConnat"/>-->
-                    <!--<include name="test_delete"/>-->
-                    <!--<include name="test_click_folder"/>-->
-                    <!--<include name="test_local_video"/>-->
-                    <!--<include name="test_upload_local_video"/>-->
-                    <!--<include name="test_upload_video"/>-->
-                <!--</methods>-->
-            <!--</class>-->
+            <!--通话-->
+            <class name="com.appiumtest.Call.CallTest">
+                <methods>
+                    <include name="test_notfans_video"/>
+                    <include name="test_notfans_voice"/>
+                    <include name="test_fans_video"/>
+                    <include name="test_fans_voice"/>
+                </methods>
+            </class>
 
 
-            <!--&lt;!&ndash;滴滴&ndash;&gt;-->
-            <!--<class name="com.appiumtest.Didi.DidiTest">-->
-                <!--<methods>-->
-                    <!--<include name="test_didi_video"/>-->
-                    <!--<include name="test_didi_voice"/>-->
-                    <!--<include name="test_didi_yuetiao"/>-->
-                    <!--<include name="test_didi_follow"/>-->
-                <!--</methods>-->
-            <!--</class>-->
+            <!--我-->
+            <class name="com.appiumtest.Mine.MineTest">
+                <methods>
+                    <!--点击跳转-->
+                    <include name="test_click_head"/>
+                    <include name="test_click_rechange"/>
+                    <include name="test_click_vip"/>
+                    <include name="test_click_growup"/>
+                    <include name="test_click_gameCaten"/>
+                    <include name="test_click_WishPage"/>
+                    <include name="test_click_myToolPage"/>
+                    <include name="test_click_setting"/>
+                    <include name="test_click_help"/>
+                    <include name="test_click_feedback"/>
+                    <!--<include name="test_click_share"/>   这个还没有实现-->
+                    <include name="test_click_about"/>
 
-
-            <!--&lt;!&ndash;消息&ndash;&gt;-->
-            <!--<class name="com.appiumtest.News.NewTest">-->
-                <!--<methods>-->
-                    <!--&lt;!&ndash;消息&ndash;&gt;-->
-                    <!--<include name="test_click_back"/>-->
-                    <!--<include name="test_click_ziliao"/>-->
-                    <!--<include name="test_send_txt"/>-->
-                    <!--<include name="test_send_voice"/>-->
-                    <!--<include name="test_send_emoj"/>-->
-                    <!--<include name="test_send_pic"/>-->
-                    <!--<include name="test_send_brunAfterRead"/>-->
-                    <!--<include name="test_send_gift"/>-->
-
-                    <!--&lt;!&ndash;群组&ndash;&gt;-->
-                    <!--<include name="test_click_banner"/>-->
-                    <!--<include name="test_click_myGroup"/>-->
-                    <!--<include name="test_click_recommendGroup"/>-->
-                    <!--<include name="test_click_allGrout"/>-->
-
-                    <!--&lt;!&ndash;联系人&ndash;&gt;-->
-                    <!--<include name="search_aiai_test"/>-->
-                    <!--<include name="attentionList_test"/>-->
-                    <!--<include name="blackList_test"/>-->
-                    <!--&lt;!&ndash;<include name="myFollow_test"/>&ndash;&gt;-->
-
-                <!--</methods>-->
-            <!--</class>-->
-
-            <!--&lt;!&ndash;通话&ndash;&gt;-->
-            <!--<class name="com.appiumtest.Call.CallTest">-->
-                <!--<methods>-->
-                    <!--<include name="test_notfans_video"/>-->
-                    <!--<include name="test_notfans_voice"/>-->
-                    <!--<include name="test_fans_video"/>-->
-                    <!--<include name="test_fans_voice"/>-->
-                <!--</methods>-->
-            <!--</class>-->
-
-
-            <!--&lt;!&ndash;我&ndash;&gt;-->
-            <!--<class name="com.appiumtest.Mine.MineTest">-->
-                <!--<methods>-->
-                    <!--&lt;!&ndash;点击跳转&ndash;&gt;-->
-                    <!--<include name="test_click_head"/>-->
-                    <!--<include name="test_click_rechange"/>-->
-                    <!--<include name="test_click_vip"/>-->
-                    <!--<include name="test_click_growup"/>-->
-                    <!--<include name="test_click_gameCaten"/>-->
-                    <!--<include name="test_click_WishPage"/>-->
-                    <!--<include name="test_click_myToolPage"/>-->
-                    <!--<include name="test_click_setting"/>-->
-                    <!--<include name="test_click_help"/>-->
-                    <!--<include name="test_click_feedback"/>-->
-                    <!--&lt;!&ndash;<include name="test_click_share"/>   这个还没有实现&ndash;&gt;-->
-                    <!--<include name="test_click_about"/>-->
-
-                    <!--&lt;!&ndash;编辑个人资料&ndash;&gt;-->
-                    <!--<include name="test_Edit_headImg"/>-->
-                    <!--<include name="test_edite_nickname"/>-->
-                    <!--<include name="test_edite_idPhoto"/>-->
-                    <!--<include name="test_edite_city"/>-->
-                <!--</methods>-->
-            <!--</class>-->
-
-            <!--<class name="com.appiumtest.NewsupInfoTest">-->
-                <!--<methods>-->
-                    <!--<include name="test_click_back"/>-->
-                    <!--<include name="test_modify_group_name"/>-->
-                    <!--<include name="test_click_group_id"/>-->
-                    <!--<include name="test_modify_group_desc"/>-->
-                    <!--<include name="test_click_number_list"/>-->
-                    <!--&lt;!&ndash;<include name="test_modify_group_notice"/>&ndash;&gt;-->
-                    <!--<include name="test_nomagener_click_group_name"/>-->
-                    <!--<include name="test_nomagener_click_group_desc"/>-->
-                    <!--<include name="test_nomagener_no_add_requst"/>-->
-
-                <!--</methods>-->
-            <!--</class>-->
-            <!--<class name="com.appiumtest.Mine.MineTest">-->
-                <!--<methods>-->
-                    <!--<include name="test_click_head" />-->
-                    <!--<include name="test_click_rechange" />-->
-                    <!--<include name="test_click_vip"/>-->
-                    <!--<include name="test_click_growup"/>-->
-                <!--</methods>-->
-            <!--</class>-->
-            <!--<class name="com.appiumtest.Mine.EditInfo">-->
-                <!--<methods>-->
-                    <!--<include name="test_click_head"/>-->
-                    <!--<include name="test_edite_head"/>-->
-                    <!--<include name="test_edite_idPhoto"/>-->
-                    <!--<include name="test_edite_city"/>-->
-                <!--</methods>-->
-            <!--</class>-->
+                    <!--编辑个人资料-->
+                    <include name="test_Edit_headImg"/>
+                    <include name="test_edite_nickname"/>
+                    <include name="test_edite_idPhoto"/>
+                    <include name="test_edite_city"/>
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>

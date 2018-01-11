@@ -9,7 +9,10 @@ import com.appium.Utils.Common;
 import com.appium.Utils.DriverCommon;
 import com.appium.Utils.Screenshot;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Point;
+import org.openqa.selenium.WebElement;
 
 import javax.swing.plaf.TableHeaderUI;
 
@@ -31,12 +34,14 @@ public class LoginPage {
     //QQ登录
     public void qqlogin() {
         loginBean.QQlogin.click();
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
+        try{
+            Thread.sleep(5000);
+        }catch (Exception e){
             e.printStackTrace();
         }
-        appiumDriver.findElementByXPath("//android.widget.Button[@resource-id='com.tencent.mobileqq:id/name']").click();
+        appiumDriver.findElement(By.xpath("//android.widget.Button[@resource-id='com.tencent.mobileqq:id/name']")).click();
+//        WebElement webElement = DriverCommon.findElementById((AndroidDriver) appiumDriver,"com.tencent.mobileqq:id/name",6);
+//        webElement.click();
     }
 
     //微信登录
@@ -75,7 +80,6 @@ public class LoginPage {
             }
         }catch (Exception e){
             try {
-
                 Thread.sleep(1000);
                 appiumDriver.findElementByXPath("//android.widget.Button[@resource-id='com.sina.weibo:id/bnLogin']").click();
                 Thread.sleep(5000);

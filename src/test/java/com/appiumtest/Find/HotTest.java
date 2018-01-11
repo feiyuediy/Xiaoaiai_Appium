@@ -8,6 +8,7 @@ import com.appium.Pages.FindPages.RemindPage;
 import com.appium.Pages.FindPages.ThemeFeedsPage;
 import com.appium.Pages.LoginPages.LoginPage;
 import com.appium.Utils.Assertion;
+import com.appium.Utils.Command;
 import com.appium.Utils.Common;
 import com.appium.Utils.DriverCommon;
 import io.appium.java_client.AppiumDriver;
@@ -31,18 +32,19 @@ import java.time.Duration;
 public class HotTest extends TestcaseBase{
     private HotPage hotPage;
     private AccostPage accostPage;
-    private AppiumDriver appiumDriver;
     private MoreTopicPage moreTopicPage;
     private RemindPage remindPage;
 
 
+//    @BeforeClass
+//    public void setup()  {
+//        driver.launchApp();
+//    }
     @BeforeClass
     @Parameters({"driverName1", "remoteAddress1","apkPath"})
     public void setup(String driverName1, String remoteAddress1,String apkPath) throws MalformedURLException {
-        appiumDriver = DriverCommon.getAndroidDriver(driverName1, remoteAddress1,apkPath);
-        driver = (AndroidDriver) appiumDriver;
+        driver = DriverCommon.getAndroidDriver(driverName1, remoteAddress1,apkPath);
     }
-
     @Test
     @Stories("热门")
     @Title("点击提醒按钮")
@@ -247,7 +249,7 @@ public class HotTest extends TestcaseBase{
     @Title("UI检查")
     @Test
     public void test_check_ui(){
-        DriverCommon.swipeToDown(appiumDriver,500,1);
+        DriverCommon.swipeToDown(driver,500,1);
 
         AccostPage accostPage = new AccostPage(driver);
         accostPage.gotoFind();
@@ -395,7 +397,8 @@ public class HotTest extends TestcaseBase{
     }
 
     @AfterClass
-    public void tear(){
-        DriverCommon.quit(driver);
+    public void tear() {
+     driver.quit();
+//        DriverCommon.quit(driver);
     }
 }

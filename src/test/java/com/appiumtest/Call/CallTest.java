@@ -17,6 +17,7 @@ import com.appium.Pages.NewsPages.ChatNewPage;
 import com.appium.Pages.NewsPages.ContactsPage;
 import com.appium.Pages.NewsPages.FansListPage;
 import com.appium.Utils.Assertion;
+import com.appium.Utils.Command;
 import com.appium.Utils.Common;
 import com.appium.Utils.DriverCommon;
 import io.appium.java_client.android.AndroidDriver;
@@ -43,14 +44,23 @@ public class CallTest extends TestcaseBase{
     private int aiai_num;
     private ContactsPage contactsPage_accpect;
 
+//    @BeforeClass
+//    public void setup() {
+//        driver.launchApp();
+//        driver2.launchApp();
+//        lauch = driver;
+//        accpect = driver2;
+//    }
+
     @BeforeClass
-    @Parameters({"driverName1", "driverName2","apkPath"})
-    public void setup(String driverName1, String driverName2, String apkPath) throws MalformedURLException {
-        lauch = DriverCommon.getAndroidDriver(driverName1, "http://localhost:4723/wd/hub",apkPath);
-        accpect = DriverCommon.getAndroidDriver(driverName2, "http://localhost:4724/wd/hub",apkPath);
-        driver2 = lauch;
-        driver = accpect;
+    @Parameters({"driverName1", "remoteAddress1","driverName2", "remoteAddress2","apkPath"})
+    public void setup(String driverName1, String remoteAddress1,String driverName2, String remoteAddress2,String apkPath) throws MalformedURLException {
+        driver = DriverCommon.getAndroidDriver(driverName1, remoteAddress1,apkPath);
+        driver2 = DriverCommon.getAndroidDriver(driverName2, remoteAddress2,apkPath);
+        lauch = driver;
+        accpect = driver2;
     }
+
     @Test
     @Stories("视频")
     @Title("非粉丝视频收费")
@@ -86,9 +96,14 @@ public class CallTest extends TestcaseBase{
         DriverCommon.Hand_permission(lauch);
         DriverCommon.Hand_permission(lauch);
 
+        //接收方也有权限弹窗
+        DriverCommon.Hand_permission(accpect);
+        DriverCommon.Hand_permission(accpect);
+
         //接受方接受
         ComingCallPage comingCallPage = new ComingCallPage(accpect);
         comingCallPage.click_answer();
+
 
         Thread.sleep(10000);
         //发起方挂断
@@ -234,7 +249,9 @@ public class CallTest extends TestcaseBase{
 
     @AfterClass
     public void teardown(){
-        DriverCommon.quit(lauch);
-        DriverCommon.quit(accpect);
+        driver.quit();
+        driver2.quit();
+//       driver.closeApp();
+//       driver2.closeApp();
     }
 }

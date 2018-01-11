@@ -29,7 +29,6 @@ public class ContactsTest {
     @BeforeTest
     @Parameters({"driverName2", "remoteAddress2","apkPath"})
     public void setup(String driverName1, String remoteAddress1,String apkPath) throws MalformedURLException {
-        System.out.println("login setup");
         launch = DriverCommon.getAndroidDriver(driverName1, remoteAddress1,apkPath);
 
     }

@@ -23,7 +23,7 @@ public class PhotoSelectPage {
     }
     //随机选择i张相片
     public void select_photoByint(int i){
-        int a = new Random().nextInt(10) + 1;
+        int a = new Random().nextInt(6) + 1;
         int n[] = new int[i];
         for (int x = 0;x<i;x++){
             n[x]=a+x;
